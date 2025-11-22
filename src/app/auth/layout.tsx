@@ -1,5 +1,11 @@
+import Navbar from "@/components/shared/Navbar";
 import { childrenProps } from "@/types";
 
 export default function AuthLayout({ children }: childrenProps) {
-  return <div>{children}</div>;
+  return (
+    <div>
+      <Navbar />
+      {children}
+    </div>
+  );
 }
