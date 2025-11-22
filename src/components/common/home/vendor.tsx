@@ -7,18 +7,18 @@ function Vendor() {
     <div className="pt-[148px]">
       <div className="container">
         <div className="pb-8">
-            <SubTitle text="For Vendors"/>
+          <SubTitle text="For Vendors" />
         </div>
 
         <div className="flex justify-between items-center gap-3 xl:gap-10">
           <div className="space-y-3">
             <h1 className="text-[#000000] font-bold text-[16px] xl:text-[20px]">
-              Ready to Grow Your Cleaning Business?
+              Ready to Gro w Your Cleaning Business?
             </h1>
             <div>
               <p className="font-sans font-medium text-[16px] text-[#535353]">
                 Focus on the excellent service you provide. We handle the
-                demanding task of client acquisition, scheduling, and secure
+                demanding task of c lient acquisition, scheduling, and secure
                 payments so your{" "}
               </p>
               <p className=" font-medium ">
@@ -41,8 +41,9 @@ function Vendor() {
                 payment processing.
               </li>
             </ul>
-             <Button size="lg" icon={true}>Continue as vendor</Button>
-            
+            <Button size="lg" icon={true}>
+              Continue as vendor
+            </Button>
           </div>
 
           <div>
