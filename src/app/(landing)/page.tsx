@@ -1,4 +1,4 @@
-import Navbar from "@/components/shared/Navbar";
+// import Navbar from "@/components/shared/Navbar";
 import Customer from "@/components/common/home/customer";
 import Vendor from "@/components/common/home/vendor";
 import Works from "@/components/common/home/works";
@@ -12,7 +12,7 @@ import Footer from "@/components/shared/Footer";
 export default function Home() {
   return (
     <>
-      <Navbar />
+      {/* <Navbar /> */}
       <Customer />
       <Vendor />
       <Works />
