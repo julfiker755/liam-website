@@ -51,6 +51,8 @@
   --radius-md: calc(var(--radius) - 2px);
   --radius-lg: var(--radius);
   --radius-xl: calc(var(--radius) + 4px);
+  --radius-figma-sm: 20px;
+  --color-figma-secondary: #535353;
 }
 
 :root {
