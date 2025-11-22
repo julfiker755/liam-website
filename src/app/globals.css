@@ -1,5 +1,6 @@
 @import "tailwindcss";
 @import "tw-animate-css";
+@import "tailwind-scrollbar-hide/v4";
 
 @custom-variant dark (&:is(.dark *));
 
@@ -53,6 +54,8 @@
   --radius-xl: calc(var(--radius) + 4px);
   --radius-figma-sm: 20px;
   --color-figma-secondary: #535353;
+  --color-figma-danger: #ff4e4e;
+  --color-figma-gray: #535353;
 }
 
 :root {

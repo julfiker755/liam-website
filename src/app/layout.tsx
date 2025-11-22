@@ -2,6 +2,7 @@ import type { Metadata } from "next";
 import localFont from "next/font/local";
 import "./globals.css";
 import assets from "@/assets";
+import Provider from "@/provider";
 
 const satoshi = localFont({
   src: [
@@ -46,7 +47,9 @@ export default function RootLayout({
 }>) {
   return (
     <html lang="en" className={satoshi.variable}>
-      <body suppressHydrationWarning>{children}</body>
+      <body suppressHydrationWarning>
+        <Provider>{children}</Provider>
+      </body>
     </html>
   );
 }

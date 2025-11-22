@@ -3,10 +3,9 @@ import { useState } from "react";
 import { Button } from "@/components/ui/button";
 import { Input } from "@/components/ui/input";
 import { FacebookIcon, InstagramIcon, YoutubeIcon } from "@/icon";
-import Image from "next/image";
-import assets from "@/assets";
 import { useForm } from "react-hook-form";
 import { ImgBox } from "../reusable/Img-box";
+import assets from "@/assets";
 
 type FormData = {
   email: string;
@@ -14,7 +13,6 @@ type FormData = {
 
 const Footer = () => {
   const [email, setEmail] = useState("");
-  const [currentYear] = useState(new Date().getFullYear());
   const {
     register,
     handleSubmit,
@@ -30,7 +28,7 @@ const Footer = () => {
       className="bg-cover bg-no-repeat"
       style={{ backgroundImage: "url('/images/footer.png')" }}
     >
-      <div className="container flex-1 flex items-center justify-center py-16 ">
+      <div className="container flex-1 flex items-center justify-center py-14">
         <div className="">
           {/* Icon */}
           <div className="flex justify-center mb-6">
@@ -57,7 +55,7 @@ const Footer = () => {
           {/* Email Subscription Form */}
           <form
             onSubmit={handleSubmit(onSubmit)}
-            className="flex flex-col sm:flex-row gap-3 justify-center mb-8"
+            className="flex flex-col sm:flex-row gap-3 justify-center mb-3"
           >
             <Input
               type="email"
@@ -71,10 +69,7 @@ const Footer = () => {
               })}
               className="text-white placeholder:text-white"
             />
-            <Button
-              type="submit"
-              className="bg-white text-gray-900 font-semibold px-6 sm:px-8 py-2.5 sm:py-3 rounded-md "
-            >
+            <Button type="submit" className="bg-white text-black px-8">
               Subscribe
             </Button>
           </form>
@@ -82,7 +77,7 @@ const Footer = () => {
       </div>
 
       {/* Footer */}
-      <div className=" text-white border-t border-white/10 py-2">
+      <div className=" text-white border-t border-white/10 py-2.5">
         <div className="container">
           {/* Footer Content Grid */}
           <div className="grid grid-cols-1 sm:grid-cols-2  lg:grid-cols-4 gap-2">
@@ -90,7 +85,7 @@ const Footer = () => {
             <div className="flex flex-col  justify-center  sm:col-span-1">
               <p className="text-sm text-center font-medium mx-auto flex items-center gap-2 text-blue-50">
                 <span className="text-lg">©</span>
-                Copyright © guest-ready, {currentYear}
+                Copyrights of Guest ready {new Date().getFullYear()}
               </p>
             </div>
 
