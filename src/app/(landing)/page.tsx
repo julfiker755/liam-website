@@ -7,6 +7,7 @@ import LoveGuest from "@/components/common/home/love-guest";
 import FQA from "@/components/common/home/fqa";
 import CustomersSay from "@/components/common/home/customers-say";
 import VendorBox from "@/components/common/home/vender-home";
+import Footer from "@/components/shared/Footer";
 
 export default function Home() {
   return (
@@ -14,12 +15,13 @@ export default function Home() {
       <Navbar />
       <Customer />
       <Vendor />
-      <Works/>
-      <About/>
-      <LoveGuest/>
-      <FQA/>
-      <CustomersSay/>
-      <VendorBox/>
+      <Works />
+      <About />
+      <LoveGuest />
+      <FQA />
+      <CustomersSay />
+      <VendorBox />
+      <Footer />
     </>
   );
 }

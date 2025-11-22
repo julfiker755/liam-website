@@ -5,6 +5,7 @@ interface IconProps {
 
 export const ArrowRightIcon = (props: React.SVGProps<SVGSVGElement>) => (
   <svg
+    id="ArrowRightIcon"
     width="24"
     height="24"
     viewBox="0 0 24 24"
@@ -24,6 +25,7 @@ export const ArrowRightIcon = (props: React.SVGProps<SVGSVGElement>) => (
 );
 export const CustomerIcon = (props: React.SVGProps<SVGSVGElement>) => (
   <svg
+    id="CustomerIcon"
     width="173"
     height="24"
     viewBox="0 0 173 24"
@@ -39,6 +41,7 @@ export const CustomerIcon = (props: React.SVGProps<SVGSVGElement>) => (
 );
 export const VendorIcon = (props: React.SVGProps<SVGSVGElement>) => (
   <svg
+    id="VendorIcon"
     width="145"
     height="24"
     viewBox="0 0 145 24"
@@ -54,6 +57,7 @@ export const VendorIcon = (props: React.SVGProps<SVGSVGElement>) => (
 );
 export const WorksIcon = (props: React.SVGProps<SVGSVGElement>) => (
   <svg
+    id="WorksIcon"
     width="157"
     height="24"
     viewBox="0 0 157 24"
@@ -69,6 +73,7 @@ export const WorksIcon = (props: React.SVGProps<SVGSVGElement>) => (
 );
 export const AboutIcon = (props: React.SVGProps<SVGSVGElement>) => (
   <svg
+    id="AboutIcon"
     width="109"
     height="24"
     viewBox="0 0 109 24"
@@ -85,6 +90,7 @@ export const AboutIcon = (props: React.SVGProps<SVGSVGElement>) => (
 
 export const ClientSayIcon = (props: React.SVGProps<SVGSVGElement>) => (
   <svg
+    id="ClientSayIcon"
     width="335"
     height="24"
     viewBox="0 0 335 24"
@@ -101,6 +107,7 @@ export const ClientSayIcon = (props: React.SVGProps<SVGSVGElement>) => (
 
 export const COOIcon = (props: React.SVGProps<SVGSVGElement>) => (
   <svg
+    id="COOIcon"
     width="60"
     height="39"
     viewBox="0 0 60 39"
@@ -258,6 +265,8 @@ export const ChangeIcon = ({ props, className }: IconProps) => (
     viewBox="0 0 23 29"
     fill="none"
     xmlns="http://www.w3.org/2000/svg"
+    {...props}
+    className={className}
   >
     <path
       d="M2.5 2.5H2.52025M11.4798 2.5H11.5M20.4797 2.5H20.5"
@@ -286,6 +295,60 @@ export const ChangeIcon = ({ props, className }: IconProps) => (
       strokeWidth="5"
       strokeLinecap="round"
       strokeLinejoin="round"
+    />
+  </svg>
+);
+
+export const FacebookIcon = (props: React.SVGProps<SVGSVGElement>) => (
+  <svg
+    id="FacebookIcon"
+    width="50"
+    height="50"
+    viewBox="0 0 50 50"
+    fill="none"
+    xmlns="http://www.w3.org/2000/svg"
+    {...props}
+  >
+    <rect width="50" height="50" rx="25" fill="white" fillOpacity="0.12" />
+    <path
+      d="M35 25.0251C35 19.4912 30.52 15 25 15C19.48 15 15 19.4912 15 25.0251C15 29.8772 18.44 33.9173 23 34.8496V28.0326H21V25.0251H23V22.5188C23 20.584 24.57 19.01 26.5 19.01H29V22.0175H27C26.45 22.0175 26 22.4687 26 23.0201V25.0251H29V28.0326H26V35C31.05 34.4987 35 30.2281 35 25.0251Z"
+      fill="white"
+    />
+  </svg>
+);
+
+export const InstagramIcon = (props: React.SVGProps<SVGSVGElement>) => (
+  <svg
+    id="InstagramIcon"
+    width="50"
+    height="50"
+    viewBox="0 0 50 50"
+    fill="none"
+    xmlns="http://www.w3.org/2000/svg"
+    {...props}
+  >
+    <rect width="50" height="50" rx="25" fill="white" fillOpacity="0.12" />
+    <path
+      d="M29.4444 15C30.9179 15 32.3309 15.5853 33.3728 16.6272C34.4147 17.6691 35 19.0821 35 20.5556V29.4444C35 30.9179 34.4147 32.3309 33.3728 33.3728C32.3309 34.4147 30.9179 35 29.4444 35H20.5556C19.0821 35 17.6691 34.4147 16.6272 33.3728C15.5853 32.3309 15 30.9179 15 29.4444V20.5556C15 19.0821 15.5853 17.6691 16.6272 16.6272C17.6691 15.5853 19.0821 15 20.5556 15H29.4444ZM25 20.5556C23.8213 20.5556 22.6908 21.0238 21.8573 21.8573C21.0238 22.6908 20.5556 23.8213 20.5556 25C20.5556 26.1787 21.0238 27.3092 21.8573 28.1427C22.6908 28.9762 23.8213 29.4444 25 29.4444C26.1787 29.4444 27.3092 28.9762 28.1427 28.1427C28.9762 27.3092 29.4444 26.1787 29.4444 25C29.4444 23.8213 28.9762 22.6908 28.1427 21.8573C27.3092 21.0238 26.1787 20.5556 25 20.5556ZM25 22.7778C25.5894 22.7778 26.1546 23.0119 26.5713 23.4287C26.9881 23.8454 27.2222 24.4106 27.2222 25C27.2222 25.5894 26.9881 26.1546 26.5713 26.5713C26.1546 26.9881 25.5894 27.2222 25 27.2222C24.4106 27.2222 23.8454 26.9881 23.4287 26.5713C23.0119 26.1546 22.7778 25.5894 22.7778 25C22.7778 24.4106 23.0119 23.8454 23.4287 23.4287C23.8454 23.0119 24.4106 22.7778 25 22.7778ZM30 18.8889C29.7053 18.8889 29.4227 19.006 29.2143 19.2143C29.006 19.4227 28.8889 19.7053 28.8889 20C28.8889 20.2947 29.006 20.5773 29.2143 20.7857C29.4227 20.994 29.7053 21.1111 30 21.1111C30.2947 21.1111 30.5773 20.994 30.7857 20.7857C30.9941 20.5773 31.1111 20.2947 31.1111 20C31.1111 19.7053 30.9941 19.4227 30.7857 19.2143C30.5773 19.006 30.2947 18.8889 30 18.8889Z"
+      fill="white"
+    />
+  </svg>
+);
+
+export const YoutubeIcon = (props: React.SVGProps<SVGSVGElement>) => (
+  <svg
+    id="YoutubeIcon"
+    width="50"
+    height="50"
+    viewBox="0 0 50 50"
+    fill="none"
+    xmlns="http://www.w3.org/2000/svg"
+    {...props}
+  >
+    <rect width="50" height="50" rx="25" fill="white" fillOpacity="0.12" />
+    <path
+      d="M23 28L28.19 25L23 22V28ZM34.56 20.17C34.69 20.64 34.78 21.27 34.84 22.07C34.91 22.87 34.94 23.56 34.94 24.16L35 25C35 27.19 34.84 28.8 34.56 29.83C34.31 30.73 33.73 31.31 32.83 31.56C32.36 31.69 31.5 31.78 30.18 31.84C28.88 31.91 27.69 31.94 26.59 31.94L25 32C20.81 32 18.2 31.84 17.17 31.56C16.27 31.31 15.69 30.73 15.44 29.83C15.31 29.36 15.22 28.73 15.16 27.93C15.09 27.13 15.06 26.44 15.06 25.84L15 25C15 22.81 15.16 21.2 15.44 20.17C15.69 19.27 16.27 18.69 17.17 18.44C17.64 18.31 18.5 18.22 19.82 18.16C21.12 18.09 22.31 18.06 23.41 18.06L25 18C29.19 18 31.8 18.16 32.83 18.44C33.73 18.69 34.31 19.27 34.56 20.17Z"
+      fill="white"
     />
   </svg>
 );
