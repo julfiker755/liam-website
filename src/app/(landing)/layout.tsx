@@ -7,7 +7,7 @@ export default function LandingPageLayout({ children }: childrenProps) {
         <div>
             <Navbar />
             {children}
-            <Footer />
+            {/* <Footer /> */}
         </div>
     );
 }

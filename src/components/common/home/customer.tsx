@@ -4,13 +4,13 @@ import SubTitle from "@/components/reusable/title";
 
 function Customer() {
   return (
-    <div className="pt-[148px]">
-      <div className="container">
+    <div className="pt-[48px] xl:pt-[148px]">
+      <div className="container px-4">
         <div className="pb-8">
-            <SubTitle text="For Customers"/>
+          <SubTitle text="For Customers" />
         </div>
 
-        <div className="flex justify-between items-center gap-3 xl:gap-10">
+        <div className="flex flex-col lg:flex-row justify-between items-center gap-10">
           <div>
             <Image
               src="/images/customer-web-photo.png"
@@ -25,13 +25,13 @@ function Customer() {
             <h1 className="text-[#000000] font-bold text-[16px] xl:text-[20px]">
               Need a Sparkle? Book the Best Cleaners in NYC.
             </h1>
-            <div>
+            <div >
               <p className="font-sans font-medium text-[16px] text-[#535353]">
                 Stop sacrificing your weekends. Instantly connect with verified,
                 top-rated cleaning professionals across all five boroughs.
                 Quality service is{" "}
               </p>
-              <p className=" font-medium ">just a few clicks away.</p>
+              <p className="font-sans font-medium text-[16px] text-[#535353]">just a few clicks away.</p>
             </div>
 
             <ul className="list-disc list-inside">
@@ -48,7 +48,7 @@ function Customer() {
                 around your life.
               </li>
             </ul>
-            <Button size="lg" icon={true}>Continue as user</Button>
+            <Button className="mt-4 xl:mt-0" size="lg" icon={true}>Continue as user</Button>
           </div>
         </div>
       </div>

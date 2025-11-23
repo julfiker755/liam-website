@@ -4,9 +4,9 @@ import Image from "next/image";
 
 const About = () => {
   return (
-    <div className="pt-[148px]">
-      <div>
-        <div className="flex justify-center gap-3 xl:gap-10">
+    <div className="pt-[48px] xl:pt-[48px]">
+      <div className="container px-4">
+        <div className="flex flex-col lg:flex-row justify-between items-center gap-10">
           <div>
             <Image
               src="/images/about-web-photo.png"
@@ -18,7 +18,7 @@ const About = () => {
           </div>
 
           <div className="flex flex-col items-start">
-            <div className="">
+            <div className="pb-8">
               <SubTitle text="About us" />
             </div>
 
@@ -43,7 +43,8 @@ const About = () => {
                 </p>
               </div>
 
-              <ul className="list-disc list-inside">
+              <ul className="list-disc list-inside space-y-2">
+
                 <li className="">
                   <span className="font-bold">For Our Customers:</span> We focus
                   on making the booking experience totally seamless. Instant
@@ -59,7 +60,7 @@ const About = () => {
                   books, and grow their business—all in one clean place.
                 </li>
               </ul>
-              <Button size="lg" icon={true}>
+              <Button className="mt-4 xl:mt-0" size="lg" icon={true}>
                 Get a quote
               </Button>
             </div>

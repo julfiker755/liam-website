@@ -12,7 +12,7 @@ function SubTitle({ text, svg = true, className, iconStyle }: titleProps) {
   return (
     <div
       className={cn(
-        "flex flex-col items-center justify-center text-base text-[#000000] font-bold text-[28px]",
+        "flex flex-col items-center justify-center text-center text-base text-[#000000] font-bold text-[28px]",
         className
       )}
     >
