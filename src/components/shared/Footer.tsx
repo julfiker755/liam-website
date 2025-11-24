@@ -92,13 +92,13 @@ const Footer = () => {
             {/* Navigation Links */}
             <div className="flex flex-wrap items-center justify-center gap-3 sm:gap-4 sm:col-span-1 lg:col-span-2 text-center sm:text-left">
               <a
-                href="#privacy"
+                href="/privacy-policy"
                 className="text-sm hover:text-white transition-colors text-blue-50"
               >
                 Privacy policy
               </a>
               <a
-                href="#terms"
+                href="/terms-and-condition"
                 className="text-sm hover:text-white transition-colors text-blue-50"
               >
                 Terms & conditions
@@ -110,7 +110,7 @@ const Footer = () => {
                 FAQ
               </a>
               <a
-                href="#contact"
+                href="/contact-us"
                 className="text-sm hover:text-white transition-colors text-blue-50"
               >
                 Contact us

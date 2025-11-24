@@ -3,13 +3,13 @@ import Image from 'next/image'
 
 function Works() {
     return (
-        <div className="pt-[148px] mb-20">
-            <div className='container'>
+        <div className="pt-[48px] xl:pt-[148px] mb-20">
+            <div className='container px-4'>
                 <div className="pb-8">
-                    <SubTitle text="How it works"/>
+                    <SubTitle text="How it works" />
                 </div>
 
-                <div className='flex justify-center items-center gap-3'>
+                <div className='grid grid-cols-1 md:grid-cols-2 xl:grid-cols-3 gap-10 md:gap-6 xl:gap-3'>
 
                     <div className='space-y-2'>
                         <Image
@@ -39,7 +39,7 @@ function Works() {
                             <p className="font-medium text-[16px] text-[#535353]">Choose the professional you trust, pick a date and time that fits your busy NYC schedule, and confirm your appointment in seconds. No calls or complicated quotes needed!</p>
                         </div>
                     </div>
- 
+
                     <div className='space-y-2'>
                         <Image
                             src="/images/works/work-photo3.png"

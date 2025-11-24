@@ -54,7 +54,7 @@ const Navbar = () => {
     return (
         <>
             <header className="sticky top-0 z-50 w-full bg-secondary  backdrop-blur-md border-gray-200 ">
-                <div className="container">
+                <div className="container px-4">
                     <div className="flex h-16 items-center justify-between">
                         {/* Logo Section */}
                         <div className="">
@@ -75,7 +75,7 @@ const Navbar = () => {
                                     href={link.href}
                                     className={`text-sm font-medium transition-colors duration-300 ${isLinkActive(link.text)
                                         ? "text-primary  font-semibold"
-                                        : "text-gray-600 dark:text-gray-300 hover:text-emerald-600 dark:hover:text-emerald-400"
+                                        : "text-gray-600  hover:text-primary "
                                         }`}
                                     onClick={() => handleLinkClick(link.text)}
                                 >
@@ -86,14 +86,14 @@ const Navbar = () => {
 
                         {/* Desktop Actions */}
                         <div className="hidden md:flex items-center space-x-3">
-                              <Button onClick={() => handleCreateAccount()}>Create an account</Button>
+                            <Button onClick={() => handleCreateAccount()}>Create an account</Button>
                         </div>
 
                         {/* Mobile Menu Button */}
                         <div className="md:hidden flex items-center">
                             <button
                                 onClick={() => setIsMenuOpen(!isMenuOpen)}
-                                className="p-2 text-gray-600 dark:text-gray-300 hover:bg-gray-100 dark:hover:bg-gray-800 rounded-md"
+                                className="py-2 text-gray-600  hover:bg-gray-100  rounded-md"
                                 aria-label="Toggle menu"
                             >
                                 <Menu
@@ -120,7 +120,7 @@ const Navbar = () => {
 
             {/* Mobile Sidebar */}
             <div
-                className={`fixed top-0 left-0 h-full w-4/5 max-w-sm z-50 bg-white dark:bg-gray-900 shadow-xl transform transition-transform duration-300 ease-in-out md:hidden ${isMenuOpen ? "translate-x-0" : "-translate-x-full"
+                className={`fixed top-0 left-0 h-full w-4/5 max-w-sm z-50 bg-white  transform transition-transform duration-300 ease-in-out md:hidden ${isMenuOpen ? "translate-x-0" : "-translate-x-full"
                     }`}
             >
                 <div className="flex flex-col h-full">
@@ -135,7 +135,7 @@ const Navbar = () => {
                         />
                         <button
                             onClick={() => setIsMenuOpen(false)}
-                            className="p-2 text-gray-500 dark:text-gray-400 rounded-md hover:bg-gray-100 dark:hover:bg-gray-800"
+                            className="p-2 text-gray-500  rounded-md hover:bg-gray-100 "
                             aria-label="Close menu"
                         >
                             <X className="h-6 w-6" />
@@ -150,8 +150,8 @@ const Navbar = () => {
                                     key={link.text}
                                     href={link.href}
                                     className={`px-3 py-2 text-base font-medium rounded-md transition-colors duration-300 ${isLinkActive(link.text)
-                                        ? "text-primary  bg-red-50  font-semibold"
-                                        : "text-gray-700  hover:bg-gray-100 dark:hover:bg-gray-800"
+                                        ? "text-primary  bg-secondary  font-semibold"
+                                        : "text-gray-700  hover:bg-gray-100 "
                                         }`}
                                     onClick={() => handleLinkClick(link.text)}
                                 >

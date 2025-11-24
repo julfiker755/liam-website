@@ -4,13 +4,13 @@ import { Button } from "@/components/ui";
 
 function Vendor() {
   return (
-    <div className="pt-[148px]">
-      <div className="container">
+    <div className="pt-[48px] xl:pt-[148px]">
+      <div className="container px-4">
         <div className="pb-8">
           <SubTitle text="For Vendors" />
         </div>
 
-        <div className="flex justify-between items-center gap-3 xl:gap-10">
+        <div className="flex flex-col lg:flex-row justify-between items-center gap-10">
           <div className="space-y-3">
             <h1 className="text-[#000000] font-bold text-[16px] xl:text-[20px]">
               Ready to Gro w Your Cleaning Business?
@@ -21,7 +21,7 @@ function Vendor() {
                 demanding task of c lient acquisition, scheduling, and secure
                 payments so your{" "}
               </p>
-              <p className=" font-medium ">
+              <p className="font-sans font-medium text-[16px] text-[#535353]">
                 business can thrive in the NYC market.
               </p>
             </div>
@@ -41,7 +41,7 @@ function Vendor() {
                 payment processing.
               </li>
             </ul>
-            <Button size="lg" icon={true}>
+            <Button className="mt-4 xl:mt-0" size="lg" icon={true}>
               Continue as vendor
             </Button>
           </div>

@@ -30,18 +30,18 @@ const CustomersSay = () => {
     },
   ];
   return (
-    <div className="pt-[148px]">
-      <div className="container">
+    <div className="pt-[48px] xl:pt-[148px]">
+      <div className="container px-4">
         <div className="pb-8">
-          <SubTitle text="See what our customers say"/>
+          <SubTitle text="See what our customers say" />
         </div>
 
-        <div className="grid grid-cols-3 gap-3">
+        <div className="grid grid-cols-1 md:grid-cols-2 xl:grid-cols-3 gap-4">
           {testimonialData?.map((item, index) => {
             return (
               <div
                 key={index}
-                className="w-[480px] bg-[#F8F8F8]  space-y-4 shadow-2xl rounded-lg"
+                className=" bg-[#F8F8F8] shadow-md space-y-4  rounded-lg"
               >
                 <div className="bg-white flex flex-col gap-4 py-8 p-8">
                   <span>{<COOIcon />}</span>
