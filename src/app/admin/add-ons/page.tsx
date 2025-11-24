@@ -6,13 +6,18 @@ import { TableSkeleton } from "@/components/reusable/table-skeleton";
 import { CustomTable } from "@/components/reusable/custom-table";
 import { Pagination } from "@/components/reusable/pagination";
 import { Button, TableCell, TableRow } from "@/components/ui";
+import { DeleteBtn, PreviewBtn } from "@/components/reusable/btn";
+import { FromInput } from "@/components/reusable/form-input";
+import { FieldValues, useForm } from "react-hook-form";
+import { zodResolver } from "@hookform/resolvers/zod";
 import useConfirmation from "@/provider/confirmation";
 import { dummyJson } from "@/components/dummy-json";
-import { DeleteBtn, PreviewBtn } from "@/components/reusable/btn";
-import Modal from "@/components/reusable/modal";
+import Modal2 from "@/components/reusable/modal2";
+import Form from "@/components/reusable/from";
 import { useGlobalState } from "@/hooks";
 import FavIcon from "@/favicon/favicon";
-import { Plus } from "lucide-react";
+import { Plus, X } from "lucide-react";
+import { new_addOn } from "@/lib";
 
 const data = [
   {
@@ -116,6 +121,30 @@ export default function AddOn() {
   const { confirm } = useConfirmation();
   const [global, updateGlobal] = useGlobalState(intState);
   const headers = ["Add-on name", "Created date", "Used by", "Action"];
+
+  // == add on ==
+  const from = useForm({
+    resolver: zodResolver(new_addOn),
+    defaultValues: {
+      name: "",
+    },
+  });
+
+  const handleSubmit = async (values: FieldValues) => {
+    console.log(values);
+  };
+  // == addon edit ==
+  const from2 = useForm({
+    resolver: zodResolver(new_addOn),
+    defaultValues: {
+      name: "",
+    },
+  });
+
+  const handleSubmit2 = async (values: FieldValues) => {
+    console.log(values);
+  };
+
   const isLoading = false;
 
   const handleDelete = async (id: any) => {
@@ -199,40 +228,57 @@ export default function AddOn() {
         )}
       </CustomTable>
       {/* ============== add on  ============== */}
-      <Modal
+      <Modal2
         open={global.isAdd}
         setIsOpen={(v: any) => updateGlobal("isAdd", v)}
-        title="User Details"
+        title="Add New add-on"
         titleStyle="text-center"
         className="sm:max-w-xl"
       >
-        <h1>Add Add-on</h1>
-      </Modal>
-      {/* ============== add edit  ============== */}
-      <Modal
+        <div
+          className="absolute top-3 right-3 cursor-pointer"
+          onClick={() => updateGlobal("isAdd", false)}
+        >
+          <X className="text-white" />
+        </div>
+        <Form className="space-y-4 pt-8" from={from} onSubmit={handleSubmit}>
+          <FromInput
+            className="h-10 bg-secondary rounded-lg"
+            label="Add-on name"
+            name="name"
+            placeholder="Enter Your Add-on name"
+          />
+          <Button size="lg" className="w-full">
+            Add
+          </Button>
+        </Form>
+      </Modal2>
+      {/* ============== addon edit  ============== */}
+      <Modal2
         open={global.isEdit}
         setIsOpen={(v: any) => updateGlobal("isEdit", v)}
-        title="User Details"
+        title="Edit add-on"
         titleStyle="text-center"
         className="sm:max-w-xl"
       >
-        <h1>Add Edit</h1>
-      </Modal>
-    </div>
-  );
-}
-
-function EventCardSm({ icon, title, value }: any) {
-  return (
-    <div className="flex *:text-black items-center bg-secondary p-3 rounded-xl gap-2 text-muted-foreground">
-      <span className="bg-white size-12 rounded-full grid place-items-center">
-        {" "}
-        <FavIcon name={icon} />
-      </span>
-      <div className="flex flex-col">
-        <span className="text-base leading-4">{title}</span>
-        <span className="text-xl font-medium">{value}</span>
-      </div>
+        <div
+          className="absolute top-3 right-3 cursor-pointer"
+          onClick={() => updateGlobal("isEdit", false)}
+        >
+          <X className="text-white" />
+        </div>
+        <Form className="space-y-4 pt-8" from={from2} onSubmit={handleSubmit2}>
+          <FromInput
+            className="h-10 bg-secondary rounded-lg"
+            label="Add-on name"
+            name="name"
+            placeholder="Enter Your Add-on name"
+          />
+          <Button size="lg" className="w-full">
+            Save Changes
+          </Button>
+        </Form>
+      </Modal2>
     </div>
   );
 }
