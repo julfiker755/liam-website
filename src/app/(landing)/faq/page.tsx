@@ -54,7 +54,7 @@ function FaqPage() {
                         backgroundRepeat: 'no-repeat',
                     }}
                 >
-                    <h1 className='text-[#ffff] absolute bottom-0 p-6 xl:p-10 font-bold text-[16px] xl:text-[20px]'>Terms & Conditions</h1>
+                    <h1 className='text-[#ffff] absolute bottom-0 p-6 xl:p-10 font-bold text-[16px] xl:text-[20px]'>Frequently Asked Questions (FAQ)</h1>
                 </div>
 
 
