@@ -6,6 +6,9 @@ import Image from 'next/image';
 import { Button } from '@/components/ui';
 import { ArrowBlackRightIcon, MessageIcon } from '@/icon';
 import PackageDetailsVendor from '@/components/common/packageDetails/package-details-vendor';
+import PackageDetailsVendorReview from '@/components/common/packageDetails/package-details-vendor-review';
+import PackageDetailsRecoded from '@/components/common/packageDetails/package-details-recomended';
+import Footer from '@/components/shared/Footer';
 
 interface AddOn {
     id: number;
@@ -192,11 +195,22 @@ export default function PackageDetails() {
                 </div>
 
 
-                <div className='mt-8'>
-                    <PackageDetailsVendor />
+                {/* Multiple component here */}
+                <div className='mb-10'>
+                    <div className='mt-8'>
+                        <PackageDetailsVendor />
+                    </div>
+
+
+                    <div className='mt-8'>
+                        <PackageDetailsVendorReview />
+                    </div>
+
+                    <div className='mt-8'>
+                        <PackageDetailsRecoded />
+                    </div>
                 </div>
             </div>
-
         </div>
     );
 }

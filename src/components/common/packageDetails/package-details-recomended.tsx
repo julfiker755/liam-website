@@ -1,3 +1,4 @@
+
 import assets from "@/assets"
 import { Button } from "@/components/ui"
 import { ArrowBlackRightIcon, } from "@/icon"
@@ -56,10 +57,10 @@ const services: Service[] = [
 ]
 
 
-const PackageDetailsVendor = () => {
+const PackageDetailsRecoded = () => {
     return (
         <div>
-            <h1 className="text-[#000000] font-bold text-[16px] xl:text-[20px] py-4">More packages from this vendor</h1>
+            <h1 className="text-[#000000] font-bold text-[16px] xl:text-[20px] py-4">Recommended for you</h1>
 
             <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6">
                 {services.map((service) => (
@@ -131,4 +132,4 @@ const PackageDetailsVendor = () => {
     )
 }
 
-export default PackageDetailsVendor
+export default PackageDetailsRecoded
