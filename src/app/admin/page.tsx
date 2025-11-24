@@ -1,6 +1,8 @@
+import AdminNavTitle from "@/components/common/super-dash/reuse/admin-nav";
+import { BookingStatistics } from "@/components/common/super-dash/reuse/booking-chart";
 import StatisticsChart from "@/components/common/super-dash/reuse/statistics-chart";
+import SelectBox from "@/components/reusable/select-box";
 import FavIcon from "@/favicon/favicon";
-import React from "react";
 
 const totalStash = [
   {
@@ -22,7 +24,11 @@ const totalStash = [
 
 export default function AdminPage() {
   return (
-    <div>
+    <div className="mb-10">
+      <AdminNavTitle
+        title="Dashboard"
+        subTitle="Your overall dashboard overview. See the statistics, analytics and manage them"
+      />
       <div className="bg-secondary p-5 rounded-xl">
         <div className="grid grid-cols-1 gap-5 md:grid-cols-2 lg:grid-cols-5">
           <div className="col-span-1 lg:col-span-2 p-4 relative">
@@ -38,12 +44,41 @@ export default function AdminPage() {
           ))}
         </div>
       </div>
-      <div className="mt-10">
+      <div className="mt-10 space-y-10">
         <div>
-          <h2 className="text-2xl font-medium mb-3">
-            User and vendor registration statistics
-          </h2>
+          <div className="flex items-center justify-between flex-wrap mb-4">
+            <h2 className="text-2xl font-medium">
+              User and vendor registration statistics
+            </h2>
+            <SelectBox
+              defaultValue="weekly"
+              triggerClassName="w-[100px]"
+              options={[
+                { label: "Weekly", value: "weekly" },
+                { label: "Monthly", value: "monthly" },
+                { label: "Yearly", value: "yearly" },
+              ]}
+            />
+          </div>
           <StatisticsChart />
+        </div>
+        <div>
+          <div className="flex items-center justify-between flex-wrap mb-4">
+            <h2 className="text-2xl font-medium">
+              User and vendor registration statistics
+            </h2>
+            <SelectBox
+              defaultValue="weekly"
+              triggerClassName="w-[100px]"
+              options={[
+                { label: "Weekly", value: "weekly" },
+                { label: "Monthly", value: "monthly" },
+                { label: "Yearly", value: "yearly" },
+              ]}
+            />
+          </div>
+
+          <BookingStatistics />
         </div>
       </div>
     </div>

@@ -45,22 +45,27 @@ export const new_Pass = z
     message: "Passwords must be match.",
   });
 
-// // === new_Pass ===
-// export const new_Pass = z
-//   .object({
-//     password: z
-//       .string()
-//       .nonempty("Password is required")
-//       .min(6, "Password must be at least 6 characters long"),
-//     c_password: z
-//       .string()
-//       .nonempty("Confirm Password is required")
-//       .min(6, "Password must be at least 6 characters long"),
-//   })
-//   .refine((value) => value.password === value.c_password, {
-//     path: ["c_password"],
-//     message: "Passwords must be match.",
-//   });
+export const new_addOn = z.object({
+  name: z.string().nonempty("Add-on name is required"),
+});
+
+//  === change_pass ===
+export const change_Pass = z
+  .object({
+    current_password: z.string().nonempty("Current Password is required"),
+    new_password: z
+      .string()
+      .nonempty("Password is required")
+      .min(6, "Password must be at least 6 characters long"),
+    c_password: z
+      .string()
+      .nonempty("Confirm Password is required")
+      .min(6, "Password must be at least 6 characters long"),
+  })
+  .refine((value) => value.new_password === value.c_password, {
+    path: ["c_password"],
+    message: "Passwords must be match.",
+  });
 
 // // === change_Pass ===
 // export const change_Pass = z
