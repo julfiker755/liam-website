@@ -62,11 +62,11 @@ const PackageDetailsRecoded = () => {
         <div>
             <h1 className="text-[#000000] font-bold text-[16px] xl:text-[20px] py-4">Recommended for you</h1>
 
-            <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6">
+            <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-6">
                 {services.map((service) => (
                     <div
                         key={service.id}
-                        className="bg-secondary rounded-lg overflow-hidden shadow-sm hover:shadow-md transition border border-border"
+                        className="bg-secondary rounded-lg overflow-hidden  transition border border-border"
                     >
                         {/* Service Image */}
                         <div className="relative w-full h-64 bg-muted overflow-hidden">

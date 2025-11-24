@@ -54,9 +54,9 @@ export default function PackageDetails() {
             <div className='container px-4'>
                 <div className=" grid grid-cols-1 lg:grid-cols-12 gap-4">
                     {/* Left Section */}
-                    <div className="space-y-6 col-span-5">
+                    <div className="space-y-6 lg:col-span-5">
                         {/* Image */}
-                        <div className="relative h-80 bg-gray-800 rounded-2xl overflow-hidden">
+                        <div className="relative h-64 xl:h-80 bg-gray-800 rounded-2xl overflow-hidden">
                             <Image
                                 src={assets.service1}
                                 alt={"photo"}
@@ -118,7 +118,7 @@ export default function PackageDetails() {
                     </div>
 
                     {/* Right Section */}
-                    <div className="col-span-7">
+                    <div className="lg:col-span-7">
                         <div className='border border-gray-200 rounded-xl'>
                             <h2 className="text-sm font-semibold text-gray-900 mb-3 border-b-2 p-4">Package details</h2>
                             <div className="px-4">
@@ -158,7 +158,7 @@ export default function PackageDetails() {
                                     <h3 className="text-sm font-semibold text-gray-900 pt-6 pb-4">Available add-ons with this package</h3>
 
 
-                                    <div className="grid grid-cols-3 gap-3">
+                                    <div className="grid grid-cols-1 md:grid-cols-3 gap-3">
                                         {addOns.map((addon) => (
                                             <div key={addon.id} className="flex items-center justify-between p-3 bg-secondary rounded-lg">
 
@@ -181,10 +181,10 @@ export default function PackageDetails() {
                                     </div>
                                 </div>
 
-                                <div className="pt-4 border-t border-gray-200 mt-6">
-                                    <div className="flex items-center justify-between mb-4">
+                                <div className="pt-4 border-t border-gray-200 my-6">
+                                    <div className="flex items-center justify-between  ">
                                         <span className="font-semibold text-gray-900">Subtotal: ${calculateSubtotal()}</span>
-                                        <Button className="mt-4 xl:mt-0" size="lg" icon={true}>
+                                        <Button className="" size="lg" icon={true}>
                                             Continue
                                         </Button>
                                     </div>

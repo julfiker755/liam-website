@@ -115,7 +115,7 @@ export default function ServicePage() {
           {services.map((service) => (
             <div
               key={service.id}
-              className="bg-secondary rounded-lg overflow-hidden shadow-sm hover:shadow-md transition border border-border"
+              className="bg-secondary rounded-lg overflow-hidden  transition border border-border"
             >
               {/* Service Image */}
               <div className="relative w-full h-64 bg-muted overflow-hidden">
