@@ -16,7 +16,7 @@ export default function Home() {
     <>
       {/* <Navbar /> */}
       <CleaningServiceHome />
-      <TopService />
+      {/* <TopService />
       <Customer />
       <Vendor />
       <Works />
@@ -25,7 +25,7 @@ export default function Home() {
       <FQA />
       <CustomersSay />
       <VendorBox />
-      <Footer />
+      <Footer /> */}
     </>
   );
 }
