@@ -7,3 +7,4 @@ export * from "./skeleton";
 export * from "./checkbox";
 export * from "./dialog";
 export * from "./chart";
+export * from "./textarea";

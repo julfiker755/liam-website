@@ -123,20 +123,14 @@ export const ConfirmDialogProvider = ({
       >
         <AlertDialogContent
           className={cn(
-            "rounded-xl w-[420px] px-5 lg:px-10 border-none py-6",
+            "rounded-xl w-[400px] px-5 lg:px-10 border-none py-6",
             dialogState?.className
           )}
         >
           <AlertDialogHeader>
             <AlertDialogTitle>
-              {/* Subtitle Header Bar */}
-              <div className="h-12 grid place-items-center justify-center absolute top-0 left-0 w-full rounded-t-xl bg-figma-danger text-white">
-                {dialogState.subTitle}
-              </div>
-
-              {/* Icon + Title */}
               <ul>
-                <li className="flex justify-center mb-2 mt-10">
+                <li className="flex justify-center mb-2">
                   <svg
                     width="48"
                     height="60"
@@ -153,7 +147,7 @@ export const ConfirmDialogProvider = ({
 
                 <li
                   className={cn(
-                    "text-center text-reds text-2xl mb-2",
+                    "text-center text-figma-danger text-xl mt-3 mb-1",
                     dialogState.titleStyle
                   )}
                 >
@@ -163,7 +157,7 @@ export const ConfirmDialogProvider = ({
             </AlertDialogTitle>
 
             {dialogState.description ? (
-              <AlertDialogDescription className="text-center text-secondery-figma">
+              <AlertDialogDescription className="text-center text-figma-gray">
                 {dialogState.description}
               </AlertDialogDescription>
             ) : null}
@@ -173,7 +167,7 @@ export const ConfirmDialogProvider = ({
             <AlertDialogCancel
               onClick={handleCancel}
               className={cn(
-                "cursor-pointer bg-[#EDEDED] h-10 lg:h-11 hover:bg-[#EDEDED] border-none  rounded-xl py-5 px-10",
+                "cursor-pointer bg-[#EDEDED] h-10 lg:h-11 hover:bg-[#EDEDED] border-none  rounded-sm py-5 px-10",
                 dialogState?.btnStyle
               )}
             >
@@ -183,7 +177,7 @@ export const ConfirmDialogProvider = ({
             <AlertDialogAction
               onClick={handleConfirm}
               className={cn(
-                "cursor-pointer bg-figma-danger h-10 lg:h-11 hover:bg-reds-figma border-none hover:text-white rounded-xl py-5 px-10",
+                "cursor-pointer bg-figma-danger h-10 lg:h-11 hover:bg-reds-figma border-none hover:text-white rounded-sm py-5 px-10",
                 dialogState?.btnStyle
               )}
             >
