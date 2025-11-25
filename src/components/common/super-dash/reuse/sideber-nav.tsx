@@ -58,7 +58,7 @@ export default function SidebarNav({
               <SelectItem key={item.to} value={item.to}>
                 <div className="flex items-center gap-x-4 px-2 py-0!">
                   <FavIcon
-                    className="size-4"
+                    className="size-5"
                     name={isActive(item.to) ? item.act_io : item.icon}
                   />
                   <span className="font-medium">{item.label}</span>

@@ -236,12 +236,12 @@ export default function AddOn() {
         className="sm:max-w-xl"
       >
         <div
-          className="absolute top-3 right-3 cursor-pointer"
+          className="absolute top-3 right-4 cursor-pointer"
           onClick={() => updateGlobal("isAdd", false)}
         >
-          <X className="text-white" />
+          <X className="text-black" />
         </div>
-        <Form className="space-y-4 pt-8" from={from} onSubmit={handleSubmit}>
+        <Form className="space-y-4" from={from} onSubmit={handleSubmit}>
           <FromInput
             className="h-10 bg-secondary rounded-lg"
             label="Add-on name"
@@ -262,12 +262,12 @@ export default function AddOn() {
         className="sm:max-w-xl"
       >
         <div
-          className="absolute top-3 right-3 cursor-pointer"
+          className="absolute top-3 right-4 cursor-pointer"
           onClick={() => updateGlobal("isEdit", false)}
         >
-          <X className="text-white" />
+          <X className="text-black" />
         </div>
-        <Form className="space-y-4 pt-8" from={from2} onSubmit={handleSubmit2}>
+        <Form className="space-y-4" from={from2} onSubmit={handleSubmit2}>
           <FromInput
             className="h-10 bg-secondary rounded-lg"
             label="Add-on name"

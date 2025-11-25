@@ -45,8 +45,10 @@ export default function Modal2({
           style
         )}
       >
-        <DialogHeader className="bg-primary text-white p-4">
-          <DialogTitle className={cn("text-white font-medium", titleStyle)}>
+        <DialogHeader className="text-white px-4 pt-4">
+          <DialogTitle
+            className={cn("text-black font-semibold mt-1 mb-3", titleStyle)}
+          >
             {title}
           </DialogTitle>
         </DialogHeader>

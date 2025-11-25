@@ -7,16 +7,10 @@ export default function TermsConditions() {
   const [content, setContent] = useState<string>("");
   return (
     <div>
-      {/* {termsLoading ? (
-        <div className="mx-auto min-h-[280px] flex items-center justify-center">
-          <Loader className="animate-spin text-reds" />
-        </div>
-      ) : (
-        <TextEditor value={content} onChange={setContent} />
-      )} */}
+      <h1 className="text-xl font-semibold my-2">Terms & Conditions</h1>
       <TextEditor value={content} onChange={setContent} />
       <div className="flex justify-end pt-8">
-        <Button size="lg" className="rounded-2xl">
+        <Button size="lg" className="rounded-md">
           Save changes
         </Button>
       </div>

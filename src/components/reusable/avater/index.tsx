@@ -24,7 +24,7 @@ export default function Avatars({
       <AvatarImage className={imgstyle} src={src} alt={alt} />
       <AvatarFallback
         className={cn(
-          "bg-primary/10  text-figma-black font-medium",
+          "bg-primary/10   text-figma-black font-medium",
           fallbackStyle
         )}
       >

@@ -6,7 +6,7 @@ import { CustomTable } from "@/components/reusable/custom-table";
 import { Pagination } from "@/components/reusable/pagination";
 import { TableNoItem } from "@/components/reusable/table-no-item";
 import { TableSkeleton } from "@/components/reusable/table-skeleton";
-import { Button, TableCell, TableRow, Textarea } from "@/components/ui";
+import { Button, Label, TableCell, TableRow, Textarea } from "@/components/ui";
 import useConfirmation from "@/provider/confirmation";
 import { dummyJson } from "@/components/dummy-json";
 import Avatars from "@/components/reusable/avater";
@@ -209,7 +209,7 @@ export default function Support() {
         className="sm:max-w-2xl"
       >
         <div
-          className="absolute top-3 right-3 cursor-pointer"
+          className="absolute top-3 right-5 cursor-pointer"
           onClick={() => {
             setState("isPreview", false);
             const timeout = setTimeout(() => {
@@ -218,12 +218,12 @@ export default function Support() {
             return () => clearTimeout(timeout);
           }}
         >
-          <X className="text-white" />
+          <X className="text-black" />
         </div>
         {state.isReplay ? (
           <div className="space-y-4">
-            <h1 className="font-medium text-xl">Your Reply</h1>
             <div>
+              <Label>Write your message here</Label>
               <Textarea
                 className="resize-none min-h-30   mt-3  bg-secondary border-none"
                 placeholder="Write additional note"

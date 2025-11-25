@@ -84,12 +84,15 @@ export default function FQA() {
 
   return (
     <div>
+      <h1 className="text-xl font-semibold my-2">
+        Frequently Asked Questions (FAQ)
+      </h1>
       <div className="py-5" ref={containerRef}>
         <div className="flex flex-col lg:flex-row">
           <div className="w-full">
             {questionsData.map((item, index) => (
               <div key={index} className="flex">
-                <div className="py-2.5 px-5 mb-4 bg-white rounded-xl border cursor-pointer w-full">
+                <div className="py-2.5 px-5 mb-4 bg-secondary  rounded-sm cursor-pointer w-full">
                   <div
                     className="flex items-center justify-between"
                     onClick={() => toggleAccordion(index)}
@@ -101,12 +104,12 @@ export default function FQA() {
                       {activeAccordion === index ? (
                         <ChevronUp
                           size={27}
-                          className="text-primary rounded-full p-1"
+                          className="text-black rounded-full p-1"
                         />
                       ) : (
                         <ChevronDown
                           size={27}
-                          className="text-primary rounded-full p-1"
+                          className="text-black rounded-full p-1"
                         />
                       )}
                     </span>
@@ -125,25 +128,27 @@ export default function FQA() {
                 <div className="ml-2 w-32 flex gap-2">
                   <EditBtn
                     onClick={() => setEditOpen(!editOpen)}
-                    className="rounded-xl bg-[#E4FFE7] size-11"
+                    className="size-11"
                   />
                   <DeleteBtn
                     onClick={() => handleDelete(index)}
-                    className="rounded-xl bg-[#FFEEEE] size-11"
+                    className="size-11"
                   />
                 </div>
               </div>
             ))}
           </div>
         </div>
-        <Button
-          onClick={() => setStoreOpen(!storeOpen)}
-          size="lg"
-          className="rounded-full mt-7"
-        >
-          <Plus className="text-white size-5" />
-          Add More
-        </Button>
+        <div className="flex justify-end">
+          <Button
+            onClick={() => setStoreOpen(!storeOpen)}
+            size="lg"
+            className="rounded-md mt-7"
+          >
+            <Plus className="text-white size-5" />
+            Add More
+          </Button>
+        </div>
       </div>
       {/* ==============  added question ============= */}
       <Modal
@@ -162,7 +167,7 @@ export default function FQA() {
             label="Question"
             name="Question"
             placeholder="Enter your Question"
-            className="h-11 rounded-xl"
+            className="h-11 bg-secondary rounded-xl"
           />
           <FromTextArea
             label="Answer"
@@ -171,7 +176,7 @@ export default function FQA() {
             className="min-h-44 rounded-xl"
             stylelabel="bg-white"
           />
-          <Button className="rounded-full w-full" size="lg">
+          <Button className="rounded-xl w-full" size="lg">
             Add
           </Button>
         </Form>
@@ -189,7 +194,7 @@ export default function FQA() {
             label="Question"
             name="question"
             placeholder="Enter your Question"
-            className="h-11 rounded-xl"
+            className="h-11 rounded-xl bg-secondary"
           />
           <FromTextArea
             label="Answer"
@@ -198,7 +203,7 @@ export default function FQA() {
             className="min-h-44 rounded-xl"
             stylelabel="bg-white"
           />
-          <Button className="rounded-full w-full" size="lg">
+          <Button className="rounded-xl w-full" size="lg">
             Save changes
           </Button>
         </Form>

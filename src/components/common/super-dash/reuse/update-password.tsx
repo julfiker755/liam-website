@@ -1,9 +1,10 @@
 import { FromInput } from "@/components/reusable/form-input";
-import Form from "@/components/reusable/from";
-import { Button } from "@/components/ui";
-import { change_Pass, cn } from "@/lib";
 import { zodResolver } from "@hookform/resolvers/zod";
 import { FieldValues, useForm } from "react-hook-form";
+import Form from "@/components/reusable/from";
+import { Button } from "@/components/ui";
+import { LockIcon } from "@/icon";
+import { change_Pass, cn } from "@/lib";
 
 export default function UpdatePassword({
   btnStyle,
@@ -28,28 +29,29 @@ export default function UpdatePassword({
   };
   return (
     <Form from={from2} onSubmit={handlePasswordSubmit}>
-      <div className={cn("space-y-6", className)}>
+      <div className={cn("space-y-2", className)}>
         <FromInput
-          label="Current Password"
           name="current_password"
-          placeholder="Enter current password"
-          className="h-10"
+          placeholder="Current Password"
           eye={true}
+          className="h-11 rounded-xl bg-secondary"
+          icon={<LockIcon />}
         />
         <FromInput
-          label="New Password"
           name="new_password"
-          placeholder="Enter new password"
-          className="h-10"
+          placeholder="New Password"
           eye={true}
+          className="h-11 rounded-xl bg-secondary"
+          icon={<LockIcon />}
         />
         <FromInput
-          label="Retype New Password"
           name="c_password"
-          placeholder="Enter retype new password"
-          className="h-10"
+          placeholder="Confirm New Password"
           eye={true}
+          className="h-11 rounded-xl bg-secondary"
+          icon={<LockIcon />}
         />
+
         <div className={btnStyle2}>
           <Button className={cn("w-full", btnStyle)}>Save Changes</Button>
         </div>

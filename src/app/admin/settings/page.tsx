@@ -69,7 +69,7 @@ export default function Settings() {
         readOnly
       />
       <div className="flex justify-end">
-        <Button size="lg" className="rounded-2xl">
+        <Button size="lg" className="rounded-md">
           Save Changes
         </Button>
       </div>

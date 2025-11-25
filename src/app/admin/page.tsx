@@ -35,7 +35,7 @@ export default function AdminPage() {
             <ul className="lg:absolute bottom-0 left-0">
               <li className="font-semibold text-[28px]">Hello Abid!</li>
               <li className="text-figma-a_gray">
-                Track and manage your application from here.
+                Track and manage your application from here
               </li>
             </ul>
           </div>
