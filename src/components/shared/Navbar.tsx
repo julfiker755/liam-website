@@ -78,11 +78,6 @@ const Navbar = () => {
                   isMenuOpen ? "rotate-90 scale-0" : "rotate-0 scale-100"
                 }`}
               />
-              <X
-                className={`h-6 w-6 absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 transition-transform duration-300 ${
-                  isMenuOpen ? "rotate-0 scale-100" : "-rotate-90 scale-0"
-                }`}
-              />
             </button>
           </div>
         </div>
