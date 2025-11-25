@@ -181,8 +181,14 @@ export default function VendorDetails() {
                     src={RandomImg(1000, 600)}
                     alt={service.title}
                   >
-                    <div className="absolute z-10  right-3 top-3">
-                      <DeleteBtn onClick={() => handleDeletePackage("1234")} />
+                    <div
+                      onClick={(e: any) => {
+                        e.stopPropagation();
+                        handleDeletePackage("1234");
+                      }}
+                      className="absolute z-10  right-3 top-3"
+                    >
+                      <DeleteBtn />
                     </div>
                   </ImgBox>
                   <div className="pt-3">

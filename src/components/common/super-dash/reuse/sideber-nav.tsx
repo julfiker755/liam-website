@@ -86,7 +86,7 @@ export default function SidebarNav({
               key={item.to}
               href={item.to}
               className={`flex items-center space-x-1 py-2 hover:bg-figma-deletepy-1.5 px-2 rounded-full ${
-                isActive(item.to) && "bg-figma-delete font-medium"
+                isActive(item.to) && "bg-secondary font-medium"
               }`}
             >
               <FavIcon
