@@ -19,6 +19,7 @@ export default function Login() {
       name: "",
       email: "",
       password: "",
+      c_password: "",
     },
   });
 
