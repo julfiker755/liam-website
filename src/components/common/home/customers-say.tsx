@@ -41,7 +41,7 @@ const CustomersSay = () => {
             return (
               <div
                 key={index}
-                className=" bg-[#F8F8F8] shadow-md space-y-4  rounded-lg"
+                className=" bg-[#F8F8F8] shadow-md space-y-4  rounded-[16px]"
               >
                 <div className="bg-white flex flex-col gap-4 py-8 p-8">
                   <span>{<COOIcon />}</span>

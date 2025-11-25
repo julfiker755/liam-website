@@ -243,7 +243,7 @@ export default function AddOn() {
         </div>
         <Form className="space-y-4" from={from} onSubmit={handleSubmit}>
           <FromInput
-            className="h-10 bg-secondary rounded-lg"
+            className="h-10 bg-secondary rounded-[16px]"
             label="Add-on name"
             name="name"
             placeholder="Enter Your Add-on name"
@@ -269,7 +269,7 @@ export default function AddOn() {
         </div>
         <Form className="space-y-4" from={from2} onSubmit={handleSubmit2}>
           <FromInput
-            className="h-10 bg-secondary rounded-lg"
+            className="h-10 bg-secondary rounded-[16px]"
             label="Add-on name"
             name="name"
             placeholder="Enter Your Add-on name"

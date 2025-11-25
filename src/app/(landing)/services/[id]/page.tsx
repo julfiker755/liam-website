@@ -3,6 +3,12 @@ import React, { useState } from 'react';
 import { Plus, Minus, MessageCircle, Star } from 'lucide-react';
 import assets from '@/assets';
 import Image from 'next/image';
+import { Button } from '@/components/ui';
+import { ArrowBlackRightIcon, MessageIcon } from '@/icon';
+import PackageDetailsVendor from '@/components/common/packageDetails/package-details-vendor';
+import PackageDetailsVendorReview from '@/components/common/packageDetails/package-details-vendor-review';
+import PackageDetailsRecoded from '@/components/common/packageDetails/package-details-recomended';
+import Footer from '@/components/shared/Footer';
 
 interface AddOn {
     id: number;
@@ -10,6 +16,7 @@ interface AddOn {
     price: number;
     count: number;
 }
+
 
 export default function PackageDetails() {
     const [addOns, setAddOns] = useState<AddOn[]>([
@@ -43,51 +50,64 @@ export default function PackageDetails() {
     };
 
     return (
-        <div className="min-h-screen bg-gray-50 p-4 md:p-8">
+        <div className="min-h-screen bg-white pt-6">
             <div className='container px-4'>
-                <div className=" grid grid-cols-1 lg:grid-cols-2 gap-8">
+                <div className=" grid grid-cols-1 lg:grid-cols-12 gap-4">
                     {/* Left Section */}
-                    <div className="space-y-6">
+                    <div className="space-y-6 lg:col-span-5">
                         {/* Image */}
-                        <div className="relative h-80 bg-gray-800 rounded-2xl overflow-hidden">
+                        <div className="relative h-64 xl:h-80 bg-gray-800 rounded-2xl overflow-hidden">
                             <Image
                                 src={assets.service1}
                                 alt={"photo"}
                                 fill
-                                className="object-cover rounded-lg transition duration-300"
+                                className="object-cover rounded-[16px] transition duration-300"
                             />
-                            <div className="absolute inset-0 bg-gradient-to-t from-black/40 to-transparent"></div>
                         </div>
 
                         {/* Title */}
                         <div>
-                            <h1 className="text-3xl font-bold text-gray-900 mb-4">
+                            <h1 className="text-[#000000] font-bold text-[16px] xl:text-[28px]">
                                 House cleaning service for residential areas in New York City.
                             </h1>
                         </div>
 
-                        {/* Vendor Info */}
-                        <div className="bg-white rounded-2xl p-6 shadow-sm">
-                            <div className="flex items-center justify-between mb-4">
-                                <div className="flex items-center gap-3">
-                                    <div className="w-12 h-12 bg-gradient-to-br from-blue-500 to-purple-600 rounded-full flex items-center justify-center text-white font-semibold">
-                                        JD
-                                    </div>
-                                    <div>
-                                        <h3 className="font-semibold text-gray-900">John Doe</h3>
-                                        <div className="flex items-center gap-1 text-sm text-gray-600">
-                                            <Star className="w-4 h-4 fill-yellow-400 text-yellow-400" />
-                                            <span>4.5</span>
-                                            <span className="text-gray-400">(10 reviews)</span>
-                                        </div>
+
+                        <div className="flex items-center justify-between">
+                            <div className="flex items-center gap-2">
+                                <div>
+                                    <Image src={"/images/footer.png"}
+                                        alt={"photo"}
+                                        width={40}
+                                        height={40}
+                                        className="rounded-full w-[40px] h-[40px]"
+                                    />
+                                </div>
+                                <div>
+                                    <h1 className="text-[#000000]  text-[16px] xl:text-[20px]">John Doe</h1>
+
+                                    <div className="flex items-center gap-1">
+                                        {[...Array(1)].map((_, i) => (
+                                            <Star
+                                                key={i}
+                                                className={`w-4 h-4 fill-yellow-400 text-yellow-400 
+                                                    }`}
+                                            />
+                                        ))}
+                                        4.7
                                     </div>
                                 </div>
-                                <button className="flex items-center gap-2 px-4 py-2 border border-gray-300 rounded-full hover:bg-gray-50 transition">
-                                    <MessageCircle className="w-4 h-4" />
-                                    <span className="text-sm font-medium">Message</span>
-                                </button>
                             </div>
 
+
+                            <Button className=" bg-secondary  text-black font-bold" size={"lg"} icon={false}>
+                                <MessageIcon />
+                                Message
+                            </Button>
+                        </div>
+
+                        {/* Vendor Info */}
+                        <div className="bg-white rounded-2xl ">
                             <div>
                                 <h4 className="font-semibold text-gray-900 mb-2">About vendor</h4>
                                 <p className="text-sm text-gray-600 leading-relaxed">
@@ -98,85 +118,96 @@ export default function PackageDetails() {
                     </div>
 
                     {/* Right Section */}
-                    <div className="lg:sticky lg:top-8 h-fit">
-                        <div className="bg-white rounded-2xl p-6 shadow-sm space-y-6">
-                            <div>
-                                <h2 className="text-sm font-semibold text-gray-900 mb-3">Package details</h2>
-                                <div className="text-4xl font-bold text-gray-900">${basePrice}</div>
-                            </div>
+                    <div className="lg:col-span-7">
+                        <div className='border border-gray-200 rounded-xl'>
+                            <h2 className="text-sm font-semibold text-gray-900 mb-3 border-b-2 p-4">Package details</h2>
+                            <div className="px-4">
+                                <div className="text-xl font-bold text-gray-900 py-4">${basePrice}</div>
 
-                            <div>
-                                <h3 className="text-sm font-semibold text-gray-900 mb-3">About this package</h3>
-                                <p className="text-sm text-gray-600 leading-relaxed">
-                                    Lorem ipsum dolor sit amet consectetur. Senectus a condimentum dapibus aliquet gravida placerat molestie dui non lorem. Suscipit eu sed tortor egestas elit tristique felis arcu in facilisis. Sagittis lectus aliquet urna velit velit vulputate vitae pellentesque aliquam. Ornare in donec facilisis sit dui. Etumod elementum potentigue molestie feugiat enim maecenas ac morbi. Sodales aliquet eu purus ac dui scelerisque.
-                                </p>
-                            </div>
 
-                            <div>
-                                <h3 className="text-sm font-semibold text-gray-900 mb-3">Service included</h3>
-                                <ul className="space-y-2">
-                                    <li className="flex items-center gap-2 text-sm text-gray-600">
-                                        <div className="w-1.5 h-1.5 bg-gray-400 rounded-full"></div>
-                                        Yard cleaning
-                                    </li>
-                                    <li className="flex items-center gap-2 text-sm text-gray-600">
-                                        <div className="w-1.5 h-1.5 bg-gray-400 rounded-full"></div>
-                                        4 room cleaning
-                                    </li>
-                                    <li className="flex items-center gap-2 text-sm text-gray-600">
-                                        <div className="w-1.5 h-1.5 bg-gray-400 rounded-full"></div>
-                                        2 bathroom cleaning
-                                    </li>
-                                    <li className="flex items-center gap-2 text-sm text-gray-600">
-                                        <div className="w-1.5 h-1.5 bg-gray-400 rounded-full"></div>
-                                        Window cleaning
-                                    </li>
-                                </ul>
-                            </div>
-
-                            <div>
-                                <h3 className="text-sm font-semibold text-gray-900 mb-3">Available add-ons with this package</h3>
-                                <div className="grid grid-cols-2 gap-3">
-                                    {addOns.map((addon) => (
-                                        <div key={addon.id} className="flex items-center justify-between p-3 border border-gray-200 rounded-lg">
-                                            <div className="flex-1">
-                                                <div className="text-xs text-gray-600 mb-1">{addon.label}</div>
-                                                <div className="text-sm font-semibold text-gray-900">+ ${addon.price}</div>
-                                            </div>
-                                            <div className="flex items-center gap-2">
-                                                <button
-                                                    onClick={() => decrementAddOn(addon.id)}
-                                                    disabled={addon.count === 0}
-                                                    className="w-6 h-6 flex items-center justify-center border border-gray-300 rounded hover:bg-gray-50 disabled:opacity-30 disabled:cursor-not-allowed transition"
-                                                >
-                                                    <Minus className="w-3 h-3" />
-                                                </button>
-                                                <span className="text-sm font-medium w-4 text-center">{addon.count}</span>
-                                                <button
-                                                    onClick={() => incrementAddOn(addon.id)}
-                                                    className="w-6 h-6 flex items-center justify-center border border-gray-300 rounded hover:bg-gray-50 transition"
-                                                >
-                                                    <Plus className="w-3 h-3" />
-                                                </button>
-                                            </div>
-                                        </div>
-                                    ))}
+                                <div>
+                                    <h3 className="text-sm font-semibold text-gray-900 py-2">About this package</h3>
+                                    <p className="text-sm text-gray-600 leading-relaxed">
+                                        Lorem ipsum dolor sit amet consectetur. Senectus a condimentum dapibus aliquet gravida placerat molestie dui non lorem. Suscipit eu sed tortor egestas elit tristique felis arcu in facilisis. Sagittis lectus aliquet urna velit velit vulputate vitae pellentesque aliquam. Ornare in donec facilisis sit dui. Etumod elementum potentigue molestie feugiat enim maecenas ac morbi. Sodales aliquet eu purus ac dui scelerisque.
+                                    </p>
                                 </div>
-                            </div>
 
-                            <div className="pt-4 border-t border-gray-200">
-                                <div className="flex items-center justify-between mb-4">
-                                    <span className="font-semibold text-gray-900">Subtotal:</span>
-                                    <span className="text-2xl font-bold text-gray-900">${calculateSubtotal()}</span>
+                                <div>
+                                    <h3 className="text-sm font-semibold text-gray-900 pt-6">Service included</h3>
+                                    <ul className="space-y-2">
+                                        <li className="flex items-center gap-2 text-sm text-gray-600">
+                                            <div className="w-1.5 h-1.5 bg-gray-400 rounded-full"></div>
+                                            Yard cleaning
+                                        </li>
+                                        <li className="flex items-center gap-2 text-sm text-gray-600">
+                                            <div className="w-1.5 h-1.5 bg-gray-400 rounded-full"></div>
+                                            4 room cleaning
+                                        </li>
+                                        <li className="flex items-center gap-2 text-sm text-gray-600">
+                                            <div className="w-1.5 h-1.5 bg-gray-400 rounded-full"></div>
+                                            2 bathroom cleaning
+                                        </li>
+                                        <li className="flex items-center gap-2 text-sm text-gray-600">
+                                            <div className="w-1.5 h-1.5 bg-gray-400 rounded-full"></div>
+                                            Window cleaning
+                                        </li>
+                                    </ul>
                                 </div>
-                                <button className="w-full bg-cyan-500 hover:bg-cyan-600 text-white font-semibold py-3 px-6 rounded-lg transition flex items-center justify-center gap-2">
-                                    Continue
-                                    <svg className="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                                        <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M9 5l7 7-7 7" />
-                                    </svg>
-                                </button>
+
+                                <div>
+                                    <h3 className="text-sm font-semibold text-gray-900 pt-6 pb-4">Available add-ons with this package</h3>
+
+
+                                    <div className="grid grid-cols-1 md:grid-cols-3 gap-3">
+                                        {addOns.map((addon) => (
+                                            <div key={addon.id} className="flex items-center justify-between p-3 bg-secondary rounded-[16px]">
+
+                                                <div className="flex-1 ">
+                                                    <div className="text-xs text-gray-900 mb-1 flex justify-evenly items-center gap-5">{addon.label}
+
+                                                        <ul className='list-disc list-inside'>
+                                                            <li className='font-bold'>${addon.price}</li>
+                                                        </ul>
+                                                        <button
+                                                            onClick={() => incrementAddOn(addon.id)}
+                                                            className="w-6 h-6 flex items-center justify-center "
+                                                        >
+                                                            <Plus className="w-3 h-3" />
+                                                        </button>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        ))}
+                                    </div>
+                                </div>
+
+                                <div className="pt-4 border-t border-gray-200 my-6">
+                                    <div className="flex items-center justify-between  ">
+                                        <span className="font-semibold text-gray-900">Subtotal: ${calculateSubtotal()}</span>
+                                        <Button className="" size="lg" icon={true}>
+                                            Continue
+                                        </Button>
+                                    </div>
+                                </div>
                             </div>
                         </div>
+                    </div>
+                </div>
+
+
+                {/* Multiple component here */}
+                <div className='mb-10'>
+                    <div className='mt-8'>
+                        <PackageDetailsVendor />
+                    </div>
+
+
+                    <div className='mt-8'>
+                        <PackageDetailsVendorReview />
+                    </div>
+
+                    <div className='mt-8'>
+                        <PackageDetailsRecoded />
                     </div>
                 </div>
             </div>

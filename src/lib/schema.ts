@@ -67,6 +67,14 @@ export const change_Pass = z
     message: "Passwords must be match.",
   });
 
+
+export const contact_us = z.object({
+  name: z.string().nonempty("Name is required"),
+  email: z.string().nonempty("Email is required"),
+  message: z.string().nonempty("Message is required"),
+});
+
+
 // // === change_Pass ===
 // export const change_Pass = z
 //   .object({

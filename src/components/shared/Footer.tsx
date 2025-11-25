@@ -104,7 +104,7 @@ const Footer = () => {
                 Terms & conditions
               </a>
               <a
-                href="#faq"
+                href="/faq"
                 className="text-sm hover:text-white transition-colors text-blue-50"
               >
                 FAQ

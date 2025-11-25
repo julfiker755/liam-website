@@ -27,7 +27,7 @@ export default function SearchBox({
   return (
     <div
       className={cn(
-        "flex w-11/12 items-center lg:max-w-md rounded-lg bg-gray-50",
+        "flex w-11/12 items-center lg:max-w-md rounded-[16px] bg-gray-50",
         className
       )}
     >

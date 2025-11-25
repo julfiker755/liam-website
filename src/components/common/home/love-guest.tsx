@@ -22,7 +22,7 @@ export default function LoveGuest() {
                 alt="Photo"
                 width={500}
                 height={500}
-                className="w-full xl:h-[400px] rounded-lg "
+                className="w-full xl:h-[400px] rounded-[16px] "
               />
               <div className="space-y-2 max-w-[95%] text-center">
                 <h1 className="text-[#000000] font-bold text-[16px] xl:text-[20px]">Vetted pros</h1>
@@ -41,7 +41,7 @@ export default function LoveGuest() {
                 alt="Photo"
                 width={500}
                 height={500}
-                className="w-full xl:h-[400px] rounded-lg "
+                className="w-full xl:h-[400px] rounded-[16px] "
               />
 
               <div className="space-y-2 max-w-[95%] text-center xl:hidden">
@@ -56,7 +56,7 @@ export default function LoveGuest() {
                 alt="Photo"
                 width={500}
                 height={500}
-                className="w-full xl:h-[400px] rounded-lg "
+                className="w-full xl:h-[400px] rounded-[16px] "
               />
               <div className="space-y-2 max-w-[95%] text-center">
                 <h1 className="text-[#000000] font-bold text-[16px] xl:text-[20px]">Simple Scheduling</h1>

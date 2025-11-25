@@ -50,7 +50,7 @@ const FQA = () => {
                 {faqList.map((item, index) => (
                   <div
                     key={index}
-                    className="bg-gray-50 rounded-lg overflow-hidden transition-all duration-200"
+                    className="bg-gray-50 rounded-[16px] overflow-hidden transition-all duration-200"
                   >
                     <button
                       className="w-full p-5 flex justify-between items-center  transition-colors duration-200 text-left"

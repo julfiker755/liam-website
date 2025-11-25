@@ -84,18 +84,18 @@ export default function ServicePage() {
     <div className="container px-4 py-12">
 
       <div className="flex flex-col md:flex-row md:items-center md:justify-between gap-4 mb-6">
-        <div className="relative bg-secondary md:w-[40%] rounded-lg">
+        <div className="relative bg-secondary md:w-[40%] rounded-[16px]">
           <Search className="absolute left-3 top-1/2 transform -translate-y-1/2 h-4 w-4 " />
           <Input
             placeholder="Search by vendor name or service title"
             value={searchText}
             onChange={(e) => setSearchText(e.target.value)}
-            className=" pl-10  py-6 rounded-lg  border-none focus:border-none focus:outline-none focus:ring-0 focus:ring-offset-0"
+            className=" pl-10  py-6 rounded-[16px]  border-none focus:border-none focus:outline-none focus:ring-0 focus:ring-offset-0"
           />
         </div>
 
         <DropdownMenu>
-          <DropdownMenuTrigger className=" flex items-center gap-1 bg-secondary p-2 rounded-lg w-[40%] md:w-[100px]">
+          <DropdownMenuTrigger className=" flex items-center gap-1 bg-secondary p-2 rounded-[16px] w-[40%] md:w-[100px]">
             <FilterIcon /> Sort by
           </DropdownMenuTrigger>
           <DropdownMenuContent className="md:mr-4">
@@ -115,7 +115,7 @@ export default function ServicePage() {
           {services.map((service) => (
             <div
               key={service.id}
-              className="bg-secondary rounded-lg overflow-hidden shadow-sm hover:shadow-md transition border border-border"
+              className="bg-secondary rounded-[16px] overflow-hidden  transition border border-border"
             >
               {/* Service Image */}
               <div className="relative w-full h-64 bg-muted overflow-hidden">
@@ -123,7 +123,7 @@ export default function ServicePage() {
                   src={assets.service1}
                   alt={"photo"}
                   fill
-                  className="object-cover rounded-lg transition duration-300"
+                  className="object-cover rounded-[16px] transition duration-300"
                 />
               </div>
 
