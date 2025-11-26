@@ -81,6 +81,13 @@ export const booking_screma = z.object({
   address: z.string().nonempty("Address is required"),
   message: z.string().optional(),
 });
+export const account_screma = z.object({
+  name: z.string().nonempty("Name is required"),
+  email: z.string().nonempty("Email is required"),
+  phone_number: z.string().nonempty("Phone number is required"),
+  address: z.string().nonempty("Address is required"),
+  image : z.string().nonempty("Image is required"),
+});
 
 
 // // === change_Pass ===
