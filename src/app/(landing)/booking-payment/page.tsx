@@ -9,6 +9,7 @@ import {
   EmailIcon,
   LocationFieldIcon,
   LocationIcon,
+  PhoneIpfIcon,
   ScreenCardIcon,
   UserIcon,
 } from "@/icon";
@@ -101,7 +102,7 @@ const BookingPayment: React.FC = () => {
                         name="phone_number"
                         type="number"
                         placeholder="Enter your phone number"
-                        icon={<UserIcon />}
+                        icon={<PhoneIpfIcon />}
                         className="h-[50px]  bg-secondary  placeholder:text-muted-foreground"
                         stylelabel="text-lg"
                       />
