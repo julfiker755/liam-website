@@ -14,14 +14,16 @@ interface TableProps {
   children: React.ReactNode;
   pagination?: React.ReactNode;
   paginateStyle?: string;
+  lastWidth?: string;
 }
 
-export const CustomTable = ({
+export const VendorTable = ({
   className,
   headers = [],
   children,
   pagination,
   paginateStyle,
+  lastWidth = "[&>tr>td]:last:w-20",
 }: TableProps) => {
   return (
     <div className={cn("bg-transparent", className)}>
@@ -37,7 +39,12 @@ export const CustomTable = ({
             </TableRow>
           </TableHeader>
         )}
-        <TableBody className=" [&>tr>td]:border-y [&>tr>td]:first:pl-5 [&>tr>td]:first:border-l [&>tr>td]:first:rounded-l-xl [&>tr>td]:last:rounded-r-xl [&>tr>td]:last:border-r [&>tr>td]:last:w-[180px]">
+        <TableBody
+          className={cn(
+            "[&>tr>td]:bg-secondary [&>tr>td]:first:pl-5  [&>tr>td]:first:rounded-l-xl [&>tr>td]:last:rounded-r-xl",
+            lastWidth
+          )}
+        >
           {children}
         </TableBody>
       </Table>

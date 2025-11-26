@@ -13,6 +13,8 @@ const badgeVariants = cva(
         pending: "border-transparent bg-[#2A7FFF]  text-white",
         ongoing: "border-transparent bg-[#8A38F5] text-white",
         completed: "border-transparent bg-[#2D9D1E] text-white",
+        assigned: "border-transparent bg-[#D9D9D9] text-black",
+        available: "border-transparent bg-[#2A7FFF] text-white",
       },
     },
     defaultVariants: {

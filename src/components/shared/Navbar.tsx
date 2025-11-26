@@ -35,13 +35,15 @@ const Navbar = () => {
       <header className="sticky top-0 z-50 w-full bg-secondary backdrop-blur-md border-gray-200">
         <div className="container px-4">
           <div className="flex h-16 items-center justify-between">
-            <Image
-              src="/images/logo.png"
-              alt="Nexus Logo"
-              width={50}
-              height={50}
-              className="rounded-md"
-            />
+            <Link href="/">
+              <Image
+                src="/images/logo.png"
+                alt="Nexus Logo"
+                width={50}
+                height={50}
+                className="rounded-md"
+              />
+            </Link>
 
             {/* Desktop Navigation */}
             <nav className="hidden md:flex items-center space-x-8">

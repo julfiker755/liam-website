@@ -6,6 +6,7 @@ import { FacebookIcon, InstagramIcon, YoutubeIcon } from "@/icon";
 import { useForm } from "react-hook-form";
 import { ImgBox } from "../reusable/Img-box";
 import assets from "@/assets";
+import Link from "next/link";
 
 type FormData = {
   email: string;
@@ -91,41 +92,41 @@ const Footer = () => {
 
             {/* Navigation Links */}
             <div className="flex flex-wrap items-center justify-center gap-3 sm:gap-4 sm:col-span-1 lg:col-span-2 text-center sm:text-left">
-              <a
+              <Link
                 href="/privacy-policy"
                 className="text-sm hover:text-white transition-colors text-blue-50"
               >
                 Privacy policy
-              </a>
-              <a
+              </Link>
+              <Link
                 href="/terms-and-condition"
                 className="text-sm hover:text-white transition-colors text-blue-50"
               >
                 Terms & conditions
-              </a>
-              <a
+              </Link>
+              <Link
                 href="/faq"
                 className="text-sm hover:text-white transition-colors text-blue-50"
               >
                 FAQ
-              </a>
-              <a
+              </Link>
+              <Link
                 href="/contact-us"
                 className="text-sm hover:text-white transition-colors text-blue-50"
               >
                 Contact us
-              </a>
+              </Link>
             </div>
 
             {/* Social Media Icons */}
             <div className="flex gap-4 justify-center md:justify-start lg:justify-center ">
-              <a href="#facebook">
+              <Link href="#facebook">
                 <FacebookIcon className="size-12" />
-              </a>
-              <a href="#Instagram">
+              </Link>
+              <Link href="#Instagram">
                 <InstagramIcon className="size-12" />
-              </a>
-              <a href="#facebook">
+              </Link>
+              <a href="#youtube">
                 <YoutubeIcon className="size-12" />
               </a>
             </div>

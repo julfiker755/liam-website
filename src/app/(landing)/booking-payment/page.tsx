@@ -1,255 +1,341 @@
-// import React from 'react'
-
-// const BookingPayment = () => {
-//     return (
-//         <div>BookingPayment</div>
-//     )
-// }
-
-// export default BookingPayment
-
 "use client";
 
 import React, { useState } from "react";
-import { User, Mail, Phone, MapPin, Star, Trash2 } from "lucide-react";
+import { CreditCard, Star } from "lucide-react";
+import Image from "next/image";
+import {
+  CheckIcon,
+  DeleteIcon,
+  EmailIcon,
+  LocationFieldIcon,
+  LocationIcon,
+  ScreenCardIcon,
+  UserIcon,
+} from "@/icon";
+import assets from "@/assets";
+import { Button } from "@/components/ui";
+import { FieldValues, useForm } from "react-hook-form";
+import { zodResolver } from "@hookform/resolvers/zod";
+import { booking_screma } from "@/lib";
+import Form from "@/components/reusable/from";
+import { FromInput } from "@/components/reusable/form-input";
+import { FromTextArea } from "@/components/reusable/from-textarea";
 
-const BookingPayment = () => {
-  const [addOns, setAddOns] = useState([
-    { id: 1, label: "Add-on number 1", price: 50, enabled: true },
-    { id: 2, label: "Add-on number 2", price: 50, enabled: true },
+interface AddOn {
+  id: number;
+  label: string;
+  price: number;
+}
+
+const BookingPayment: React.FC = () => {
+  const [saveCard, setSaveCard] = useState(false);
+  const [addOns, setAddOns] = useState<AddOn[]>([
+    { id: 1, label: "Add-on number 1", price: 50 },
+    { id: 2, label: "Add-on number 2", price: 50 },
   ]);
 
-  const toggleAddOn = (id: number) => {
-    setAddOns(
-      addOns.map((addon) =>
-        addon.id === id ? { ...addon, enabled: !addon.enabled } : addon
-      )
-    );
-  };
+  const packagePrice = 250;
+  const subtotal =
+    packagePrice + addOns.reduce((sum, addon) => sum + addon.price, 0);
 
   const removeAddOn = (id: number) => {
     setAddOns(addOns.filter((addon) => addon.id !== id));
   };
 
-  const calculateSubtotal = () => {
-    const basePrice = 250;
-    const addOnsTotal = addOns.reduce(
-      (sum, addon) => (addon.enabled ? sum + addon.price : sum),
-      0
-    );
-    return basePrice + addOnsTotal;
+  const from = useForm({
+    resolver: zodResolver(booking_screma),
+    defaultValues: {
+      name: "",
+      email: "",
+      phone_number: "",
+      address: "",
+      message: "",
+    },
+  });
+
+  const handleSubmit = async (values: FieldValues) => {
+    console.log(values);
   };
 
   return (
-    <div className="min-h-screen bg-gray-50 py-8 px-4">
+    <div className=" bg-white py-8 ">
       <div className="container px-4">
-        <h1 className="text-center text-2xl font-normal mb-8 text-gray-900">
+        <h1 className="text-[28px] font-semibold text-center mb-4">
           Schedule booking
         </h1>
+        <Form from={from} onSubmit={handleSubmit}>
+          <div className="grid grid-cols-1 lg:grid-cols-12 gap-6">
+            {/* Left Column - Billing Details */}
+            <div className="lg:col-span-8 space-y-6">
+              {/* Billing Details Section */}
+              <div className="border border-gray-200 rounded-lg   top-8">
+                <h2 className="text-base font-semibold border-b border-gray-200 p-4">
+                  Billing details
+                </h2>
 
-        <div className="grid grid-cols-1 lg:grid-cols-2 gap-6">
-          {/* Billing Details Section */}
-          <div className="bg-white rounded-[16px] border border-gray-200 p-6">
-            <h2 className="text-sm font-medium text-gray-900 mb-6">
-              Billing details
-            </h2>
+                <div className="space-y-5 p-4">
+                  <div className="space-y-3  ">
+                    <div className="grid grid-cols-1 md:grid-cols-2 gap-5">
+                      <FromInput
+                        label="Name"
+                        name="name"
+                        placeholder="Enter your full name here"
+                        icon={<UserIcon />}
+                        className="h-[50px]  bg-secondary  placeholder:text-muted-foreground"
+                        stylelabel="text-lg"
+                      />
 
-            <div className="space-y-5">
-              {/* Name and Email Row */}
-              <div className="grid grid-cols-1 md:grid-cols-2 gap-5">
-                <div>
-                  <label className="block text-sm font-normal text-gray-900 mb-2">
-                    Your full name
-                  </label>
-                  <div className="relative">
-                    <User className="absolute left-3 top-1/2 -translate-y-1/2 w-4 h-4 text-gray-400" />
-                    <input
-                      type="text"
-                      placeholder="Enter your full name here"
-                      className="w-full pl-10 pr-4 py-2.5 border border-gray-300 rounded-md text-sm text-gray-900 placeholder:text-gray-400 focus:outline-none focus:ring-2 focus:ring-cyan-500 focus:border-transparent"
-                    />
-                  </div>
-                </div>
-
-                <div>
-                  <label className="block text-sm font-normal text-gray-900 mb-2">
-                    Email address
-                  </label>
-                  <div className="relative">
-                    <Mail className="absolute left-3 top-1/2 -translate-y-1/2 w-4 h-4 text-gray-400" />
-                    <input
-                      type="email"
-                      placeholder="Enter your email"
-                      className="w-full pl-10 pr-4 py-2.5 border border-gray-300 rounded-md text-sm text-gray-900 placeholder:text-gray-400 focus:outline-none focus:ring-2 focus:ring-cyan-500 focus:border-transparent"
-                    />
-                  </div>
-                </div>
-              </div>
-
-              {/* Phone and Address Row */}
-              <div className="grid grid-cols-1 md:grid-cols-2 gap-5">
-                <div>
-                  <label className="block text-sm font-normal text-gray-900 mb-2">
-                    Phone number
-                  </label>
-                  <div className="relative">
-                    <Phone className="absolute left-3 top-1/2 -translate-y-1/2 w-4 h-4 text-gray-400" />
-                    <input
-                      type="tel"
-                      placeholder="Enter your phone number"
-                      className="w-full pl-10 pr-4 py-2.5 border border-gray-300 rounded-md text-sm text-gray-900 placeholder:text-gray-400 focus:outline-none focus:ring-2 focus:ring-cyan-500 focus:border-transparent"
-                    />
-                  </div>
-                </div>
-
-                <div>
-                  <label className="block text-sm font-normal text-gray-900 mb-2">
-                    Address
-                  </label>
-                  <div className="relative">
-                    <MapPin className="absolute left-3 top-1/2 -translate-y-1/2 w-4 h-4 text-gray-400" />
-                    <input
-                      type="text"
-                      placeholder="Enter your address"
-                      className="w-full pl-10 pr-4 py-2.5 border border-gray-300 rounded-md text-sm text-gray-900 placeholder:text-gray-400 focus:outline-none focus:ring-2 focus:ring-cyan-500 focus:border-transparent"
-                    />
-                  </div>
-                </div>
-              </div>
-            </div>
-          </div>
-
-          {/* Order Details Section */}
-          <div className="bg-white rounded-[16px] border border-gray-200 p-6">
-            <h2 className="text-sm font-medium text-gray-900 mb-6">
-              Order details
-            </h2>
-
-            {/* Package */}
-            <div className="mb-5">
-              <h3 className="text-sm font-normal text-gray-900 mb-3">
-                Package
-              </h3>
-              <div className="flex items-start gap-3">
-                <img
-                  src="https://images.unsplash.com/photo-1581578731548-c64695cc6952?w=100&h=100&fit=crop"
-                  alt="Cleaning service"
-                  className="w-12 h-12 rounded-md object-cover"
-                />
-                <div className="flex-1">
-                  <p className="text-sm text-gray-700 leading-relaxed">
-                    House cleaning service for residential areas in New York
-                    City.
-                  </p>
-                  <p className="text-base font-semibold text-gray-900 mt-1">
-                    $250
-                  </p>
-                </div>
-              </div>
-            </div>
-
-            {/* Date */}
-            <div className="mb-5">
-              <h3 className="text-sm font-normal text-gray-900 mb-2">Date</h3>
-              <p className="text-sm text-gray-700">17th November, 2025</p>
-            </div>
-
-            {/* Add-ons */}
-            <div className="mb-5">
-              <h3 className="text-sm font-normal text-gray-900 mb-3">
-                Add-ons
-              </h3>
-              <div className="space-y-2">
-                {addOns.map((addon) => (
-                  <div
-                    key={addon.id}
-                    className="flex items-center justify-between"
-                  >
-                    <div className="flex items-center gap-2">
-                      <span className="text-sm text-gray-700">
-                        {addon.label}
-                      </span>
-                      <span className="text-sm text-gray-700">
-                        + ${addon.price}
-                      </span>
-                      <button
-                        onClick={() => toggleAddOn(addon.id)}
-                        className={`w-5 h-5 rounded-full flex items-center justify-center ${
-                          addon.enabled ? "bg-green-500" : "bg-gray-300"
-                        }`}
-                      >
-                        <svg
-                          className="w-3 h-3 text-white"
-                          fill="none"
-                          viewBox="0 0 24 24"
-                          stroke="currentColor"
-                        >
-                          <path
-                            strokeLinecap="round"
-                            strokeLinejoin="round"
-                            strokeWidth={3}
-                            d="M5 13l4 4L19 7"
-                          />
-                        </svg>
-                      </button>
+                      <FromInput
+                        label="Email"
+                        name="email"
+                        placeholder="Enter your email"
+                        icon={<EmailIcon />}
+                        className="h-[50px]  bg-secondary  placeholder:text-muted-foreground"
+                        stylelabel="text-lg"
+                      />
                     </div>
-                    <button
-                      onClick={() => removeAddOn(addon.id)}
-                      className="w-8 h-8 bg-red-500 rounded flex items-center justify-center hover:bg-red-600 transition-colors"
-                    >
-                      <Trash2 className="w-4 h-4 text-white" />
-                    </button>
-                  </div>
-                ))}
-              </div>
-            </div>
 
-            {/* Vendor */}
-            <div className="mb-6">
-              <h3 className="text-sm font-normal text-gray-900 mb-3">Vendor</h3>
-              <div className="flex items-center gap-3">
-                <img
-                  src="https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?w=100&h=100&fit=crop"
-                  alt="John Doe"
-                  className="w-10 h-10 rounded-full object-cover"
-                />
-                <div>
-                  <p className="text-sm font-medium text-gray-900">John Doe</p>
-                  <div className="flex items-center gap-1">
-                    <Star className="w-3.5 h-3.5 fill-yellow-400 text-yellow-400" />
-                    <span className="text-xs text-gray-600">4.5</span>
+                    <div className="grid grid-cols-1 md:grid-cols-2 gap-5">
+                      <FromInput
+                        label="Phone number"
+                        name="phone_number"
+                        type="number"
+                        placeholder="Enter your phone number"
+                        icon={<UserIcon />}
+                        className="h-[50px]  bg-secondary  placeholder:text-muted-foreground"
+                        stylelabel="text-lg"
+                      />
+
+                      <FromInput
+                        label="Address"
+                        name="address"
+                        placeholder="Enter your address"
+                        icon={<LocationFieldIcon />}
+                        className="h-[50px]  bg-secondary  placeholder:text-muted-foreground"
+                        stylelabel="text-lg"
+                      />
+                    </div>
+
+                    <div>
+                      <FromTextArea
+                        label="Additional note (Optional)"
+                        name="message"
+                        placeholder="Write your note here if you want to tell something to the vendor"
+                        className="h-[135px] bg-secondary rounded-2xl placeholder:text-muted-foreground"
+                      />
+                    </div>
+                  </div>
+                </div>
+              </div>
+
+              {/* Payment Method Section */}
+              <div className="border border-gray-200 rounded-lg   top-8">
+                <h2 className="text-base border-b border-gray-200 p-4">
+                  Payment method
+                </h2>
+
+                <div className="space-y-5 p-4">
+                  <div>
+                    <div className="flex justify-between items-center">
+                      <p className="block text-sm font-normal text-gray-900 mb-2">
+                        Card information
+                      </p>
+                      <span>
+                        <ScreenCardIcon />
+                      </span>
+                    </div>
+                    <div className="relative">
+                      <CreditCard className="absolute left-3 top-1/2 -translate-y-1/2 w-5 h-5 text-gray-400" />
+                      <input
+                        type="text"
+                        placeholder="1234 5678 9012 3456"
+                        className="w-full pl-10 pr-12 py-2.5 text-sm border border-gray-300 rounded-md "
+                      />
+                      <div className="absolute right-3 top-1/2 -translate-y-1/2 flex items-center gap-1">
+                        <Image
+                          src={assets.paymentCard}
+                          alt="photo"
+                          className="w-[70px] h-[70px] object-contain rounded-md"
+                        />
+                      </div>
+                    </div>
+                  </div>
+
+                  <div className="grid grid-cols-2 gap-5">
+                    <div>
+                      <label className="block text-sm font-normal text-gray-900 mb-2">
+                        MM/YY
+                      </label>
+                      <input
+                        type="text"
+                        placeholder="MM/YY"
+                        className="w-full px-4 py-2.5 text-sm border border-gray-300 rounded-md "
+                      />
+                    </div>
+
+                    <div>
+                      <label className="block text-sm font-normal text-gray-900 mb-2">
+                        CVC
+                      </label>
+                      <div className="relative">
+                        <input
+                          type="text"
+                          placeholder="123"
+                          className="w-full px-4 py-2.5 text-sm border border-gray-300 rounded-md "
+                        />
+                        <CreditCard className="absolute right-3 top-1/2 -translate-y-1/2 w-5 h-5 text-gray-400" />
+                      </div>
+                    </div>
+                  </div>
+
+                  <div>
+                    <label className="block text-sm font-normal text-gray-900 mb-2">
+                      Billing address
+                    </label>
+                    <select className="w-full px-4 py-2.5 text-sm border border-gray-300 rounded-md  text-gray-900">
+                      <option>Country or region</option>
+                      <option>United States</option>
+                    </select>
+                  </div>
+
+                  <div>
+                    <input
+                      type="text"
+                      placeholder="United States"
+                      className="w-full px-4 py-2.5 text-sm border border-gray-300 rounded-md "
+                    />
+                  </div>
+
+                  <div>
+                    <label className="block text-sm font-normal text-gray-900 mb-2">
+                      ZIP
+                    </label>
+                    <input
+                      type="text"
+                      className="w-full px-4 py-2.5 text-sm border border-gray-300 rounded-md "
+                    />
+                  </div>
+
+                  <div className="flex items-center gap-2">
+                    <input
+                      type="checkbox"
+                      id="saveCard"
+                      checked={saveCard}
+                      onChange={(e) => setSaveCard(e.target.checked)}
+                      className="w-4 h-4 rounded border-gray-300"
+                    />
+                    <label htmlFor="saveCard" className="text-sm text-gray-700">
+                      Save this card for future payment
+                    </label>
                   </div>
                 </div>
               </div>
             </div>
 
-            {/* Subtotal and Order Button */}
-            <div className="pt-4 border-t border-gray-200">
-              <div className="flex items-center justify-between mb-4">
-                <span className="text-sm text-gray-700">Subtotal:</span>
-                <span className="text-lg font-bold text-gray-900">
-                  ${calculateSubtotal()}
-                </span>
+            {/* Right Column - Order Details */}
+            <div className="lg:col-span-4">
+              <div className="border border-gray-200 rounded-lg   top-8">
+                <h2 className="text-base font-semibold border-b border-gray-200 p-4">
+                  Order details
+                </h2>
+
+                {/* Package */}
+                <div className="space-y-4 p-4 ">
+                  <div>
+                    <h3 className="text-sm font-semibold mb-3">Package</h3>
+                    <div className="flex gap-3">
+                      <Image
+                        src="https://images.unsplash.com/photo-1560518883-ce09059eeffa?w=100&h=100&fit=crop"
+                        alt="House"
+                        width={40}
+                        height={40}
+                        className="w-12 h-12 rounded object-cover"
+                      />
+                      <div className="flex-1">
+                        <p className="text-xs text-gray-600 mb-1">
+                          House cleaning service for residential areas in New
+                          York City.
+                        </p>
+                        <p className="text-base font-semibold">
+                          ${packagePrice}
+                        </p>
+                      </div>
+                    </div>
+                  </div>
+
+                  {/* Date */}
+                  <div className="">
+                    <h3 className="text-sm font-semibold mb-2">Date</h3>
+                    <p className="text-xs text-gray-600">17th November, 2025</p>
+                  </div>
+
+                  {/* Add-ons */}
+                  <div className="">
+                    <h3 className="text-sm font-semibold pb-2">Add-ons</h3>
+                    <div className="space-y-2">
+                      {addOns.map((addon) => (
+                        <div
+                          key={addon.id}
+                          className=" flex items-center justify-between"
+                        >
+                          <div className="bg-secondary p-2 rounded-lg flex items-center gap-2 px-4">
+                            <span className="text-xs text-gray-700">
+                              {addon.label}
+                            </span>
+
+                            <span className="text-xs font-medium">
+                              <ul className="list-disc list-inside">
+                                <li>${addon.price}</li>
+                              </ul>
+                            </span>
+                            <CheckIcon />
+                          </div>
+
+                          <button onClick={() => removeAddOn(addon.id)}>
+                            <DeleteIcon />
+                          </button>
+                        </div>
+                      ))}
+                    </div>
+                  </div>
+
+                  {/* Vendor */}
+                  <div className="mb-6 pb-6 ">
+                    <h3 className="text-sm font-semibold mb-3">Vendor</h3>
+                    <div className="flex items-center gap-3">
+                      <Image
+                        src={assets.userPhoto1}
+                        alt="Vendor"
+                        width={40}
+                        height={40}
+                        className="w-20 h-20 rounded-full object-cover"
+                      />
+                      <div>
+                        <p className="text-sm font-medium">John Doe</p>
+                        <div className="flex items-center gap-1">
+                          <Star className="w-3 h-3 fill-yellow-400 text-yellow-400" />
+                          <span className="text-xs text-gray-600">4.5</span>
+                        </div>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+
+                {/* Subtotal and Button */}
+                <div className="pt-4 px-4 border-t border-gray-200 my-6">
+                  <div className="flex items-center justify-between  ">
+                    <span className="font-semibold text-gray-900">
+                      Subtotal: $245
+                    </span>
+                    <Button className="" size="lg" icon={true}>
+                      Order now
+                    </Button>
+                  </div>
+                </div>
               </div>
-              <button className="w-full bg-cyan-500 hover:bg-cyan-600 text-white font-medium py-3 rounded-md text-sm transition-colors flex items-center justify-center gap-2">
-                Order now
-                <svg
-                  className="w-4 h-4"
-                  fill="none"
-                  viewBox="0 0 24 24"
-                  stroke="currentColor"
-                >
-                  <path
-                    strokeLinecap="round"
-                    strokeLinejoin="round"
-                    strokeWidth={2}
-                    d="M9 5l7 7-7 7"
-                  />
-                </svg>
-              </button>
             </div>
           </div>
-        </div>
+        </Form>
       </div>
     </div>
   );

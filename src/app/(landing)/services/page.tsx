@@ -1,11 +1,11 @@
-"use client"
+"use client";
 
-import assets from "@/assets"
-import { Button, Input } from "@/components/ui"
-import { ArrowBlackRightIcon, ArrowRightIcon, FilterIcon } from "@/icon"
-import { Star, ShoppingCart, Search, } from "lucide-react"
-import Image from "next/image"
-import { useState } from "react"
+import assets from "@/assets";
+import { Button, Input } from "@/components/ui";
+import { ArrowBlackRightIcon, ArrowRightIcon, FilterIcon } from "@/icon";
+import { Star, ShoppingCart, Search } from "lucide-react";
+import Image from "next/image";
+import { useState } from "react";
 import {
   DropdownMenu,
   DropdownMenuContent,
@@ -13,18 +13,17 @@ import {
   DropdownMenuLabel,
   DropdownMenuSeparator,
   DropdownMenuTrigger,
-} from "@/components/ui/dropdown-menu"
-import Link from "next/link"
-
+} from "@/components/ui/dropdown-menu";
+import Link from "next/link";
 
 interface Service {
-  id: number
-  title: string
-  category: string
-  price: number
-  rating: number
-  reviews: number
-  image: string
+  id: number;
+  title: string;
+  category: string;
+  price: number;
+  rating: number;
+  reviews: number;
+  image: string;
 }
 
 // Sample service data
@@ -74,15 +73,12 @@ const services: Service[] = [
     reviews: 89,
     image: "/assets/service1.png",
   },
-
-]
-
+];
 
 export default function ServicePage() {
-  const [searchText, setSearchText] = useState('')
+  const [searchText, setSearchText] = useState("");
   return (
     <div className="container px-4 py-12">
-
       <div className="flex flex-col md:flex-row md:items-center md:justify-between gap-4 mb-6">
         <div className="relative bg-secondary md:w-[40%] rounded-[16px]">
           <Search className="absolute left-3 top-1/2 transform -translate-y-1/2 h-4 w-4 " />
@@ -115,7 +111,7 @@ export default function ServicePage() {
           {services.map((service) => (
             <div
               key={service.id}
-              className="bg-secondary rounded-[16px] overflow-hidden  transition border border-border"
+              className="bg-secondary rounded-[16px] overflow-hidden  "
             >
               {/* Service Image */}
               <div className="relative w-full h-64 bg-muted overflow-hidden">
@@ -132,18 +128,17 @@ export default function ServicePage() {
                 {/* Category */}
                 <div className="flex justify-between">
                   <p className="max-w-[80%] ">{service.title}</p>
-                  <span className="text-[#000000] font-bold text-[16px] xl:text-[20px]">${service.price}</span>
+                  <span className="text-[#000000] font-bold text-[16px] xl:text-[20px]">
+                    ${service.price}
+                  </span>
                 </div>
-
-
-
-
 
                 {/* Price */}
                 <div className="flex items-center justify-between mt-4 pt-4 ">
                   <div className="flex items-center gap-2">
                     <div>
-                      <Image src={"/images/footer.png"}
+                      <Image
+                        src={assets.userPhoto1}
                         alt={"photo"}
                         width={40}
                         height={40}
@@ -151,14 +146,17 @@ export default function ServicePage() {
                       />
                     </div>
                     <div>
-                      <h1 className="text-[#000000]  text-[16px] xl:text-[20px]">John Doe</h1>
+                      <h1 className="text-[#000000]  text-[16px]">John Doe</h1>
 
                       <div className="flex items-center gap-1">
                         {[...Array(1)].map((_, i) => (
                           <Star
                             key={i}
-                            className={`w-4 h-4 ${i < Math.floor(service.rating) ? "fill-yellow-400 text-yellow-400" : "text-muted-foreground"
-                              }`}
+                            className={`w-4 h-4 ${
+                              i < Math.floor(service.rating)
+                                ? "fill-yellow-400 text-yellow-400"
+                                : "text-muted-foreground"
+                            }`}
                           />
                         ))}
                         {service.rating}
@@ -167,7 +165,11 @@ export default function ServicePage() {
                   </div>
 
                   <Link href={`/services/${service.id}`}>
-                    <Button className=" bg-white text-black font-bold" size={"lg"} icon={false}>
+                    <Button
+                      className=" bg-white text-black font-bold"
+                      size={"lg"}
+                      icon={false}
+                    >
                       Order
                       <ArrowBlackRightIcon className="text-black" />
                     </Button>
@@ -178,8 +180,6 @@ export default function ServicePage() {
           ))}
         </div>
       </main>
-
-
     </div>
-  )
+  );
 }

@@ -1,6 +1,13 @@
-import Image from "next/image";
+"use client";
+
 import SubTitle from "@/components/reusable/title";
+import { Swiper, SwiperSlide } from "swiper/react";
+import "swiper/css";
+import "swiper/css/free-mode";
+
+import { FreeMode, Autoplay } from "swiper/modules";
 import { COOIcon } from "@/icon";
+import Image from "next/image";
 
 const CustomersSay = () => {
   const testimonialData = [
@@ -28,23 +35,63 @@ const CustomersSay = () => {
       position: "Company CEO",
       image: "/images/logo.png",
     },
+    {
+      id: 4,
+      message:
+        "I've been consistently impressed with the quality of service provided by this website. They have exceeded my expectations and delivered exceptional results. Highly recommended!",
+      name: "John D.",
+      position: "Company CEO",
+      image: "/images/logo.png",
+    },
+    {
+      id: 5,
+      message:
+        "I've been consistently impressed with the quality of service provided by this website. They have exceeded my expectations and delivered exceptional results. Highly recommended!",
+      name: "John D.",
+      position: "Company CEO",
+      image: "/images/logo.png",
+    },
+    {
+      id: 6,
+      message:
+        "I've been consistently impressed with the quality of service provided by this website. They have exceeded my expectations and delivered exceptional results. Highly recommended!",
+      name: "John D.",
+      position: "Company CEO",
+      image: "/images/logo.png",
+    },
   ];
+
   return (
-    <div className="pt-[48px] xl:pt-[148px]">
+    <div className="pt-[48px] xl:pt-[148px] relative">
       <div className="container px-4">
         <div className="pb-8">
           <SubTitle text="See what our customers say" />
         </div>
 
-        <div className="grid grid-cols-1 md:grid-cols-2 xl:grid-cols-3 gap-4">
-          {testimonialData?.map((item, index) => {
-            return (
-              <div
-                key={index}
-                className=" bg-[#F8F8F8] shadow-md space-y-4  rounded-[16px]"
-              >
-                <div className="bg-white flex flex-col gap-4 py-8 p-8">
-                  <span>{<COOIcon />}</span>
+        <Swiper
+          loop={true}
+          freeMode={true}
+          autoplay={{
+            delay: 1000,
+            disableOnInteraction: false,
+          }}
+          modules={[FreeMode, Autoplay]}
+          className="mySwiper"
+          spaceBetween={24}
+          breakpoints={{
+            320: { slidesPerView: 1, spaceBetween: 16 },
+            768: { slidesPerView: 2, spaceBetween: 20 },
+            1024: { slidesPerView: 3, spaceBetween: 24 },
+            1280: { slidesPerView: 4, spaceBetween: 16 },
+          }}
+        >
+          {testimonialData.map((item, index) => (
+            <SwiperSlide key={index}>
+              <div className="bg-[#F8F8F8] space-y-4 rounded-[16px]">
+                <div className="bg-white flex flex-col gap-4 py-8 px-8">
+                  <span>
+                    <COOIcon />
+                  </span>
                   <p className="font-medium text-[16px] text-[#535353]">
                     {item.message}
                   </p>
@@ -70,12 +117,12 @@ const CustomersSay = () => {
                   </div>
                 </div>
               </div>
-            );
-          })}
-        </div>
+            </SwiperSlide>
+          ))}
+        </Swiper>
       </div>
     </div>
   );
 };
 
-export default CustomersSay
+export default CustomersSay;
