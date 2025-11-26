@@ -28,7 +28,7 @@ export default function VendorNav() {
       href: "/vendor/packages",
     },
     {
-      name: "Shifts",
+      name: "Stuffs",
       icon: "stuffs_ven",
       icon_i: "stuffs_ven_i",
       href: "/vendor/stuffs",
