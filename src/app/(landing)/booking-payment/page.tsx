@@ -20,7 +20,6 @@ import { booking_screma } from "@/lib";
 import Form from "@/components/reusable/from";
 import { FromInput } from "@/components/reusable/form-input";
 import { FromTextArea } from "@/components/reusable/from-textarea";
-import { ImgBox } from "@/components/reusable/Img-box";
 
 interface AddOn {
   id: number;

@@ -67,7 +67,10 @@ const PackageDetailsVendorReview = () => {
       <Swiper
         loop={true}
         freeMode={true}
-        navigation={true}
+        autoplay={{
+          delay: 1000,
+          disableOnInteraction: false,
+        }}
         modules={[FreeMode, Navigation]}
         className="mySwiper"
         spaceBetween={24}

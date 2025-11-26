@@ -4,9 +4,8 @@ import SubTitle from "@/components/reusable/title";
 import { Swiper, SwiperSlide } from "swiper/react";
 import "swiper/css";
 import "swiper/css/free-mode";
-import "swiper/css/navigation";
 
-import { FreeMode, Navigation } from "swiper/modules";
+import { FreeMode, Autoplay } from "swiper/modules";
 import { COOIcon } from "@/icon";
 import Image from "next/image";
 
@@ -72,8 +71,11 @@ const CustomersSay = () => {
         <Swiper
           loop={true}
           freeMode={true}
-          navigation={true}
-          modules={[FreeMode, Navigation]}
+          autoplay={{
+            delay: 1000,
+            disableOnInteraction: false,
+          }}
+          modules={[FreeMode, Autoplay]}
           className="mySwiper"
           spaceBetween={24}
           breakpoints={{
