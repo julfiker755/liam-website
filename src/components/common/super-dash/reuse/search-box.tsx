@@ -31,7 +31,7 @@ export default function SearchBox({
   return (
     <div
       className={cn(
-        "flex w-11/12 items-center relative lg:max-w-md rounded-2xl bg-gray-50",
+        "flex w-11/12 items-center relative lg:max-w-md rounded-xl bg-gray-50",
         className
       )}
     >
@@ -43,7 +43,7 @@ export default function SearchBox({
         value={value}
         onChange={(e) => setValue(e.target.value)}
         placeholder={placeholder}
-        className="h-11 ml-6 border-none bg-transparent px-4 text-base shadow-none focus-visible:ring-0 placeholder:text-gray-500"
+        className={`h-11 ${leftBtn && "ml-6"} border-none bg-transparent px-4 text-base shadow-none focus-visible:ring-0 placeholder:text-gray-500`}
       />
       {rightBtn && (
         <Button
