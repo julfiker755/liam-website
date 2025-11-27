@@ -10,3 +10,6 @@ export * from "./chart";
 export * from "./textarea";
 export * from "./scroll-area";
 export * from "./tabs";
+export * from "./calendar";
+export * from "./popover";
+export * from "./button-group";
