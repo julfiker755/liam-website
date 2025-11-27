@@ -7,6 +7,7 @@ import ProgressChart from "@/components/reusable/progress-chart";
 import { Button, ScrollArea } from "@/components/ui";
 import FavIcon from "@/favicon/favicon";
 import { ArrowRight } from "lucide-react";
+import Link from "next/link";
 
 const stashItem = [
   {
@@ -14,18 +15,21 @@ const stashItem = [
     label: "Total packages",
     value: "4",
     btnLabel: "Manage",
+    href: "/vendor/packages",
   },
   {
     icon: "bookings_cc",
     label: "Total Bookings",
     value: "12",
     btnLabel: "View",
+    href: "/vendor/bookings",
   },
   {
     icon: "target_booking",
     label: "Target bookings",
     value: "20",
     btnLabel: "Set new",
+    href: "/vendor/set-new",
     progress: 20,
   },
   {
@@ -39,6 +43,7 @@ const stashItem = [
     label: "Target revenue",
     value: "$6000",
     btnLabel: "Set new",
+    href: "/vendor/set-new",
     progress: 60,
   },
 ];
@@ -210,16 +215,20 @@ export default function VendorPage() {
 }
 
 //  ============== StashCard =============
-function StashCard({ icon, label, value, btnLabel, progress }: any) {
+function StashCard({ icon, label, href, value, btnLabel, progress }: any) {
   return (
     <div className="bg-secondary rounded-xl  transition-shadow p-4 relative">
-      <Button
-        variant="outline"
-        size="sm"
-        className="absolute right-4 hover:text-primary top-4 text-primary bg-transparent border-primary"
-      >
-        {btnLabel}
-      </Button>
+      {href && (
+        <Link href={href || "/vendor"}>
+          <Button
+            variant="outline"
+            size="sm"
+            className="absolute right-4 hover:text-primary top-4 text-primary bg-transparent border-primary"
+          >
+            {btnLabel}
+          </Button>
+        </Link>
+      )}
       <IconBox className="size-13 mx-0">
         <FavIcon className="size-7" name={icon} />
       </IconBox>

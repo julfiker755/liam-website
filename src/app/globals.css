@@ -8,7 +8,7 @@
   padding-inline: 1rem;
   margin-inline: auto;
 
-  @variant lg {
+  @variant xl {
     padding-inline: 0rem;
   }
 }
