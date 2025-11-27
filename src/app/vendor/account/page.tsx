@@ -4,7 +4,7 @@ import { FromInput } from "@/components/reusable/form-input";
 import { useFileUpload } from "@/hooks/useFileUpload";
 import profile from "@/assets/profile.png";
 import Form from "@/components/reusable/from";
-import { Button, Label } from "@/components/ui";
+import { Button, Input, Label } from "@/components/ui";
 import FavIcon from "@/favicon/favicon";
 import { PlaceholderImg } from "@/lib";
 import Image from "next/image";
@@ -21,6 +21,8 @@ export default function Settings() {
       email: "admin@gmail.com",
       phone: "1234567890",
       address: "123 Main St",
+      from: "12:00",
+      to: "23:00",
     },
   });
   const handleProfileSubmit = async (values: FieldValues) => {
@@ -96,6 +98,18 @@ export default function Settings() {
             className="min-h-30"
           />
         </div>
+        <FromInput
+          label="Available time From"
+          name="from"
+          className="h-11 rounded-xl bg-secondary"
+          type="time"
+        />
+        <FromInput
+          label="Available time To"
+          name="to"
+          className="h-11 rounded-xl bg-secondary"
+          type="time"
+        />
       </div>
       <div className="flex justify-end">
         <Button size="lg" className="rounded-md">

@@ -1,8 +1,9 @@
 import { TableNoItem } from "@/components/reusable/table-no-item";
 import { TableSkeleton } from "@/components/reusable/table-skeleton";
 import { VendorTable } from "@/components/reusable/vendor-table";
-import { TableCell, TableRow } from "@/components/ui";
+import { Button, ButtonGroupText, TableCell, TableRow } from "@/components/ui";
 import FavIcon from "@/favicon/favicon";
+import { ArrowRight } from "lucide-react";
 
 const data = [
   {
@@ -47,6 +48,19 @@ export default function BalanceBox() {
   return (
     <div>
       <h1 className="font-semibold text-lg mb-4">Account Balance </h1>
+      <div className="bg-secondary p-4 rounded-lg relative">
+        <ul className="mx-auto flex flex-col justify-center">
+          <li className="mx-auto">
+            <FavIcon name="bug_cc" />
+          </li>
+          <li className="text-center">Balance</li>
+          <li className="text-xl text-center font-semibold">$ 25,360</li>
+        </ul>
+        <Button className="bg-white text-lg flex items-center mx-auto mt-1 text-black lg:absolute top-4 right-4">
+          Go to<span className="text-[#635BFF] font-extrabold!">stripe</span>
+          <ArrowRight />
+        </Button>
+      </div>
       <VendorTable headers={[]}>
         {isLoading ? (
           <TableSkeleton colSpan={2} tdStyle="!pl-2" />
