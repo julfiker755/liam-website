@@ -1,6 +1,11 @@
+"use client";
+
 import { ImgBox } from "@/components/reusable/Img-box";
 import assets from "@/assets";
-import { DateDBIcon } from "@/icon";
+import { BookingHistoryIcon, DateDBIcon } from "@/icon";
+import { TableCell, TableRow } from "@/components/ui";
+import { PaymentTable } from "@/components/reusable/vendor-table";
+import { useRouter } from "next/navigation";
 
 interface Booking {
   id: number;
@@ -10,45 +15,67 @@ interface Booking {
   customerEmail: string;
   date: string;
   rating?: number;
-  status: "completed" | "pending";
+  status: "completed" | "pending" | "ongoing";
 }
-
+const bookings: Booking[] = [
+  {
+    id: 1,
+    service: "House cleaning service for residential areas in New York City.",
+    price: 250,
+    customerName: "John Doe",
+    customerEmail: "example@gmail.com",
+    date: "10th Nov, 2025",
+    status: "pending",
+  },
+  {
+    id: 2,
+    service: "House cleaning service for residential areas in New York City.",
+    price: 250,
+    customerName: "John Doe",
+    customerEmail: "example@gmail.com",
+    date: "10th Nov, 2025",
+    status: "ongoing",
+  },
+  {
+    id: 3,
+    service: "House cleaning service for residential areas in New York City.",
+    price: 250,
+    customerName: "John Doe",
+    customerEmail: "example@gmail.com",
+    date: "10th Nov, 2025",
+    status: "pending",
+  },
+];
 const BookingPage = () => {
-  const bookings: Booking[] = [
-    {
-      id: 1,
-      service:
-        "House cleaning service for residential areas House cleaning service for residential areas",
-      price: 250,
-      customerName: "John Doe",
-      customerEmail: "example@gmail.com",
-      date: "10th Nov, 2025",
-      status: "pending",
-    },
-    {
-      id: 2,
-      service:
-        "House cleaning service for residential areas House cleaning service for residential areas",
-      price: 250,
-      customerName: "John Doe",
-      customerEmail: "example@gmail.com",
-      date: "10th Nov, 2025",
-      status: "pending",
-    },
-  ];
+  const router = useRouter();
+
+  const handleNavigate = (statusValue: string) => {
+    if (statusValue === "pending") {
+      router.push("/account/pending-package-history");
+    } else if (statusValue === "ongoing") {
+      router.push("/account/ongoing-package-history");
+    }
+  };
 
   return (
     <div>
-      <h1 className="text-xl font-semibold mb-6 ">Ongoing bookings</h1>
-      <div className="space-y-3 sm:space-y-4">
-        {bookings.map((booking) => (
-          <div
-            key={booking.id}
-            className="grid grid-cols-1 md:grid-cols-2 xl:grid-cols-12 gap-3 items-center"
+      <div className="mb-6 flex items-center justify-between">
+        <h1 className="text-xl font-semibold ">Ongoing bookings</h1>
+        <BookingHistoryIcon
+          onClick={() => router.push("/account/booking-history")}
+          className="cursor-pointer"
+        />
+      </div>
+
+      <PaymentTable>
+        {bookings?.map((item) => (
+          <TableRow
+            key={item.id}
+            className="cursor-pointer"
+            onClick={() => handleNavigate(item.status)}
           >
-            <div className=" lg:col-span-5 ">
+            <TableCell className="font-medium">
               <div className="flex items-center gap-3">
-                {/* Service Image */}
                 <div>
                   <ImgBox
                     src={assets.bookingPhoto}
@@ -57,62 +84,68 @@ const BookingPage = () => {
                   />
                 </div>
 
-                {/* Service Details */}
-                <div className="flex-grow min-w-0">
-                  <p className="text-gray-800">{booking.service}</p>
+                <div className="">
+                  <p className="text-gray-800 whitespace-normal wrap-break-word">
+                    {item.service}
+                  </p>
                   <p className="text-gray-900 font-semibold text-base">
-                    ${booking.price}
+                    ${item.price}
                   </p>
                 </div>
               </div>
-            </div>
+            </TableCell>
 
-            <div className=" lg:col-span-3 ">
-              {/* Customer Info */}
-              <div className="flex items-center gap-3 ml-4">
-                <div className="flex items-center gap-2">
-                  <div>
-                    <ImgBox
-                      src={assets.userPhoto1}
-                      alt={"photo"}
-                      className="rounded-full w-[50px] h-[50px]"
-                    />
-                  </div>
-                  <div>
-                    <h1 className="text-[#000000]  text-[16px]">
-                      {booking.customerName}
-                    </h1>
-                    <h2>{booking.customerEmail}</h2>
-                  </div>
+            <TableCell>
+              {" "}
+              <div className="flex items-center gap-2">
+                <div>
+                  <ImgBox
+                    src={assets.userPhoto1}
+                    alt={"photo"}
+                    className="rounded-full w-[50px] h-[50px]"
+                  />
+                </div>
+                <div>
+                  <h1 className="text-[#000000]  text-[16px]">
+                    {item.customerName}
+                  </h1>
+                  <h2>{item.customerEmail}</h2>
                 </div>
               </div>
-            </div>
+            </TableCell>
 
-            <div className=" lg:col-span-2">
-              {/* Date */}
+            <TableCell>
+              {" "}
               <div className="flex items-center gap-2 text-gray-600 ml-4">
                 <DateDBIcon />
-                <span className="text-sm whitespace-nowrap">
-                  {booking.date}
-                </span>
+                <span className="text-sm whitespace-nowrap">{item.date}</span>
               </div>
-            </div>
+            </TableCell>
 
-            <div className=" col-span-2 ">
-              {/* Status */}
+            <TableCell className="text-right">
               <div>
                 <ul className="list-disc list-inside">
                   <li
-                    className={` text-white font-medium text-center text-sm  py-2 rounded-figma-sm ${booking.status === "pending" ? "bg-[#8A38F5]" : "bg-[#2A7FFF]"}`}
+                    className={` text-white font-medium text-center text-sm px-4  p-2 rounded-figma-sm
+                        ${
+                          item.status === "pending"
+                            ? "bg-[#2A7FFF]"
+                            : item.status === "completed"
+                              ? "bg-[#2D9D1E]"
+                              : item.status === "ongoing"
+                                ? "bg-[#8A38F5]"
+                                : ""
+                        }
+                       `}
                   >
-                    {booking.status}
+                    {item.status}
                   </li>
                 </ul>
               </div>
-            </div>
-          </div>
+            </TableCell>
+          </TableRow>
         ))}
-      </div>
+      </PaymentTable>
     </div>
   );
 };

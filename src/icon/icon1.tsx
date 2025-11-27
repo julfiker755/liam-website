@@ -950,3 +950,66 @@ export const DateDB2Icon = (props: React.SVGProps<SVGSVGElement>) => (
     />
   </svg>
 );
+export const CVCIcon = (props: React.SVGProps<SVGSVGElement>) => (
+  <svg
+    id="CVCIcon"
+    width="19"
+    height="19"
+    viewBox="0 0 19 19"
+    fill="none"
+    xmlns="http://www.w3.org/2000/svg"
+    {...props}
+  >
+    <mask
+      id="mask0_97_3228"
+      maskUnits="userSpaceOnUse"
+      x="0"
+      y="0"
+      width="19"
+      height="19"
+    >
+      <rect width="19" height="19" fill="#D9D9D9" />
+    </mask>
+    <g mask="url(#mask0_97_3228)">
+      <path
+        d="M17.4154 4.74999V14.25C17.4154 14.6854 17.2603 15.0582 16.9503 15.3682C16.6402 15.6783 16.2674 15.8333 15.832 15.8333H3.16536C2.72995 15.8333 2.3572 15.6783 2.04714 15.3682C1.73707 15.0582 1.58203 14.6854 1.58203 14.25V4.74999C1.58203 4.31457 1.73707 3.94183 2.04714 3.63176C2.3572 3.32169 2.72995 3.16666 3.16536 3.16666H15.832C16.2674 3.16666 16.6402 3.32169 16.9503 3.63176C17.2603 3.94183 17.4154 4.31457 17.4154 4.74999ZM3.16536 6.33332H15.832V4.74999H3.16536V6.33332ZM3.16536 9.49999V14.25H15.832V9.49999H3.16536Z"
+        fill="black"
+      />
+    </g>
+  </svg>
+);
+export const BookingHistoryIcon = (props: React.SVGProps<SVGSVGElement>) => (
+  <svg
+    id="BookingHistoryIcon"
+    width="50"
+    height="50"
+    viewBox="0 0 50 50"
+    fill="none"
+    xmlns="http://www.w3.org/2000/svg"
+    {...props}
+  >
+    <rect width="50" height="50" rx="10" fill="#F6F6F6" />
+    <path
+      d="M26.5 16C24.1131 16 21.8239 16.9482 20.136 18.636C18.4482 20.3239 17.5 22.6131 17.5 25H14.5L18.39 28.89L18.46 29.03L22.5 25H19.5C19.5 21.13 22.63 18 26.5 18C30.37 18 33.5 21.13 33.5 25C33.5 28.87 30.37 32 26.5 32C24.57 32 22.82 31.21 21.56 29.94L20.14 31.36C20.9733 32.1982 21.9643 32.863 23.0559 33.3162C24.1475 33.7693 25.3181 34.0017 26.5 34C28.8869 34 31.1761 33.0518 32.864 31.364C34.5518 29.6761 35.5 27.3869 35.5 25C35.5 22.6131 34.5518 20.3239 32.864 18.636C31.1761 16.9482 28.8869 16 26.5 16ZM25.5 21V26L29.78 28.54L30.5 27.33L27 25.25V21H25.5Z"
+      fill="black"
+    />
+  </svg>
+);
+export const FeedbackCheckIcon = (props: React.SVGProps<SVGSVGElement>) => (
+  <svg
+    id="FeedbackCheckIcon"
+    width="80"
+    height="80"
+    viewBox="0 0 80 80"
+    fill="none"
+    xmlns="http://www.w3.org/2000/svg"
+    {...props}
+  >
+    <path
+      fillRule="evenodd"
+      clipRule="evenodd"
+      d="M40 80C17.908 80 0 62.092 0 40C0 17.908 17.908 0 40 0C62.092 0 80 17.908 80 40C80 62.092 62.092 80 40 80ZM35.292 48.56L24.232 37.492L20 41.724L32.476 54.208C33.2261 54.9579 34.2433 55.3791 35.304 55.3791C36.3647 55.3791 37.3819 54.9579 38.132 54.208L61.94 30.408L57.692 26.16L35.292 48.56Z"
+      fill="#2D9D1E"
+    />
+  </svg>
+);

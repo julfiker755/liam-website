@@ -88,6 +88,15 @@ export const account_screma = z.object({
   address: z.string().nonempty("Address is required"),
   image: z.string().nonempty("Image is required"),
 });
+export const new_addPaymentCard = z.object({
+  name: z.string().nonempty("Name is required"),
+});
+export const new_review = z.object({
+  message: z.string().nonempty("Message is required"),
+});
+export const new_delivery_request = z.object({
+  name: z.string().nonempty("Message is required"),
+});
 
 export const package_store = z.object({
   title: z.string().nonempty("Title is required"),

@@ -57,3 +57,46 @@ export function FromTextArea({
     />
   );
 }
+
+// text_area customize
+export function FromTextArea2({
+  name,
+  label,
+  placeholder,
+  className,
+  stylelabel,
+  ...rest
+}: FromTextAreaProps) {
+  const { control } = useFormContext();
+
+  return (
+    <Controller
+      control={control}
+      name={name}
+      render={({ field, fieldState: { error } }) => (
+        <div>
+          {label && (
+            <Label className={cn("mb-1 text-base", stylelabel)}>{label}</Label>
+          )}
+          <div className="relative">
+            <Textarea
+              className={cn(
+                "min-h-16 w-full border-none resize-none  bg-[#F4F4F4]  pl-4 pr-3  text-blacks placeholder:text-blacks text-sm",
+                className
+              )}
+              placeholder={placeholder}
+              {...field}
+              {...rest}
+            />
+          </div>
+          {error?.message && (
+            <h3 className="text-sm pt-px text-end text-[#f73f4e] flex gap-1 items-center justify-end">
+              {error.message}
+              <CircleAlert size={14} />
+            </h3>
+          )}
+        </div>
+      )}
+    />
+  );
+}

@@ -52,3 +52,36 @@ export const VendorTable = ({
     </div>
   );
 };
+
+export const PaymentTable = ({
+  className,
+  headers = [],
+  children,
+  lastWidth = "[&>tr>td]:last:w-20",
+}: TableProps) => {
+  return (
+    <div className={cn("bg-transparent", className)}>
+      <Table className=" border-separate border-spacing-y-2 my-0">
+        {headers && headers.length > 0 && (
+          <TableHeader className="translate-y-3">
+            <TableRow className="text-[17px] hover:bg-transparent font-semibold text-center  text-blacks border-2 border-[#F6F6F6]">
+              {headers?.map((header, index) => (
+                <TableHead key={index}>
+                  <h5 className="w-max capitalize font-semibold">{header}</h5>
+                </TableHead>
+              ))}
+            </TableRow>
+          </TableHeader>
+        )}
+        <TableBody
+          className={cn(
+            "[&>tr>td]:bg-secondary [&>tr>td]:first:pl-5  [&>tr>td]:first:rounded-l-xl [&>tr>td]:last:rounded-r-xl",
+            lastWidth
+          )}
+        >
+          {children}
+        </TableBody>
+      </Table>
+    </div>
+  );
+};
