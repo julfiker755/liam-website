@@ -253,6 +253,7 @@ export default function AddOn() {
           </Button>
         </Form>
       </Modal2>
+
       {/* ============== addon edit  ============== */}
       <Modal2
         open={global.isEdit}
