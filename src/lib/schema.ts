@@ -1,3 +1,4 @@
+import { Package } from "lucide-react";
 import { number, z } from "zod";
 
 //  === sign_In ==
@@ -67,7 +68,6 @@ export const change_Pass = z
     message: "Passwords must be match.",
   });
 
-
 export const contact_us = z.object({
   name: z.string().nonempty("Name is required"),
   email: z.string().nonempty("Email is required"),
@@ -86,7 +86,7 @@ export const account_screma = z.object({
   email: z.string().nonempty("Email is required"),
   phone_number: z.string().nonempty("Phone number is required"),
   address: z.string().nonempty("Address is required"),
-  image : z.string().nonempty("Image is required"),
+  image: z.string().nonempty("Image is required"),
 });
 export const new_addPaymentCard = z.object({
   name: z.string().nonempty("Name is required"),
@@ -98,6 +98,22 @@ export const new_delivery_request = z.object({
   name: z.string().nonempty("Message is required"),
 });
 
+export const package_store = z.object({
+  title: z.string().nonempty("Title is required"),
+  price: z.string().nonempty("Price is required"),
+  about: z.string().nonempty("About is required"),
+  image: z.any().refine((file) => file instanceof File, {
+    message: "Image is required",
+  }),
+  services: z.array(z.string()).nonempty("Services is required"),
+});
+
+export const set_store = z.object({
+  title: z.string().nonempty("Title is required"),
+  price: z.string().nonempty("Price is required"),
+  about: z.string().nonempty("About is required"),
+  date: z.iso.date().nonempty("Date is required"),
+});
 
 // // === change_Pass ===
 // export const change_Pass = z

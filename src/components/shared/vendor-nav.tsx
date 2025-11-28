@@ -1,5 +1,4 @@
 "use client";
-
 import { useState } from "react";
 import { Menu, X } from "lucide-react";
 import { usePathname } from "next/navigation";
@@ -55,7 +54,7 @@ export default function VendorNav() {
           />
 
           {/* Desktop Nav */}
-          <div className="hidden md:flex items-center space-x-3">
+          <div className="hidden lg:flex items-center space-x-3">
             {navItems.map((item) => {
               const isActive = pathname === item.href;
               return (
@@ -78,33 +77,40 @@ export default function VendorNav() {
           </div>
 
           {/* Right Side */}
-          <div className="hidden md:flex items-center gap-4">
-            <IconBox className="rounded-md">
-              <FavIcon name="chat_cc" />
-            </IconBox>
-            <IconBox className="rounded-md">
-              <FavIcon name="noti" />
-            </IconBox>
+          <div className="hidden lg:flex items-center gap-4">
+            <Link href="/vendor/chat">
+              <IconBox className="rounded-md">
+                <FavIcon name="chat_cc" />
+              </IconBox>
+            </Link>
 
-            <div className="flex items-center gap-3">
-              <Avatars
-                src=""
-                fallback="P"
-                alt="profile"
-                className="rounded-md"
-                fallbackStyle="rounded-md bg-white text-black"
-              />
-              <div className=" text-black leading-5 mb-1">
-                <p className="font-semibold">Elizabeth Olson</p>
-                <p>example@gmail.com</p>
+            <Link href="/vendor/notifications">
+              <IconBox className="rounded-md">
+                <FavIcon name="noti" />
+              </IconBox>
+            </Link>
+
+            <Link href="/vendor/account">
+              <div className="flex items-center gap-3">
+                <Avatars
+                  src=""
+                  fallback="P"
+                  alt="profile"
+                  className="rounded-md"
+                  fallbackStyle="rounded-md bg-white text-black"
+                />
+                <div className=" text-black leading-5 mb-1">
+                  <p className="font-semibold">Elizabeth Olson</p>
+                  <p>example@gmail.com</p>
+                </div>
               </div>
-            </div>
+            </Link>
           </div>
 
           {/* Mobile Toggle */}
           <button
             onClick={() => setIsOpen(!isOpen)}
-            className="md:hidden p-2 cursor-pointer rounded-lg transition"
+            className="lg:hidden p-2 cursor-pointer rounded-lg transition"
           >
             {isOpen ? (
               <X className="w-6 h-6 text-black" />
@@ -116,7 +122,7 @@ export default function VendorNav() {
 
         {/* Mobile Menu */}
         {isOpen && (
-          <div className="md:hidden pb-4 space-y-2 animate-slideDown">
+          <div className="lg:hidden pb-4 space-y-2 animate-slideDown">
             {navItems.map((item) => {
               const isActive = pathname === item.href;
               return (
