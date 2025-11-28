@@ -3,7 +3,7 @@ import Image from "next/image";
 
 function WorkPage() {
   return (
-    <div className="pt-[48px] xl:pt-[100px] mb-20">
+    <div className="pt-[48px] mb-20">
       <div className="container px-4">
         <div className="pb-8">
           <SubTitle text="How it works" />

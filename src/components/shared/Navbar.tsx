@@ -90,7 +90,7 @@ const Navbar = () => {
                     alt="user photo"
                     width={40}
                     height={40}
-                    className="w-[45px] h-[45px] rounded-[6px]"
+                    className="w-[40px] h-[40px] rounded-[6px]"
                   />
                   <div className=" text-black leading-5 mb-1">
                     <p className="font-semibold">Elizabeth Olson</p>
@@ -208,7 +208,7 @@ const Navbar = () => {
                         alt="user photo"
                         width={40}
                         height={40}
-                        className="w-[45px] h-[45px] rounded-[6px]"
+                        className="w-[40px] h-[40px] rounded-[6px]"
                       />
                     </div>
                   </Link>
