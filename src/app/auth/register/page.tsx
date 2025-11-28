@@ -4,7 +4,13 @@ import { useRouter } from "next/navigation";
 import { FieldValues, useForm } from "react-hook-form";
 import { zodResolver } from "@hookform/resolvers/zod";
 import { FromInput } from "@/components/reusable/form-input";
-import { EmailIcon, GoogleIcon, LockIcon, UserIcon } from "@/icon";
+import {
+  EmailIcon,
+  GoogleIcon,
+  LocationFieldIcon,
+  LockIcon,
+  UserIcon,
+} from "@/icon";
 import Form from "@/components/reusable/from";
 import SubTitle from "@/components/reusable/title";
 import { ArrowRight } from "lucide-react";
@@ -18,6 +24,9 @@ export default function Login() {
     defaultValues: {
       name: "",
       email: "",
+      address: "",
+      business_name: "",
+      business_address: "",
       password: "",
       c_password: "",
     },
@@ -41,6 +50,26 @@ export default function Login() {
           name="email"
           placeholder="Email"
           icon={<EmailIcon />}
+        />
+        <FromInput
+          className="h-10"
+          name="address"
+          placeholder="Your address"
+          icon={<LocationFieldIcon />}
+        />
+
+        <FromInput
+          className="h-10"
+          name="business_name"
+          placeholder="Your business name"
+          icon={<UserIcon />}
+        />
+
+        <FromInput
+          className="h-10"
+          name="business_address"
+          placeholder="Your business address"
+          icon={<LocationFieldIcon />}
         />
 
         <FromInput

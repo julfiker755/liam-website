@@ -19,6 +19,9 @@ export const sign_In = z.object({
 export const register_sc = sign_In
   .extend({
     name: z.string().nonempty("Full Name is required"),
+    address: z.string().nonempty("Address is required"),
+    business_name: z.string().nonempty("Business name is required"),
+    business_address: z.string().nonempty("Business address is required"),
     c_password: z.string().nonempty("Confirm password is required"),
   })
   .refine((value) => value.password === value.c_password, {
