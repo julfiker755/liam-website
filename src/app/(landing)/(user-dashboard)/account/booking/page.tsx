@@ -60,7 +60,7 @@ const BookingPage = () => {
   return (
     <div>
       <div className="mb-6 flex items-center justify-between">
-        <h1 className="text-xl font-semibold  ">Ongoing bookings</h1>
+        <h1 className="text-xl font-semibold ">Ongoing bookings</h1>
         <BookingHistoryIcon
           onClick={() => router.push("/account/booking-history")}
           className="cursor-pointer"

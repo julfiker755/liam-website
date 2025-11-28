@@ -5,6 +5,10 @@ import Image from "next/image";
 import { usePathname } from "next/navigation";
 import { Button } from "../ui";
 import Link from "next/link";
+import IconBox from "../reusable/Icon-box";
+import FavIcon from "@/favicon/favicon";
+import Avatars from "../reusable/avater";
+import assets from "@/assets";
 
 const Navbar = () => {
   const [isMenuOpen, setIsMenuOpen] = useState(false);
@@ -13,7 +17,7 @@ const Navbar = () => {
   const navLinks = [
     { href: "/", text: "Home" },
     { href: "/services", text: "Services" },
-    { href: "/how-it-works", text: "How it works" },
+    { href: "/works", text: "How it works" },
     { href: "/about-us", text: "About us" },
     { href: "/faq", text: "FAQ" },
   ];
@@ -29,6 +33,9 @@ const Navbar = () => {
   }, [isMenuOpen]);
 
   const toggleMenu = () => setIsMenuOpen(!isMenuOpen);
+
+  const loginUser = "kodom_ali";
+  // const loginUser = null;
 
   return (
     <>
@@ -46,7 +53,7 @@ const Navbar = () => {
             </Link>
 
             {/* Desktop Navigation */}
-            <nav className="hidden md:flex items-center space-x-8">
+            <nav className="hidden lg:flex items-center space-x-8">
               {navLinks.map((link) => (
                 <Link
                   key={link.text}
@@ -63,16 +70,46 @@ const Navbar = () => {
             </nav>
 
             {/* Desktop Button */}
-            <div className="hidden md:flex items-center space-x-3">
-              <Link href="/auth">
-                <Button>Create an account</Button>
-              </Link>
-            </div>
+            {loginUser ? (
+              <div className="hidden lg:flex items-center gap-4">
+                <Link href={"/chart"}>
+                  <IconBox className="rounded-md">
+                    <FavIcon name="chat_cc" />
+                  </IconBox>
+                </Link>
+
+                <Link href={"/notification"}>
+                  <IconBox className="rounded-md">
+                    <FavIcon name="noti" />
+                  </IconBox>
+                </Link>
+
+                <div className="flex items-center gap-3">
+                  <Image
+                    src={assets.LoginUserPhoto}
+                    alt="user photo"
+                    width={40}
+                    height={40}
+                    className="w-[45px] h-[45px] rounded-[6px]"
+                  />
+                  <div className=" text-black leading-5 mb-1">
+                    <p className="font-semibold">Elizabeth Olson</p>
+                    <p>example@gmail.com</p>
+                  </div>
+                </div>
+              </div>
+            ) : (
+              <div className="hidden lg:flex items-center space-x-3">
+                <Link href="/auth">
+                  <Button>Create an account</Button>
+                </Link>
+              </div>
+            )}
 
             {/* Mobile Menu Button */}
             <button
               onClick={toggleMenu}
-              className="md:hidden p-2 text-gray-600 hover:bg-gray-100 rounded-md relative"
+              className="lg:hidden p-2 text-gray-600 hover:bg-gray-100 rounded-md relative"
               aria-label="Toggle menu"
             >
               <Menu
@@ -87,7 +124,7 @@ const Navbar = () => {
 
       {/* Mobile Overlay */}
       <div
-        className={`fixed inset-0 z-40 bg-black bg-opacity-50 transition-opacity md:hidden ${
+        className={`fixed inset-0 z-40 bg-black bg-opacity-50 transition-opacity lg:hidden ${
           isMenuOpen ? "opacity-100" : "opacity-0 pointer-events-none"
         }`}
         onClick={toggleMenu}
@@ -95,7 +132,7 @@ const Navbar = () => {
 
       {/* Mobile Sidebar */}
       <div
-        className={`fixed top-0 left-0 h-full w-4/5 max-w-sm z-50 bg-white transform transition-transform duration-300 ease-in-out md:hidden ${
+        className={`fixed top-0 left-0 h-full w-4/5 max-w-sm z-50 bg-secondary transform transition-transform duration-300 ease-in-out lg:hidden ${
           isMenuOpen ? "translate-x-0" : "-translate-x-full"
         }`}
       >
@@ -139,10 +176,51 @@ const Navbar = () => {
           </nav>
 
           {/* Mobile Button */}
-          <div className="p-4 border-t border-gray-200 mt-auto">
-            <Link href="/auth">
-              <Button className="w-full">Create an account</Button>
-            </Link>
+          <div className="p-4   border-t border-gray-200 mt-auto ">
+            {loginUser ? (
+              <div>
+                <div className=" flex flex-col justify-center items-center text-black leading-5 mb-4">
+                  <p className="font-semibold">Elizabeth Olson</p>
+                  <p>example@gmail.com</p>
+                </div>
+
+                <div className="flex justify-center items-center gap-4">
+                  <Link href={"/chart"} onClick={toggleMenu}>
+                    <div>
+                      <IconBox className="rounded-md">
+                        <FavIcon name="chat_cc" />
+                      </IconBox>
+                    </div>
+                  </Link>
+
+                  <Link href={"/notification"} onClick={toggleMenu}>
+                    <div>
+                      <IconBox className="rounded-md">
+                        <FavIcon name="noti" />
+                      </IconBox>
+                    </div>
+                  </Link>
+
+                  <Link href={"/vendor-profile"} onClick={toggleMenu}>
+                    <div className="flex items-center gap-3  rounded-md p-1">
+                      <Image
+                        src={assets.LoginUserPhoto}
+                        alt="user photo"
+                        width={40}
+                        height={40}
+                        className="w-[45px] h-[45px] rounded-[6px]"
+                      />
+                    </div>
+                  </Link>
+                </div>
+              </div>
+            ) : (
+              <div>
+                <Link href="/auth" onClick={toggleMenu}>
+                  <Button className="w-full">Create an account</Button>
+                </Link>
+              </div>
+            )}
           </div>
         </div>
       </div>

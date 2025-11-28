@@ -4,6 +4,7 @@ import userPhoto1 from "./userPhoto1.png";
 import paymentCard from "./paymentCard.png";
 import bookingPhoto from "./bookingPhoto.png";
 import bookingDetailsPhoto from "./bookingDetailsPhoto.png";
+import LoginUserPhoto from "./LoginUserPhoto.png";
 
 const assets = {
   logo,
@@ -11,7 +12,8 @@ const assets = {
   userPhoto1,
   paymentCard,
   bookingPhoto,
-  bookingDetailsPhoto
+  bookingDetailsPhoto,
+  LoginUserPhoto,
 };
 
 export default assets;
