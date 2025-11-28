@@ -10,6 +10,7 @@ import { dummyJson } from "@/components/dummy-json";
 import Avatars from "@/components/reusable/avater";
 import { useMemo, useState } from "react";
 import FavIcon from "@/favicon/favicon";
+import Link from "next/link";
 
 const headersConfig: Record<string, string[]> = {
   New: ["Order details", "User details", "Order time", ""],
@@ -281,7 +282,9 @@ export default function Bookings() {
               )}
 
               <TableCell>
-                <FavIcon name="arrow_right_cc" />
+                <Link href="/vendor/bookings/873284">
+                  <FavIcon name="arrow_right_cc" />
+                </Link>
               </TableCell>
             </TableRow>
           ))
