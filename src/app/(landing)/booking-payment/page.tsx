@@ -6,11 +6,11 @@ import Image from "next/image";
 import {
   CheckIcon,
   CVCIcon,
+  DateDB2Icon,
   DeleteIcon,
   EmailIcon,
   FeedbackCheckIcon,
   LocationFieldIcon,
-  LocationIcon,
   PhoneIpfIcon,
   ScreenCardIcon,
   UserIcon,
@@ -38,13 +38,29 @@ const intState = {
   isFedb: false,
 };
 
+interface PaymentCard {
+  id: string;
+  type: "Visa card" | "Master Card";
+  lastFour: string;
+}
+
 const BookingPayment: React.FC = () => {
   const [deliveryReModal, setDeliveryReModal] = useGlobalState(intState);
   const [saveCard, setSaveCard] = useState(false);
+
   const [addOns, setAddOns] = useState<AddOn[]>([
     { id: 1, label: "Add-on number 1", price: 50 },
     { id: 2, label: "Add-on number 2", price: 50 },
   ]);
+
+  const [selectedCard, setSelectedCard] = useState<string>("");
+
+  const cards: PaymentCard[] = [
+    { id: "card-1", type: "Visa card", lastFour: "2154" },
+    { id: "card-2", type: "Visa card", lastFour: "2154" },
+    { id: "card-3", type: "Visa card", lastFour: "2154" },
+    { id: "card-4", type: "Master Card", lastFour: "2154" },
+  ];
 
   const packagePrice = 250;
   const subtotal =
@@ -148,126 +164,78 @@ const BookingPayment: React.FC = () => {
                 </div>
               </div>
 
-              {/* Payment Method Section */}
-              <div>
+              {/* payment method */}
+              <div className="w-full rounded-2xl  border border-gray-200 ">
                 {/* Header */}
-                <div className="flex items-center justify-between ">
-                  <h2 className="text-lg sm:text-xl font-normal text-gray-700">
-                    Card information
+                <div className="flex items-center justify-between  border-b p-4">
+                  <h2 className="text-gray-900 font-medium text-lg">
+                    Payment method
                   </h2>
-                  <ScreenCardIcon />
+                  <Link href={"/account/payment"}>
+                    <button className="text-primary cursor-pointer text-sm font-medium transition-colors">
+                      Manage cards
+                    </button>
+                  </Link>
                 </div>
 
-                {/* Card Information Section */}
-                <div className="border border-gray-300 rounded-lg overflow-hidden mb-6">
-                  {/* Card Number Field */}
-                  <div className="border-b border-gray-300">
-                    <div className="flex items-center justify-between px-4">
-                      <input
-                        type="text"
-                        placeholder="Card information"
-                        className="flex-1 text-base outline-none"
-                      />
-                      <div className="flex gap-2 ml-4">
-                        <Image
-                          src={assets.paymentCard}
-                          alt="photo"
-                          width={40}
-                          height={40}
-                          className="w-[50px] h-[50px]  object-contain rounded-md"
+                {/* Card List */}
+                <div className="space-y-1 py-2">
+                  {cards.map((card) => (
+                    <label
+                      key={card.id}
+                      className="flex items-center gap-4 px-4 py-2 transition-colors"
+                    >
+                      {/* Radio Button */}
+                      <div className="relative">
+                        <input
+                          type="radio"
+                          name="payment-method"
+                          value={card.id}
+                          checked={selectedCard === card.id}
+                          onChange={(e) => setSelectedCard(e.target.value)}
+                          className="sr-only"
                         />
+                        <div
+                          className={`w-5 h-5 rounded border-2 flex items-center justify-center transition-all ${
+                            selectedCard === card.id
+                              ? "border-cyan-500 bg-cyan-500"
+                              : "border-gray-300 bg-white"
+                          }`}
+                        >
+                          {selectedCard === card.id && (
+                            <svg
+                              className="w-3 h-3 text-white"
+                              fill="none"
+                              strokeLinecap="round"
+                              strokeLinejoin="round"
+                              strokeWidth="3"
+                              viewBox="0 0 24 24"
+                              stroke="currentColor"
+                            >
+                              <path d="M5 13l4 4L19 7" />
+                            </svg>
+                          )}
+                        </div>
                       </div>
-                    </div>
-                  </div>
 
-                  {/* Expiry and CVC Fields */}
-                  <div className="flex">
-                    <div className="flex-1 border-r border-gray-300 p-4">
-                      <input
-                        type="text"
-                        placeholder="MM/YY"
-                        className="w-full text-base outline-none"
-                      />
-                    </div>
-                    <div className="flex-1 p-4 flex items-center justify-between">
-                      <input
-                        type="text"
-                        placeholder="CVC"
-                        className="flex-1 text-base outline-none"
-                      />
-                      <CVCIcon />
-                    </div>
-                  </div>
-                </div>
-
-                {/* Billing Address Section */}
-                <h3 className="text-lg sm:text-xl font-normal text-gray-700 mb-2">
-                  Billing address
-                </h3>
-
-                <div className="border border-gray-300 rounded-lg overflow-hidden mb-6">
-                  {/* Country Field */}
-                  <div className="border-b border-gray-300 p-4">
-                    <div className="flex items-center justify-between">
-                      <div className="flex-1">
-                        <p className="text-sm text-gray-600 mb-1">
-                          Country or region
-                        </p>
-                        <p className="text-base font-medium">United States</p>
+                      <div className="flex items-center gap-3 p-4 rounded-xl  bg-secondary w-full">
+                        {/* Card Icon */}
+                        <DateDB2Icon />
+                        {/* Card Details */}
+                        <div className="flex-1">
+                          <div className="text-gray-900 font-medium text-base">
+                            {card.type}
+                          </div>
+                          <div className="text-gray-500 text-sm mt-0.5">
+                            •••• •••• •••• {card.lastFour}
+                          </div>
+                        </div>
                       </div>
-                      <svg
-                        className="w-5 h-5 text-gray-600"
-                        fill="none"
-                        stroke="currentColor"
-                        viewBox="0 0 24 24"
-                      >
-                        <path
-                          strokeLinecap="round"
-                          strokeLinejoin="round"
-                          strokeWidth={2}
-                          d="M19 9l-7 7-7-7"
-                        />
-                      </svg>
-                    </div>
-                  </div>
-
-                  {/* ZIP Field */}
-                  <div className="p-4">
-                    <input
-                      type="text"
-                      placeholder="ZIP"
-                      className="w-full text-base outline-none"
-                    />
-                  </div>
+                    </label>
+                  ))}
                 </div>
-
-                {/* Save Card Checkbox */}
-                <div className="flex items-center gap-3 mb-6">
-                  <input
-                    type="checkbox"
-                    id="saveCard"
-                    checked={saveCard}
-                    onChange={(e) => setSaveCard(e.target.checked)}
-                    className="w-5 h-5 border-2 border-gray-300 rounded cursor-pointer"
-                  />
-                  <label
-                    htmlFor="saveCard"
-                    className="text-base text-gray-700 cursor-pointer"
-                  >
-                    Save this card for future payment
-                  </label>
-                </div>
-
-                <Button
-                  // onClick={() => setPaymentModal("isEdit", false)}
-                  size="lg"
-                  className="w-full"
-                >
-                  Save changes
-                </Button>
               </div>
             </div>
-
             {/* Right Column - Order Details */}
             <div className="lg:col-span-4">
               <div className="border border-gray-200 rounded-lg   top-8">

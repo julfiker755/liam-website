@@ -7,241 +7,159 @@ import { TableSkeleton } from "@/components/reusable/table-skeleton";
 import { CustomTable } from "@/components/reusable/custom-table";
 import { Pagination } from "@/components/reusable/pagination";
 import SelectBox from "@/components/reusable/select-box";
-import { Button, TableCell, TableRow } from "@/components/ui";
+import { TableCell, TableRow } from "@/components/ui";
 import useConfirmation from "@/provider/confirmation";
 import { dummyJson } from "@/components/dummy-json";
 import Avatars from "@/components/reusable/avater";
 import { useGlobalState } from "@/hooks";
 import Link from "next/link";
-import { useState } from "react";
 
-type VendorData = {
-  id: number;
-  avatar: string;
-  name: string;
-  email: string;
-  address: string;
-  business_name: string;
-  business_address: string;
-  totalPackage: number;
-  totalStuff: number;
-  status: string | null;
-  actions: {
-    view: boolean;
-    delete: boolean;
-  };
-};
-
-const initialData: VendorData[] = [
+const data = [
   {
-    id: 1,
     avatar: "/images/avatar.png",
     name: "Elizabeth Olson",
     email: "example@gmail.com",
     address: "47 W 13th St, New York, NY 10011, USA",
-    business_name: "Tech Solutions Inc.",
-    business_address: "123 Business Plaza, New York, NY 10001, USA",
     totalPackage: 6,
     totalStuff: 20,
-    status: null,
     actions: {
       view: true,
       delete: true,
     },
   },
   {
-    id: 2,
     avatar: "/images/avatar.png",
     name: "Elizabeth Olson",
     email: "example@gmail.com",
     address: "47 W 13th St, New York, NY 10011, USA",
-    business_name: "Tech Solutions Inc.",
-    business_address: "123 Business Plaza, New York, NY 10001, USA",
     totalPackage: 6,
     totalStuff: 20,
-    status: null,
     actions: {
       view: true,
       delete: true,
     },
   },
   {
-    id: 3,
     avatar: "/images/avatar.png",
     name: "Elizabeth Olson",
     email: "example@gmail.com",
     address: "47 W 13th St, New York, NY 10011, USA",
-    business_name: "Tech Solutions Inc.",
-    business_address: "123 Business Plaza, New York, NY 10001, USA",
     totalPackage: 6,
     totalStuff: 20,
-    status: null,
     actions: {
       view: true,
       delete: true,
     },
   },
   {
-    id: 4,
     avatar: "/images/avatar.png",
     name: "Elizabeth Olson",
     email: "example@gmail.com",
     address: "47 W 13th St, New York, NY 10011, USA",
-    business_name: "Tech Solutions Inc.",
-    business_address: "123 Business Plaza, New York, NY 10001, USA",
     totalPackage: 6,
     totalStuff: 20,
-    status: null,
     actions: {
       view: true,
       delete: true,
     },
   },
   {
-    id: 5,
     avatar: "/images/avatar.png",
     name: "Elizabeth Olson",
     email: "example@gmail.com",
     address: "47 W 13th St, New York, NY 10011, USA",
-    business_name: "Tech Solutions Inc.",
-    business_address: "123 Business Plaza, New York, NY 10001, USA",
     totalPackage: 6,
     totalStuff: 20,
-    status: null,
     actions: {
       view: true,
       delete: true,
     },
   },
   {
-    id: 6,
     avatar: "/images/avatar.png",
     name: "Elizabeth Olson",
     email: "example@gmail.com",
     address: "47 W 13th St, New York, NY 10011, USA",
-    business_name: "Tech Solutions Inc.",
-    business_address: "123 Business Plaza, New York, NY 10001, USA",
     totalPackage: 6,
     totalStuff: 20,
-    status: null,
     actions: {
       view: true,
       delete: true,
     },
   },
   {
-    id: 7,
     avatar: "/images/avatar.png",
     name: "Elizabeth Olson",
     email: "example@gmail.com",
     address: "47 W 13th St, New York, NY 10011, USA",
-    business_name: "Tech Solutions Inc.",
-    business_address: "123 Business Plaza, New York, NY 10001, USA",
     totalPackage: 6,
     totalStuff: 20,
-    status: null,
     actions: {
       view: true,
       delete: true,
     },
   },
   {
-    id: 8,
     avatar: "/images/avatar.png",
     name: "Elizabeth Olson",
     email: "example@gmail.com",
     address: "47 W 13th St, New York, NY 10011, USA",
-    business_name: "Tech Solutions Inc.",
-    business_address: "123 Business Plaza, New York, NY 10001, USA",
     totalPackage: 6,
     totalStuff: 20,
-    status: null,
     actions: {
       view: true,
       delete: true,
     },
   },
   {
-    id: 9,
     avatar: "/images/avatar.png",
     name: "Elizabeth Olson",
     email: "example@gmail.com",
     address: "47 W 13th St, New York, NY 10011, USA",
-    business_name: "Tech Solutions Inc.",
-    business_address: "123 Business Plaza, New York, NY 10001, USA",
     totalPackage: 6,
     totalStuff: 20,
-    status: null,
     actions: {
       view: true,
       delete: true,
     },
   },
   {
-    id: 10,
     avatar: "/images/avatar.png",
     name: "Elizabeth Olson",
     email: "example@gmail.com",
     address: "47 W 13th St, New York, NY 10011, USA",
-    business_name: "Tech Solutions Inc.",
-    business_address: "123 Business Plaza, New York, NY 10001, USA",
     totalPackage: 6,
     totalStuff: 20,
-    status: null,
     actions: {
       view: true,
       delete: true,
     },
   },
   {
-    id: 11,
     avatar: "/images/avatar.png",
     name: "Elizabeth Olson",
     email: "example@gmail.com",
     address: "47 W 13th St, New York, NY 10011, USA",
-    business_name: "Tech Solutions Inc.",
-    business_address: "123 Business Plaza, New York, NY 10001, USA",
     totalPackage: 6,
     totalStuff: 20,
-    status: null,
     actions: {
       view: true,
       delete: true,
     },
   },
 ];
-
 const intState = {
   page: 1,
   isPreview: false,
 };
 
-// Status color configuration
-const getStatusStyle = (status: string | null) => {
-  if (!status) return "";
-
-  switch (status.toLowerCase()) {
-    case "pending":
-      return "bg-yellow-100 text-yellow-800 border border-yellow-300";
-    case "approved":
-      return "bg-green-100 text-green-800 border border-green-300";
-    case "rejected":
-      return "bg-red-100 text-red-800 border border-red-300";
-    default:
-      return "";
-  }
-};
-
 export default function Vendors() {
   const { confirm } = useConfirmation();
   const [global, updateGlobal] = useGlobalState(intState);
-  const [data, setData] = useState<VendorData[]>(initialData);
-
   const headers = [
     "Name",
     "Email",
-    "Business Name",
-    "Business Address",
+    "Address",
     "Total Package",
     "Total Stuff",
     "Action",
@@ -258,16 +176,6 @@ export default function Vendors() {
       console.log(id);
     }
   };
-
-  const handleStatusChange = (vendorId: number, newStatus: string) => {
-    setData((prevData) =>
-      prevData.map((vendor) =>
-        vendor.id === vendorId ? { ...vendor, status: newStatus } : vendor
-      )
-    );
-    console.log(`Vendor ${vendorId} status changed to: ${newStatus}`);
-  };
-
   return (
     <div>
       <AdminNavTitle
@@ -325,58 +233,27 @@ export default function Vendors() {
               </TableCell>
               <TableCell>{item.email}</TableCell>
               <TableCell>
-                <h5>{item.business_name}</h5>
+                {" "}
+                <h5>{item.address}</h5>
               </TableCell>
               <TableCell>
-                <h5>{item.business_address}</h5>
-              </TableCell>
-              <TableCell>
+                {" "}
                 <h5 className="ml-7">{item.totalPackage}</h5>
               </TableCell>
               <TableCell>
+                {" "}
                 <h5 className="ml-6">{item.totalStuff}</h5>
               </TableCell>
               <TableCell>
                 <ul className="flex gap-2">
                   <li>
                     <Link href="/admin/vendors/123">
+                      {" "}
                       <PreviewBtn />
                     </Link>
                   </li>
                   <li>
-                    <DeleteBtn onClick={() => handleDelete(item.id)} />
-                  </li>
-                  <li>
-                    {item.status ? (
-                      <div
-                        className={`px-4 py-2.5 rounded-md font-medium text-center min-w-[150px] cursor-pointer ${getStatusStyle(item.status)}`}
-                        onClick={() =>
-                          setData((prevData) =>
-                            prevData.map((vendor) =>
-                              vendor.id === item.id
-                                ? { ...vendor, status: null }
-                                : vendor
-                            )
-                          )
-                        }
-                      >
-                        {item.status}
-                      </div>
-                    ) : (
-                      <SelectBox
-                        placeholder="Status Change"
-                        icon={false}
-                        options={[
-                          { label: "Pending", value: "Pending" },
-                          { label: "Approved", value: "Approved" },
-                          { label: "Rejected", value: "Rejected" },
-                        ]}
-                        onChange={(value: string) =>
-                          handleStatusChange(item.id, value)
-                        }
-                        triggerClassName="bg-secondary min-w-[150px] border border-none py-5"
-                      />
-                    )}
+                    <DeleteBtn onClick={() => handleDelete("4343")} />
                   </li>
                 </ul>
               </TableCell>

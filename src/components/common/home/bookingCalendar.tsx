@@ -91,7 +91,7 @@ export default function BookingCalendar() {
   };
 
   return (
-    <div className="p-4 sm:p-6 bg-secondary rounded-lg">
+    <div className="p-4 sm:p-6 bg-secondary rounded-lg xl:min-h-[650px]">
       {/* Header */}
       <div className="mb-4">
         {/* Month Selector */}
@@ -100,7 +100,7 @@ export default function BookingCalendar() {
           <div className="flex items-center gap-2">
             <button
               onClick={handlePreviousMonth}
-              className="p-1  rounded transition-colors"
+              className="p-1 rounded transition-colors"
               aria-label="Previous month"
             >
               <svg

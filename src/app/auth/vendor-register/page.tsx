@@ -4,19 +4,28 @@ import { useRouter } from "next/navigation";
 import { FieldValues, useForm } from "react-hook-form";
 import { zodResolver } from "@hookform/resolvers/zod";
 import { FromInput } from "@/components/reusable/form-input";
-import { EmailIcon, GoogleIcon, LockIcon, UserIcon } from "@/icon";
+import {
+  BusinessIcon,
+  EmailIcon,
+  GoogleIcon,
+  LocationFieldIcon,
+  LockIcon,
+  UserIcon,
+} from "@/icon";
 import Form from "@/components/reusable/from";
 import SubTitle from "@/components/reusable/title";
 import { ArrowRight } from "lucide-react";
-import { register_sc } from "@/lib";
+import { register_sc, register_vendor } from "@/lib";
 import Link from "next/link";
 
-export default function Login() {
+export default function VendorRegister() {
   const router = useRouter();
   const from = useForm({
-    resolver: zodResolver(register_sc),
+    resolver: zodResolver(register_vendor),
     defaultValues: {
       name: "",
+      business_name: "",
+      address: "",
       email: "",
       password: "",
       c_password: "",
@@ -28,13 +37,25 @@ export default function Login() {
   };
   return (
     <div className="w-11/12 lg:max-w-4xl bg-secondary rounded-figma-sm p-5 lg:p-10 my-30 mx-auto">
-      <SubTitle text="User Registration" svg={false} />
+      <SubTitle text="Vendor Registration" svg={false} />
       <Form className="space-y-4 pt-8" from={from} onSubmit={handleSubmit}>
         <FromInput
           className="h-10"
           name="name"
           placeholder="Your full name"
           icon={<UserIcon />}
+        />
+        <FromInput
+          className="h-10"
+          name="business_name"
+          placeholder="Your business name"
+          icon={<BusinessIcon />}
+        />
+        <FromInput
+          className="h-10"
+          name="address"
+          placeholder="Your address"
+          icon={<LocationFieldIcon />}
         />
         <FromInput
           className="h-10"
@@ -59,7 +80,9 @@ export default function Login() {
         />
 
         <div>
-          <Button className="w-full"> Login</Button>
+          <Link href={"/auth/vendor-verification"}>
+            <Button className="w-full"> Login</Button>
+          </Link>
         </div>
       </Form>
 
