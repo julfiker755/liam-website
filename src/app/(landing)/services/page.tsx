@@ -35,7 +35,7 @@ const services: Service[] = [
     price: 250,
     rating: 4.8,
     reviews: 128,
-    image: "/assets/service1.png",
+    image: "/images/service1.png",
   },
   {
     id: 2,
@@ -44,7 +44,7 @@ const services: Service[] = [
     price: 250,
     rating: 4.9,
     reviews: 256,
-    image: "/assets/service1.png",
+    image: "/images/service1.png",
   },
   {
     id: 3,
@@ -53,7 +53,7 @@ const services: Service[] = [
     price: 250,
     rating: 4.7,
     reviews: 89,
-    image: "/assets/service1.png",
+    image: "/images/service1.png",
   },
   {
     id: 4,
@@ -62,7 +62,7 @@ const services: Service[] = [
     price: 250,
     rating: 4.7,
     reviews: 89,
-    image: "/assets/service4.png",
+    image: "/images/service4.png",
   },
   {
     id: 5,
@@ -71,7 +71,7 @@ const services: Service[] = [
     price: 250,
     rating: 4.7,
     reviews: 89,
-    image: "/assets/service1.png",
+    image: "/images/service1.png",
   },
   {
     id: 6,
@@ -80,7 +80,7 @@ const services: Service[] = [
     price: 250,
     rating: 4.7,
     reviews: 89,
-    image: "/assets/service1.png",
+    image: "/images/service1.png",
   },
   {
     id: 7,
@@ -89,7 +89,7 @@ const services: Service[] = [
     price: 250,
     rating: 4.7,
     reviews: 89,
-    image: "/assets/service1.png",
+    image: "/images/service1.png",
   },
   {
     id: 8,
@@ -98,7 +98,7 @@ const services: Service[] = [
     price: 250,
     rating: 4.7,
     reviews: 89,
-    image: "/assets/service1.png",
+    image: "/images/service4.png",
   },
 ];
 
@@ -143,7 +143,7 @@ export default function ServicePage() {
               {/* Service Image */}
               <div className="relative w-full h-64 bg-muted overflow-hidden">
                 <Image
-                  src={assets.service1}
+                  src={service.image}
                   alt={"photo"}
                   fill
                   className="object-cover rounded-[16px] transition duration-300"

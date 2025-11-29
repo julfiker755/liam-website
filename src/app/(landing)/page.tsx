@@ -14,9 +14,17 @@ export default function Home() {
   return (
     <>
       <CleaningServiceHome />
-      {loginUser && <TopService />}
-      <Customer />
-      <Vendor />
+      {loginUser ? (
+        <div>
+          <TopService />
+        </div>
+      ) : (
+        <div>
+          <Customer />
+          <Vendor />
+        </div>
+      )}
+
       <Works />
       <About />
       <LoveGuest />

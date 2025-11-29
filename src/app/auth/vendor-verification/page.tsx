@@ -32,7 +32,7 @@ export default function VendorVerifaction() {
           </div>
 
           {/* Status Section */}
-          <div className="bg-[#FFFFFF] rounded-[20px] p-6 md:p-8 text-center">
+          <div className="bg-[#FFFFFF] rounded-figma-sm p-6 md:p-8 text-center">
             <h2 className="text-xl md:text-2xl font-bold text-gray-900 mb-3">
               Your application is in review
             </h2>

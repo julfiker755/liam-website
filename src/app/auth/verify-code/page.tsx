@@ -37,10 +37,12 @@ function VarifyCodeChild() {
         verify that code to change your password.`}
       </p>
       <Form className="space-y-4 pt-8" from={from} onSubmit={handleSubmit}>
-        <FromInput className="h-10" name="code" placeholder="Enter code here" />
+        <FromInput className="h-11" name="code" placeholder="Enter code here" />
 
         <div>
-          <Button className="w-full">Verify</Button>
+          <Button className="w-full" size="lg">
+            Verify
+          </Button>
         </div>
       </Form>
 

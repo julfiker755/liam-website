@@ -86,7 +86,7 @@ const PaymentPage = () => {
   };
 
   return (
-    <div>
+    <div className="px-2 sm:px-4 lg:px-0 2xl:mb-40">
       <h1 className="text-xl font-semibold mb-6 ">Payment settings</h1>
 
       <div className="grid grid-cols-1 md:grid-cols-2 xl:grid-cols-3 gap-3">

@@ -40,39 +40,39 @@ export default function VendorRegister() {
       <SubTitle text="Vendor Registration" svg={false} />
       <Form className="space-y-4 pt-8" from={from} onSubmit={handleSubmit}>
         <FromInput
-          className="h-10"
+          className="h-11"
           name="name"
           placeholder="Your full name"
           icon={<UserIcon />}
         />
         <FromInput
-          className="h-10"
+          className="h-11"
           name="business_name"
           placeholder="Your business name"
           icon={<BusinessIcon />}
         />
         <FromInput
-          className="h-10"
+          className="h-11"
           name="address"
           placeholder="Your address"
           icon={<LocationFieldIcon />}
         />
         <FromInput
-          className="h-10"
+          className="h-11"
           name="email"
           placeholder="Email"
           icon={<EmailIcon />}
         />
 
         <FromInput
-          className="h-10"
+          className="h-11"
           name="password"
           placeholder="Password"
           eye={true}
           icon={<LockIcon />}
         />
         <FromInput
-          className="h-10"
+          className="h-11"
           name="c_password"
           placeholder="Confirm password"
           eye={true}
@@ -81,7 +81,10 @@ export default function VendorRegister() {
 
         <div>
           <Link href={"/auth/vendor-verification"}>
-            <Button className="w-full"> Login</Button>
+            <Button className="w-full" size="lg">
+              {" "}
+              Login
+            </Button>
           </Link>
         </div>
       </Form>

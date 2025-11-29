@@ -31,7 +31,7 @@ export default function Login() {
       <SubTitle text="User Login" svg={false} />
       <Form className="space-y-4 pt-8" from={from} onSubmit={handleSubmit}>
         <FromInput
-          className="h-10"
+          className="h-11"
           name="email"
           placeholder="Email"
           icon={<EmailIcon />}
@@ -39,7 +39,7 @@ export default function Login() {
 
         <div>
           <FromInput
-            className="h-10"
+            className="h-11"
             name="password"
             placeholder="Password"
             eye={true}
@@ -61,7 +61,10 @@ export default function Login() {
 
         <div>
           <Link href={"/"}>
-            <Button className="w-full"> Login</Button>
+            <Button className="w-full" size="lg">
+              {" "}
+              Login
+            </Button>
           </Link>
         </div>
       </Form>

@@ -34,14 +34,17 @@ export default function ForgotPassword() {
       </p>
       <Form className="space-y-4 pt-8" from={from} onSubmit={handleSubmit}>
         <FromInput
-          className="h-10"
+          className="h-11"
           name="email"
           placeholder="Email"
           icon={<EmailIcon />}
         />
 
         <div>
-          <Button className="w-full"> Send code</Button>
+          <Button className="w-full" size="lg">
+            {" "}
+            Send code
+          </Button>
         </div>
       </Form>
     </div>

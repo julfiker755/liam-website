@@ -11,8 +11,8 @@ const AccountLayout = ({ children }: AccountLayoutProps) => {
   return (
     <div className="container px-4 ">
       <div className="pt-6 xl:pt-10 pb-10">
-        <div className="flex flex-1 flex-col lg:flex-row gap-4 space-x-6 ">
-          <div className="block w-full lg:w-[300px] lg:shrink-0 lg:sticky top-24 h-fit ">
+        <div className="flex flex-1 flex-col lg:flex-row gap-4  ">
+          <div className="block w-full lg:w-[300px] lg:shrink-0 top-24 h-fit ">
             <SidebarNav items={sidebarNavItems} defaultPath="/account" />
             <div className="px-2">
               <Link href={"/auth"}>

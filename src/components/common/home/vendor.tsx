@@ -1,6 +1,7 @@
 import Image from "next/image";
 import SubTitle from "@/components/reusable/title";
 import { Button } from "@/components/ui";
+import Link from "next/link";
 
 function Vendor() {
   return (
@@ -41,9 +42,11 @@ function Vendor() {
                 payment processing.
               </li>
             </ul>
-            <Button className="mt-4 xl:mt-0" size="lg" icon={true}>
-              Continue as vendor
-            </Button>
+            <Link href={"/auth/vendor-register"}>
+              <Button className="mt-4 xl:mt-0" size="lg" icon={true}>
+                Continue as vendor
+              </Button>
+            </Link>
           </div>
 
           <div>

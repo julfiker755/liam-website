@@ -1,6 +1,7 @@
 import SubTitle from "@/components/reusable/title";
 import { Button } from "@/components/ui";
 import Image from "next/image";
+import Link from "next/link";
 
 const About = () => {
   return (
@@ -44,7 +45,6 @@ const About = () => {
               </div>
 
               <ul className="list-disc list-inside space-y-2">
-
                 <li className="">
                   <span className="font-bold">For Our Customers:</span> We focus
                   on making the booking experience totally seamless. Instant
@@ -60,9 +60,11 @@ const About = () => {
                   books, and grow their business—all in one clean place.
                 </li>
               </ul>
-              <Button className="mt-4 xl:mt-0" size="lg" icon={true}>
-                Get a quote
-              </Button>
+              <Link href={"/services"}>
+                <Button className="mt-4 xl:mt-0" size="lg" icon={true}>
+                  Get a quote
+                </Button>
+              </Link>
             </div>
           </div>
         </div>

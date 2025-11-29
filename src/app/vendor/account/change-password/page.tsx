@@ -5,7 +5,7 @@ import React from "react";
 
 export default function ChangePassword() {
   return (
-    <div>
+    <div className="2xl:mb-10">
       <h1 className="font-semibold text-lg mb-4">Change Password </h1>
       <UpdatePassword
         btnStyle2="flex w-full justify-end"

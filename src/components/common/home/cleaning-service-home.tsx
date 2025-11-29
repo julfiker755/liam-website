@@ -1,14 +1,18 @@
 import { Button } from "@/components/ui";
 import photo1 from "@/assets/foodePhoto.png";
 import Image from "next/image";
-import { ArrowBlackRightIcon, ArrowRightIcon } from "@/icon";
+import { ArrowBlackRightIcon } from "@/icon";
 import Link from "next/link";
+import SearchBox2 from "../super-dash/reuse/search-box2";
+import { loginUser } from "@/assets";
 
 const CleaningServiceHome = () => {
   return (
     <div className="mt-[60px] lg:mt-[120px]">
       <div className="px-4 my-6">
-        <div className="relative bg-secondary rounded-[30px] md:rounded-[58px] py-4 md:py-10 lg:py-10 px-10  md:max-w-[600px] lg:max-w-[700px] xl:max-w-[1180px] mx-auto h-auto xl:h-[290px] flex flex-col justify-center items-center">
+        <div
+          className={`relative bg-secondary rounded-[30px] md:rounded-[58px] py-4 md:py-10 lg:py-10 px-10  md:max-w-[600px] lg:max-w-[700px] xl:max-w-[1180px] mx-auto  flex flex-col justify-center items-center h-auto  ${loginUser ? " xl:h-[400px]" : "xl:h-[300px]"}`}
+        >
           <div className="space-y-6  ">
             <div className="flex flex-col lg:flex-row justify-center items-center md:gap-4 lg:gap-0">
               <h1 className="text-[20px] xl:text-[36px] text-center font-bold text-[#000000]">
@@ -48,23 +52,48 @@ const CleaningServiceHome = () => {
               top-tier cleaning vendors. Find or offer the best cleaning
               services in NYC, all in one place.
             </p>
-            <div className="flex flex-col lg:flex-row justify-center items-center gap-4">
-              <Link href={"/auth"}>
-                <Button
-                  icon={true}
-                  className="w-[270px] md:w-[300px] md:font-bold "
-                >
-                  Continue as user
-                </Button>
-              </Link>
-              <Button
-                icon={false}
-                className="w-[270px] md:w-[300px] md:font-bold bg-transparent border border-gray-200 text-black"
-              >
-                Are You a Service Provider? Join Us!
-                <ArrowBlackRightIcon className="text-black" />
-              </Button>
-            </div>
+
+            {loginUser ? (
+              <>
+                <SearchBox2 />
+                <div className="flex justify-center">
+                  <Link href={"/services"}>
+                    <Button
+                      icon={true}
+                      size="lg"
+                      className="w-[270px] md:w-[300px] md:font-bold "
+                    >
+                      Browse all services
+                    </Button>
+                  </Link>
+                </div>
+              </>
+            ) : (
+              <>
+                <div className="flex flex-col lg:flex-row justify-center items-center gap-4">
+                  <Link href={"/auth"}>
+                    <Button
+                      icon={true}
+                      size="lg"
+                      className="w-[270px] md:w-[300px] md:font-bold "
+                    >
+                      Continue as user
+                    </Button>
+                  </Link>
+
+                  <Link href={"/auth/vendor-register"}>
+                    <Button
+                      icon={false}
+                      size="lg"
+                      className="w-[270px] md:w-[300px] md:font-bold bg-transparent border border-gray-200 text-black"
+                    >
+                      Are You a Service Provider? Join Us!
+                      <ArrowBlackRightIcon className="text-black" />
+                    </Button>
+                  </Link>
+                </div>
+              </>
+            )}
           </div>
 
           {/* food photo */}

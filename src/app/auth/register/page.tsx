@@ -31,27 +31,27 @@ export default function Login() {
       <SubTitle text="User Registration" svg={false} />
       <Form className="space-y-4 pt-8" from={from} onSubmit={handleSubmit}>
         <FromInput
-          className="h-10"
+          className="h-11"
           name="name"
           placeholder="Your full name"
           icon={<UserIcon />}
         />
         <FromInput
-          className="h-10"
+          className="h-11"
           name="email"
           placeholder="Email"
           icon={<EmailIcon />}
         />
 
         <FromInput
-          className="h-10"
+          className="h-11"
           name="password"
           placeholder="Password"
           eye={true}
           icon={<LockIcon />}
         />
         <FromInput
-          className="h-10"
+          className="h-11"
           name="c_password"
           placeholder="Confirm password"
           eye={true}
@@ -59,7 +59,10 @@ export default function Login() {
         />
 
         <div>
-          <Button className="w-full"> Login</Button>
+          <Button className="w-full" size="lg">
+            {" "}
+            Login
+          </Button>
         </div>
       </Form>
 

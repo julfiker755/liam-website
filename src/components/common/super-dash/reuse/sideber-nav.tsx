@@ -39,10 +39,16 @@ export default function SidebarNav({
   };
 
   const isActive = (href: string) => {
+    const customActiveMap: Record<string, string> = {
+      "/account/pending-package-history": "/account/booking",
+      "/account/ongoing-package-history": "/account/booking",
+    };
+
+    const resolvedPath = customActiveMap[pathname] || pathname;
     if (href === defaultPath) {
-      return pathname === href;
+      return resolvedPath === href;
     }
-    return pathname.startsWith(href);
+    return resolvedPath.startsWith(href);
   };
 
   return (

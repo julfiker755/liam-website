@@ -36,20 +36,22 @@ export default function ResetPassword() {
       </p>
       <Form className="space-y-4 pt-8" from={from} onSubmit={handleSubmit}>
         <FromInput
-          className="h-10"
+          className="h-11"
           name="password"
           placeholder="Password"
           icon={<LockIcon />}
         />
         <FromInput
-          className="h-10"
+          className="h-11"
           name="c_password"
           placeholder="Confirm password"
           icon={<LockIcon />}
         />
 
         <div>
-          <Button className="w-full">Submit</Button>
+          <Button className="w-full" size="lg">
+            Submit
+          </Button>
         </div>
       </Form>
     </div>
