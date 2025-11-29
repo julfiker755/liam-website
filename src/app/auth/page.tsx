@@ -12,8 +12,11 @@ import { sign_In } from "@/lib";
 import Link from "next/link";
 import { ArrowRight } from "lucide-react";
 import IconBox from "@/components/reusable/Icon-box";
+import { useAppDispatch } from "@/redux/hooks";
+import { setUser } from "@/redux/features/authSlice";
 
 export default function Login() {
+  const dispatch = useAppDispatch();
   const router = useRouter();
   const from = useForm({
     resolver: zodResolver(sign_In),
@@ -24,7 +27,33 @@ export default function Login() {
   });
 
   const handleSubmit = async (values: FieldValues) => {
-    console.log(values);
+    if (values.email == "user@gmail.com") {
+      dispatch(
+        setUser({
+          name: "John Doe",
+          email: values.email,
+          role: "user",
+        })
+      );
+    } else if (values.email == "vendor@gmail.com") {
+      router.push("/vendor");
+      dispatch(
+        setUser({
+          name: "John Doe",
+          email: values.email,
+          role: "vendor",
+        })
+      );
+    } else if (values.email == "admin@gmail.com") {
+      router.push("/admin");
+      dispatch(
+        setUser({
+          name: "John Doe",
+          email: values.email,
+          role: "admin",
+        })
+      );
+    }
   };
   return (
     <div className="w-11/12 lg:max-w-4xl bg-secondary rounded-figma-sm p-4 lg:p-10 my-30 mx-auto">
@@ -60,12 +89,10 @@ export default function Login() {
         </div>
 
         <div>
-          <Link href={"/"}>
-            <Button className="w-full" size="lg">
-              {" "}
-              Login
-            </Button>
-          </Link>
+          <Button className="w-full" size="lg">
+            {" "}
+            Login
+          </Button>
         </div>
       </Form>
 

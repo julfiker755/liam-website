@@ -9,8 +9,10 @@ import IconBox from "../reusable/Icon-box";
 import FavIcon from "@/favicon/favicon";
 import Avatars from "../reusable/avater";
 import assets, { loginUser } from "@/assets";
+import { useAppSelector } from "@/redux/hooks";
 
 const Navbar = () => {
+  const { user } = useAppSelector((state) => state.auth);
   const [isMenuOpen, setIsMenuOpen] = useState(false);
   const pathname = usePathname();
 
@@ -33,6 +35,7 @@ const Navbar = () => {
   }, [isMenuOpen]);
 
   const toggleMenu = () => setIsMenuOpen(!isMenuOpen);
+  console.log(user);
 
   return (
     <>
