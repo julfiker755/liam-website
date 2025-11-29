@@ -1,5 +1,5 @@
-
 import { Button } from "@/components/ui";
+import Link from "next/link";
 
 function VendorBox() {
   return (
@@ -9,9 +9,9 @@ function VendorBox() {
           className="h-auto xl:h-[380px] mb-10 flex items-center rounded-2xl relative overflow-hidden"
           style={{
             backgroundImage: "url('/images/vendor-web-account.png')",
-            backgroundSize: '100% 100%',
-            backgroundPosition: 'center',
-            backgroundRepeat: 'no-repeat',
+            backgroundSize: "100% 100%",
+            backgroundPosition: "center",
+            backgroundRepeat: "no-repeat",
           }}
         >
           {/* Dark overlay for small devices */}
@@ -26,9 +26,11 @@ function VendorBox() {
               professionals with clients across New York City. Get reliable,
               quality leads directly to your business.
             </p>
-            <Button className="mt-4 xl:mt-0" size="lg" icon={true}>
-              Create your vendor account
-            </Button>
+            <Link href="/auth/vendor-register">
+              <Button className="mt-4 xl:mt-0" size="lg" icon={true}>
+                Create your vendor account
+              </Button>
+            </Link>
           </div>
         </div>
       </div>
