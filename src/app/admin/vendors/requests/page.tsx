@@ -6,13 +6,14 @@ import { TableNoItem } from "@/components/reusable/table-no-item";
 import { TableSkeleton } from "@/components/reusable/table-skeleton";
 import { CustomTable } from "@/components/reusable/custom-table";
 import { Pagination } from "@/components/reusable/pagination";
-import SelectBox from "@/components/reusable/select-box";
 import { Button, TableCell, TableRow } from "@/components/ui";
 import useConfirmation from "@/provider/confirmation";
 import { dummyJson } from "@/components/dummy-json";
 import Avatars from "@/components/reusable/avater";
 import { useGlobalState } from "@/hooks";
 import Link from "next/link";
+import { Check } from "lucide-react";
+import Modal from "@/components/reusable/modal";
 import FavIcon from "@/favicon/favicon";
 
 const data = [
@@ -154,24 +155,17 @@ const intState = {
   isPreview: false,
 };
 
-export default function Vendors() {
+export default function VendorRequests() {
   const { confirm } = useConfirmation();
   const [global, updateGlobal] = useGlobalState(intState);
-  const headers = [
-    "Name",
-    "Email",
-    "Address",
-    "Total Package",
-    "Total Stuff",
-    "Action",
-  ];
+  const headers = ["Name", "Email", "Address", "Action"];
   const isLoading = false;
 
   const handleDelete = async (id: any) => {
     const confirmed = await confirm({
-      title: "Delete vendor ?",
+      title: "Delete Vendor Request?",
       description:
-        "You are going to delete this vendor. After deleting, this vendor will no longer available in your platform",
+        "You are going to delete this vendor request. After deleting, this vendor request will no longer available in your platform",
     });
     if (confirmed) {
       console.log(id);
@@ -180,31 +174,21 @@ export default function Vendors() {
   return (
     <div>
       <AdminNavTitle
-        title="Vendor Management"
-        subTitle="You can manage all the vendors of your platform from here"
+        title="Vendor Requests"
+        subTitle="You can manage all the vendor requests those wants to create an account in your platform."
       />
       <div className="flex flex-wrap space-y-3 lg:space-y-0 mt-2 items-center justify-between">
-        <SearchBox onChange={(e) => console.log(e)} />
+        <SearchBox
+          placeholder="Search Vendor"
+          onChange={(e) => console.log(e)}
+        />
         <div className="flex gap-2">
           <Link href="/admin/vendors/requests">
-            <Button size="lg">
-              <FavIcon name="question_cc" />
-              Requests:<span className="ml-px font-bold">10</span>
+            <Button size="lg" className="bg-[#2D9D1E]">
+              <Check />
+              Approve all
             </Button>
           </Link>
-          <SelectBox
-            placeholder="Filter"
-            icon={true}
-            options={[
-              { label: "New vendors", value: "new_vendors" },
-              { label: "Most package offered", value: "most_package_offered" },
-              {
-                label: "Least package offered",
-                value: "least_package_offered",
-              },
-            ]}
-            triggerClassName="bg-secondary border border-none py-5"
-          />
         </div>
       </div>
       <CustomTable
@@ -248,21 +232,18 @@ export default function Vendors() {
                 {" "}
                 <h5>{item.address}</h5>
               </TableCell>
-              <TableCell>
-                {" "}
-                <h5 className="ml-7">{item.totalPackage}</h5>
-              </TableCell>
-              <TableCell>
-                {" "}
-                <h5 className="ml-6">{item.totalStuff}</h5>
-              </TableCell>
+
               <TableCell>
                 <ul className="flex gap-2">
                   <li>
-                    <Link href="/admin/vendors/123">
-                      {" "}
-                      <PreviewBtn />
-                    </Link>
+                    <PreviewBtn
+                      onClick={() => updateGlobal("isPreview", true)}
+                    />
+                  </li>
+                  <li>
+                    <Button className="bg-secondary size-10">
+                      <Check className="size-5 text-[#2D9D1E]" />
+                    </Button>
                   </li>
                   <li>
                     <DeleteBtn onClick={() => handleDelete("4343")} />
@@ -279,6 +260,45 @@ export default function Vendors() {
           />
         )}
       </CustomTable>
+      {/*  ================= is preview ============= */}
+      <Modal
+        open={global.isPreview}
+        setIsOpen={(value) => updateGlobal("isPreview", value)}
+        title="User Details"
+        titleStyle="text-center"
+        className="sm:max-w-xl"
+      >
+        <div className="space-y-6">
+          <div className="border flex justify-between bg-secondary border-none items-center rounded-xl px-2 py-3">
+            <div className="flex items-center space-x-2">
+              <Avatars
+                src={""}
+                fallback={"T"}
+                alt="profile"
+                fallbackStyle="aStyle"
+              />
+              <div className="leading-5">
+                <h1 className="font-semibold text-lg">Elizabeth Olson</h1>
+                <h1 className="text-secondery-figma">example@gmail.com</h1>
+              </div>
+            </div>
+          </div>
+          <div className="border flex justify-between bg-secondary border-none items-center rounded-xl px-2 py-5">
+            <h1 className="flex items-center space-x-2">
+              <FavIcon name="bug_cc_sm" />
+              <span className="ml-px">Business name goes here</span>
+            </h1>
+          </div>
+          <div className="border flex justify-between bg-secondary border-none items-center rounded-xl px-2 py-5">
+            <h1 className="flex items-center space-x-2">
+              <FavIcon name="location_cc" />
+              <span className="ml-px">
+                70 Washington Square South, New York, NY 10012, United States
+              </span>
+            </h1>
+          </div>
+        </div>
+      </Modal>
     </div>
   );
 }

@@ -11,11 +11,10 @@
 - **Prettier**: Code formatter for consistent code style.
 - **eslint**: JavaScript linter for identifying and reporting on patterns found in ECMAScript/JavaScript code.
 
-
 ### Necessary packages
+
 ```
 1. npx shadcn@latest add card
 
 
-````
-
+```
