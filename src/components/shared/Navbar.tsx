@@ -8,7 +8,7 @@ import Link from "next/link";
 import IconBox from "../reusable/Icon-box";
 import FavIcon from "@/favicon/favicon";
 import Avatars from "../reusable/avater";
-import assets from "@/assets";
+import assets, { loginUser } from "@/assets";
 
 const Navbar = () => {
   const [isMenuOpen, setIsMenuOpen] = useState(false);
@@ -33,9 +33,6 @@ const Navbar = () => {
   }, [isMenuOpen]);
 
   const toggleMenu = () => setIsMenuOpen(!isMenuOpen);
-
-  const loginUser = "kodom_ali";
-  // const loginUser = null;
 
   return (
     <>
@@ -84,19 +81,21 @@ const Navbar = () => {
                   </IconBox>
                 </Link>
 
-                <div className="flex items-center gap-3">
-                  <Image
-                    src={assets.LoginUserPhoto}
-                    alt="user photo"
-                    width={40}
-                    height={40}
-                    className="w-[40px] h-[40px] rounded-[6px]"
-                  />
-                  <div className=" text-black leading-5 mb-1">
-                    <p className="font-semibold">Elizabeth Olson</p>
-                    <p>example@gmail.com</p>
+                <Link href={"/account"}>
+                  <div className="flex items-center gap-3">
+                    <Image
+                      src={assets.LoginUserPhoto}
+                      alt="user photo"
+                      width={40}
+                      height={40}
+                      className="w-[40px] h-[40px] rounded-[6px]"
+                    />
+                    <div className=" text-black leading-5 mb-1">
+                      <p className="font-semibold">Elizabeth Olson</p>
+                      <p>example@gmail.com</p>
+                    </div>
                   </div>
-                </div>
+                </Link>
               </div>
             ) : (
               <div className="hidden lg:flex items-center space-x-3">
@@ -201,7 +200,7 @@ const Navbar = () => {
                     </div>
                   </Link>
 
-                  <Link href={"/vendor-profile"} onClick={toggleMenu}>
+                  <Link href={"/account"} onClick={toggleMenu}>
                     <div className="flex items-center gap-3  rounded-md p-1">
                       <Image
                         src={assets.LoginUserPhoto}

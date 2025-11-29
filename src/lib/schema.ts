@@ -19,6 +19,22 @@ export const sign_In = z.object({
 export const register_sc = sign_In
   .extend({
     name: z.string().nonempty("Full Name is required"),
+    address: z.string().nonempty("Address is required"),
+    c_password: z.string().nonempty("Confirm password is required"),
+  })
+  .refine((value) => value.password === value.c_password, {
+    path: ["c_password"],
+    message: "Passwords must be match.",
+  });
+
+
+
+//  === sign_Up vendor ===
+export const register_vendor = sign_In
+  .extend({
+    name: z.string().nonempty("Full Name is required"),
+    business_name: z.string().nonempty("Business Name is required"),
+    address: z.string().nonempty("Address is required"),
     c_password: z.string().nonempty("Confirm password is required"),
   })
   .refine((value) => value.password === value.c_password, {

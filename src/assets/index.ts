@@ -17,3 +17,7 @@ const assets = {
 };
 
 export default assets;
+
+
+export const loginUser ='kodom_ali';
+// export const loginUser = null;

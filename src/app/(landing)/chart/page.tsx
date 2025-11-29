@@ -1,7 +1,11 @@
-import React from "react";
+import { ChatBox } from "@/components/common/chat";
 
 const ChatPage = () => {
-  return <div>ChatPage</div>;
+  return (
+    <div className="container px-4 my-10">
+      <ChatBox />
+    </div>
+  );
 };
 
 export default ChatPage;

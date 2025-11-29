@@ -120,7 +120,7 @@ const Notification = () => {
   const packagePrice = 250;
 
   return (
-    <div className="container px-4 mb-20">
+    <div className="container px-4 mb-10">
       <SubTitle svg={false} className="text-2xl my-10" text="Notification" />
 
       <div className="space-y-3">
@@ -174,13 +174,6 @@ const Notification = () => {
           </div>
         ))}
       </div>
-
-      {/* <Button
-        onClick={() => setDeliveryReModal("isDReq", true)}
-        className="text-xl font-semibold"
-      >
-        Notification
-      </Button> */}
 
       {/* add delivery req */}
       <Modal2

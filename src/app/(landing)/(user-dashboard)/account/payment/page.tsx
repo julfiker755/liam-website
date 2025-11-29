@@ -121,7 +121,7 @@ const PaymentPage = () => {
           className="bg-secondary cursor-pointer flex justify-center items-center  p-2 rounded-figma-sm"
           onClick={() => setPaymentModal("isAdd", true)}
         >
-          <div className="flex items-center gap-2">
+          <div className="flex items-center gap-2 py-4">
             <Plus />
             <h1 className="text-[20px] font-semibold ">Add new card</h1>
           </div>

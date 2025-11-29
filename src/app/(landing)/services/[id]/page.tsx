@@ -1,7 +1,7 @@
 "use client";
 import React, { useState } from "react";
 import { Plus, Minus, MessageCircle, Star } from "lucide-react";
-import assets from "@/assets";
+import assets, { loginUser } from "@/assets";
 import Image from "next/image";
 import { Button } from "@/components/ui";
 import { ArrowBlackRightIcon, MessageIcon } from "@/icon";
@@ -9,6 +9,7 @@ import PackageDetailsVendor from "@/components/common/packageDetails/package-det
 import PackageDetailsVendorReview from "@/components/common/packageDetails/package-details-vendor-review";
 import PackageDetailsRecoded from "@/components/common/packageDetails/package-details-recomended";
 import Footer from "@/components/shared/Footer";
+import Link from "next/link";
 
 interface AddOn {
   id: number;
@@ -223,9 +224,11 @@ export default function PackageDetails() {
                     <span className="font-semibold text-gray-900">
                       Subtotal: ${calculateSubtotal()}
                     </span>
-                    <Button className="" size="lg" icon={true}>
-                      Continue
-                    </Button>
+                    <Link href={loginUser ? "/booking-schedule" : "/auth"}>
+                      <Button className="" size="lg" icon={true}>
+                        Continue
+                      </Button>
+                    </Link>
                   </div>
                 </div>
               </div>

@@ -15,7 +15,7 @@ import Form from "@/components/reusable/from";
 import { FromInput } from "@/components/reusable/form-input";
 import { useFileUpload } from "@/hooks/useFileUpload";
 import Image from "next/image";
-import profile from "@/assets/profile2.png";
+import profile from "@/assets/profile.png";
 
 const AccountSettings = () => {
   const [{ files }, { getInputProps }] = useFileUpload({
@@ -58,7 +58,7 @@ const AccountSettings = () => {
             />
             <div className="grid place-items-center shadow-md  rounded-full absolute bottom-0 -right-2 cursor-pointer">
               <picture>
-                <img className="size-8" src={profile.src} alt="profile" />
+                <img className="size-10" src={profile.src} alt="profile" />
               </picture>
             </div>
             <input
@@ -69,7 +69,7 @@ const AccountSettings = () => {
             />
           </Label>
 
-          <div className="grid grid-cols-1 md:grid-cols-2 gap-5">
+          <div className="grid grid-cols-1 md:grid-cols-2 gap-5 mb-6">
             <FromInput
               label="Name"
               name="name"

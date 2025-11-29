@@ -1,14 +1,16 @@
 "use client";
 
 import React, { useState } from "react";
-import { CreditCard, Star } from "lucide-react";
+import { CreditCard, Star, X } from "lucide-react";
 import Image from "next/image";
 import {
   CheckIcon,
+  CVCIcon,
+  DateDB2Icon,
   DeleteIcon,
   EmailIcon,
+  FeedbackCheckIcon,
   LocationFieldIcon,
-  LocationIcon,
   PhoneIpfIcon,
   ScreenCardIcon,
   UserIcon,
@@ -21,6 +23,9 @@ import { booking_screma } from "@/lib";
 import Form from "@/components/reusable/from";
 import { FromInput } from "@/components/reusable/form-input";
 import { FromTextArea } from "@/components/reusable/from-textarea";
+import { useGlobalState } from "@/hooks";
+import Modal2 from "@/components/reusable/modal2";
+import Link from "next/link";
 
 interface AddOn {
   id: number;
@@ -28,12 +33,34 @@ interface AddOn {
   price: number;
 }
 
+const intState = {
+  isDReq: false,
+  isFedb: false,
+};
+
+interface PaymentCard {
+  id: string;
+  type: "Visa card" | "Master Card";
+  lastFour: string;
+}
+
 const BookingPayment: React.FC = () => {
+  const [deliveryReModal, setDeliveryReModal] = useGlobalState(intState);
   const [saveCard, setSaveCard] = useState(false);
+
   const [addOns, setAddOns] = useState<AddOn[]>([
     { id: 1, label: "Add-on number 1", price: 50 },
     { id: 2, label: "Add-on number 2", price: 50 },
   ]);
+
+  const [selectedCard, setSelectedCard] = useState<string>("");
+
+  const cards: PaymentCard[] = [
+    { id: "card-1", type: "Visa card", lastFour: "2154" },
+    { id: "card-2", type: "Visa card", lastFour: "2154" },
+    { id: "card-3", type: "Visa card", lastFour: "2154" },
+    { id: "card-4", type: "Master Card", lastFour: "2154" },
+  ];
 
   const packagePrice = 250;
   const subtotal =
@@ -53,6 +80,14 @@ const BookingPayment: React.FC = () => {
       message: "",
     },
   });
+
+  const watchedValues = from.watch();
+
+  const isFormValid =
+    watchedValues.name?.trim() !== "" &&
+    watchedValues.email?.trim() !== "" &&
+    watchedValues.phone_number?.trim() !== "" &&
+    watchedValues.address?.trim() !== "";
 
   const handleSubmit = async (values: FieldValues) => {
     console.log(values);
@@ -129,110 +164,78 @@ const BookingPayment: React.FC = () => {
                 </div>
               </div>
 
-              {/* Payment Method Section */}
-              <div className="border border-gray-200 rounded-lg   top-8">
-                <h2 className="text-base border-b border-gray-200 p-4">
-                  Payment method
-                </h2>
+              {/* payment method */}
+              <div className="w-full rounded-2xl  border border-gray-200 ">
+                {/* Header */}
+                <div className="flex items-center justify-between  border-b p-4">
+                  <h2 className="text-gray-900 font-medium text-lg">
+                    Payment method
+                  </h2>
+                  <Link href={"/account/payment"}>
+                    <button className="text-primary cursor-pointer text-sm font-medium transition-colors">
+                      Manage cards
+                    </button>
+                  </Link>
+                </div>
 
-                <div className="space-y-5 p-4">
-                  <div>
-                    <div className="flex justify-between items-center">
-                      <p className="block text-sm font-normal text-gray-900 mb-2">
-                        Card information
-                      </p>
-                      <span>
-                        <ScreenCardIcon />
-                      </span>
-                    </div>
-                    <div className="relative">
-                      <CreditCard className="absolute left-3 top-1/2 -translate-y-1/2 w-5 h-5 text-gray-400" />
-                      <input
-                        type="text"
-                        placeholder="1234 5678 9012 3456"
-                        className="w-full pl-10 pr-12 py-2.5 text-sm border border-gray-300 rounded-md "
-                      />
-                      <div className="absolute right-3 top-1/2 -translate-y-1/2 flex items-center gap-1">
-                        <Image
-                          src={assets.paymentCard}
-                          alt="photo"
-                          className="w-[70px] h-[70px] object-contain rounded-md"
-                        />
-                      </div>
-                    </div>
-                  </div>
-
-                  <div className="grid grid-cols-2 gap-5">
-                    <div>
-                      <label className="block text-sm font-normal text-gray-900 mb-2">
-                        MM/YY
-                      </label>
-                      <input
-                        type="text"
-                        placeholder="MM/YY"
-                        className="w-full px-4 py-2.5 text-sm border border-gray-300 rounded-md "
-                      />
-                    </div>
-
-                    <div>
-                      <label className="block text-sm font-normal text-gray-900 mb-2">
-                        CVC
-                      </label>
+                {/* Card List */}
+                <div className="space-y-1 py-2">
+                  {cards.map((card) => (
+                    <label
+                      key={card.id}
+                      className="flex items-center gap-4 px-4 py-2 transition-colors"
+                    >
+                      {/* Radio Button */}
                       <div className="relative">
                         <input
-                          type="text"
-                          placeholder="123"
-                          className="w-full px-4 py-2.5 text-sm border border-gray-300 rounded-md "
+                          type="radio"
+                          name="payment-method"
+                          value={card.id}
+                          checked={selectedCard === card.id}
+                          onChange={(e) => setSelectedCard(e.target.value)}
+                          className="sr-only"
                         />
-                        <CreditCard className="absolute right-3 top-1/2 -translate-y-1/2 w-5 h-5 text-gray-400" />
+                        <div
+                          className={`w-5 h-5 rounded border-2 flex items-center justify-center transition-all ${
+                            selectedCard === card.id
+                              ? "border-cyan-500 bg-cyan-500"
+                              : "border-gray-300 bg-white"
+                          }`}
+                        >
+                          {selectedCard === card.id && (
+                            <svg
+                              className="w-3 h-3 text-white"
+                              fill="none"
+                              strokeLinecap="round"
+                              strokeLinejoin="round"
+                              strokeWidth="3"
+                              viewBox="0 0 24 24"
+                              stroke="currentColor"
+                            >
+                              <path d="M5 13l4 4L19 7" />
+                            </svg>
+                          )}
+                        </div>
                       </div>
-                    </div>
-                  </div>
 
-                  <div>
-                    <label className="block text-sm font-normal text-gray-900 mb-2">
-                      Billing address
+                      <div className="flex items-center gap-3 p-4 rounded-xl  bg-secondary w-full">
+                        {/* Card Icon */}
+                        <DateDB2Icon />
+                        {/* Card Details */}
+                        <div className="flex-1">
+                          <div className="text-gray-900 font-medium text-base">
+                            {card.type}
+                          </div>
+                          <div className="text-gray-500 text-sm mt-0.5">
+                            •••• •••• •••• {card.lastFour}
+                          </div>
+                        </div>
+                      </div>
                     </label>
-                    <select className="w-full px-4 py-2.5 text-sm border border-gray-300 rounded-md  text-gray-900">
-                      <option>Country or region</option>
-                      <option>United States</option>
-                    </select>
-                  </div>
-
-                  <div>
-                    <input
-                      type="text"
-                      placeholder="United States"
-                      className="w-full px-4 py-2.5 text-sm border border-gray-300 rounded-md "
-                    />
-                  </div>
-
-                  <div>
-                    <label className="block text-sm font-normal text-gray-900 mb-2">
-                      ZIP
-                    </label>
-                    <input
-                      type="text"
-                      className="w-full px-4 py-2.5 text-sm border border-gray-300 rounded-md "
-                    />
-                  </div>
-
-                  <div className="flex items-center gap-2">
-                    <input
-                      type="checkbox"
-                      id="saveCard"
-                      checked={saveCard}
-                      onChange={(e) => setSaveCard(e.target.checked)}
-                      className="w-4 h-4 rounded border-gray-300"
-                    />
-                    <label htmlFor="saveCard" className="text-sm text-gray-700">
-                      Save this card for future payment
-                    </label>
-                  </div>
+                  ))}
                 </div>
               </div>
             </div>
-
             {/* Right Column - Order Details */}
             <div className="lg:col-span-4">
               <div className="border border-gray-200 rounded-lg   top-8">
@@ -328,7 +331,13 @@ const BookingPayment: React.FC = () => {
                     <span className="font-semibold text-gray-900">
                       Subtotal: $245
                     </span>
-                    <Button className="" size="lg" icon={true}>
+                    <Button
+                      onClick={() => setDeliveryReModal("isFedb", true)}
+                      className=""
+                      size="lg"
+                      icon={true}
+                      disabled={!isFormValid}
+                    >
                       Order now
                     </Button>
                   </div>
@@ -338,6 +347,37 @@ const BookingPayment: React.FC = () => {
           </div>
         </Form>
       </div>
+
+      <Modal2
+        open={deliveryReModal.isFedb}
+        setIsOpen={(v: any) => setDeliveryReModal("isFedb", v)}
+        title=""
+        titleStyle="text-center"
+        className="sm:max-w-xl"
+      >
+        <div
+          className="absolute top-3 right-4 cursor-pointer"
+          onClick={() => setDeliveryReModal("isFedb", false)}
+        >
+          <X className="text-black" />
+        </div>
+        <div className="flex flex-col justify-center items-center pb-4 space-y-6">
+          <FeedbackCheckIcon />
+          <h1 className="text-center xl:text-[20px] font-bold text-[#2D9D1E]">
+            Order placed successfully
+          </h1>
+          <p className="text-center">
+            Your order has been placed successfully. It’s in under review <br />{" "}
+            for now. Please be patient until vendor accepts it.
+          </p>
+
+          <Link href={"/"} className="w-full">
+            <Button className="w-full" size="lg" icon={true}>
+              Go home
+            </Button>
+          </Link>
+        </div>
+      </Modal2>
     </div>
   );
 };

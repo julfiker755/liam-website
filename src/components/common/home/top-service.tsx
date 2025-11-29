@@ -9,6 +9,7 @@ import photo1 from "@/assets/service1.png";
 import photo3 from "@/assets/service3.png";
 import photo4 from "@/assets/service4.png";
 import assets from "@/assets";
+import Link from "next/link";
 
 interface Service {
   id: number;
@@ -129,15 +130,16 @@ export default function TopService() {
                         </div>
                       </div>
                     </div>
-
-                    <Button
-                      className=" bg-white text-black font-bold"
-                      size={"lg"}
-                      icon={false}
-                    >
-                      Order
-                      <ArrowBlackRightIcon className="text-black" />
-                    </Button>
+                    <Link href={`/services/${service.id}`}>
+                      <Button
+                        className=" bg-white text-black font-bold"
+                        size={"lg"}
+                        icon={false}
+                      >
+                        Order
+                        <ArrowBlackRightIcon className="text-black" />
+                      </Button>
+                    </Link>
                   </div>
                 </div>
               </div>

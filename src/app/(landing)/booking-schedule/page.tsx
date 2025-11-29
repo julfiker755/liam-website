@@ -1,10 +1,12 @@
 "use client";
 
 import assets from "@/assets";
+import BookingCalendar from "@/components/common/home/bookingCalendar";
 import { Button } from "@/components/ui";
 import { CheckIcon, DeleteIcon } from "@/icon";
 import { Star } from "lucide-react";
 import Image from "next/image";
+import Link from "next/link";
 import { useState } from "react";
 
 interface AddOn {
@@ -12,6 +14,11 @@ interface AddOn {
   label: string;
   price: number;
 }
+
+const intState = {
+  isDReq: false,
+  isFedb: false,
+};
 
 const BookingSchedule = () => {
   const [addOns, setAddOns] = useState<AddOn[]>([
@@ -35,10 +42,13 @@ const BookingSchedule = () => {
         </h1>
 
         <div className="grid grid-cols-1 lg:grid-cols-12 gap-6">
-          <div className="lg:col-span-8 space-y-6">left side</div>
+          <div className="lg:col-span-7 space-y-6">
+            {/* booking cleander  */}
+            <BookingCalendar />
+          </div>
 
           {/* Right Column - Order Details */}
-          <div className="lg:col-span-4">
+          <div className="lg:col-span-5">
             <div className="border border-gray-200 rounded-lg   top-8">
               <h2 className="text-base font-semibold border-b border-gray-200 p-4">
                 Order details
@@ -130,9 +140,11 @@ const BookingSchedule = () => {
                   <span className="font-semibold text-gray-900">
                     Subtotal: $245
                   </span>
-                  <Button className="" size="lg" icon={true}>
-                    Next
-                  </Button>
+                  <Link href={"/booking-payment"}>
+                    <Button className="" size="lg" icon={true}>
+                      Next
+                    </Button>
+                  </Link>
                 </div>
               </div>
             </div>

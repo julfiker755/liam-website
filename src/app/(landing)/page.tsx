@@ -8,12 +8,13 @@ import FQA from "@/components/common/home/fqa";
 import CustomersSay from "@/components/common/home/customers-say";
 import VendorBox from "@/components/common/home/vender-home";
 import TopService from "@/components/common/home/top-service";
+import { loginUser } from "@/assets";
 
 export default function Home() {
   return (
     <>
       <CleaningServiceHome />
-      <TopService />
+      {loginUser && <TopService />}
       <Customer />
       <Vendor />
       <Works />
