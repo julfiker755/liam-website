@@ -1,6 +1,6 @@
 "use client";
 import React, { useState } from "react";
-import { Plus, Minus, MessageCircle, Star } from "lucide-react";
+import { Plus, Star } from "lucide-react";
 import Image from "next/image";
 import { Button } from "@/components/ui";
 import { ArrowBlackRightIcon, MessageIcon } from "@/icon";
