@@ -35,6 +35,7 @@ export default function Login() {
           role: "user",
         })
       );
+      router.push("/");
     } else if (values.email == "vendor@gmail.com") {
       router.push("/vendor");
       dispatch(
