@@ -23,7 +23,7 @@ const AboutUsPage = () => {
             </div>
 
             <div className="space-y-3">
-              <h1 className="text-[#000000] font-bold text-[16px] xl:text-[20px]">
+              <h1 className="text-[#000000] font-bold text-[17px] xl:text-[20px]">
                 We Know NYC Cleaning,
               </h1>
               <div>
