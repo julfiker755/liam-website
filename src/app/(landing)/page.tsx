@@ -1,3 +1,5 @@
+"use client";
+
 import CleaningServiceHome from "@/components/common/home/cleaning-service-home";
 import Customer from "@/components/common/home/customer";
 import Vendor from "@/components/common/home/vendor";
@@ -9,12 +11,15 @@ import CustomersSay from "@/components/common/home/customers-say";
 import VendorBox from "@/components/common/home/vender-home";
 import TopService from "@/components/common/home/top-service";
 import { loginUser } from "@/assets";
+import { useAppSelector } from "@/redux/hooks";
 
 export default function Home() {
+  const { user } = useAppSelector((state) => state.auth);
+
   return (
     <>
       <CleaningServiceHome />
-      {loginUser ? (
+      {user.role == "user" ? (
         <div>
           <TopService />
         </div>

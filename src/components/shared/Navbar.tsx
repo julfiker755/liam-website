@@ -70,7 +70,7 @@ const Navbar = () => {
             </nav>
 
             {/* Desktop Button */}
-            {loginUser ? (
+            {user.role == "user" ? (
               <div className="hidden lg:flex items-center gap-4">
                 <Link href={"/chart"}>
                   <IconBox className="rounded-md">
@@ -179,7 +179,7 @@ const Navbar = () => {
 
           {/* Mobile Button */}
           <div className="p-4   border-t border-gray-200 mt-auto ">
-            {loginUser ? (
+            {user.role == "user" ? (
               <div>
                 <div className=" flex flex-col justify-center items-center text-black leading-5 mb-4">
                   <p className="font-semibold">Elizabeth Olson</p>
