@@ -59,10 +59,12 @@ export default function Login() {
         />
 
         <div>
-          <Button className="w-full" size="lg">
-            {" "}
-            Login
-          </Button>
+          <Link href={"/auth"}>
+            <Button className="w-full" size="lg">
+              {" "}
+              Create account
+            </Button>
+          </Link>
         </div>
       </Form>
 

@@ -1,7 +1,6 @@
 "use client";
 import React, { useState } from "react";
 import { Plus, Minus, MessageCircle, Star } from "lucide-react";
-import assets, { loginUser } from "@/assets";
 import Image from "next/image";
 import { Button } from "@/components/ui";
 import { ArrowBlackRightIcon, MessageIcon } from "@/icon";
@@ -10,6 +9,8 @@ import PackageDetailsVendorReview from "@/components/common/packageDetails/packa
 import PackageDetailsRecoded from "@/components/common/packageDetails/package-details-recomended";
 import Footer from "@/components/shared/Footer";
 import Link from "next/link";
+import { useAppSelector } from "@/redux/hooks";
+import assets from "@/assets";
 
 interface AddOn {
   id: number;
@@ -57,6 +58,7 @@ export default function PackageDetails() {
     );
     return basePrice + addOnsTotal;
   };
+  const { user } = useAppSelector((state) => state.auth);
 
   return (
     <div className="min-h-screen bg-white pt-6">
@@ -224,7 +226,9 @@ export default function PackageDetails() {
                     <span className="font-semibold text-gray-900">
                       Subtotal: ${calculateSubtotal()}
                     </span>
-                    <Link href={loginUser ? "/booking-schedule" : "/auth"}>
+                    <Link
+                      href={user.role == "user" ? "/booking-schedule" : "/auth"}
+                    >
                       <Button className="" size="lg" icon={true}>
                         Continue
                       </Button>

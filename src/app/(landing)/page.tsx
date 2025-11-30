@@ -10,7 +10,7 @@ import FQA from "@/components/common/home/fqa";
 import CustomersSay from "@/components/common/home/customers-say";
 import VendorBox from "@/components/common/home/vender-home";
 import TopService from "@/components/common/home/top-service";
-import { loginUser } from "@/assets";
+
 import { useAppSelector } from "@/redux/hooks";
 
 export default function Home() {
