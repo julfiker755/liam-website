@@ -24,9 +24,8 @@ export default function Sidebar({ sidebarOpen, setSidebarOpen }: SidebarProps) {
       )}
       {/* Sidebar */}
       <aside
-        className={`absolute left-0 top-0 z-20 bg-secondary flex h-screen bg-figma-sidebar text-primary transition-transform transform duration-300 ease-linear flex-col overflow-y-hidden  w-70 lg:static lg:translate-x-0 ${
-          sidebarOpen ? "translate-x-0" : "-translate-x-full"
-        }`}
+        className={`absolute left-0 top-0 z-20 bg-secondary flex h-screen bg-figma-sidebar text-primary transition-transform transform duration-300 ease-linear flex-col overflow-y-hidden  w-70 lg:static lg:translate-x-0 ${sidebarOpen ? "translate-x-0" : "-translate-x-full"
+          }`}
       >
         <div className="flex flex-col h-screen relative">
           <div className="flex items-center justify-center my-5  rounded-md py-1">

@@ -34,6 +34,7 @@ export const register_vendor = sign_In
   .extend({
     name: z.string().nonempty("Full Name is required"),
     business_name: z.string().nonempty("Business Name is required"),
+    service_categories: z.array(z.string()).min(1, "At least one Service category is required"),
     address: z.string().nonempty("Address is required"),
     c_password: z.string().nonempty("Confirm password is required"),
   })
@@ -41,6 +42,9 @@ export const register_vendor = sign_In
     path: ["c_password"],
     message: "Passwords must be match.",
   });
+
+
+
 
 export const varify_sc = z.object({
   code: z.string().nonempty("Code is required"),

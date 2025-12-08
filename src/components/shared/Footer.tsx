@@ -2,7 +2,7 @@
 import { useState } from "react";
 import { Button } from "@/components/ui/button";
 import { Input } from "@/components/ui/input";
-import { FacebookIcon, InstagramIcon, YoutubeIcon } from "@/icon";
+import { FacebookIcon, InstagramIcon, TiktokIcon, TwitterIcon, YoutubeIcon } from "@/icon";
 import { useForm } from "react-hook-form";
 import { ImgBox } from "../reusable/Img-box";
 import assets from "@/assets";
@@ -74,6 +74,23 @@ const Footer = () => {
               Subscribe
             </Button>
           </form>
+
+
+          {/* Social Media Icons */}
+          <div className="flex gap-4 justify-center ">
+            <Link href="#facebook">
+              <FacebookIcon className="size-12" />
+            </Link>
+            <Link href="#Instagram">
+              <InstagramIcon className="size-12" />
+            </Link>
+            <Link href="#Twitter">
+              <TwitterIcon className="size-12" />
+            </Link>
+            <Link href="#Tiktok">
+              <TiktokIcon className="size-12" />
+            </Link>
+          </div>
         </div>
       </div>
 
@@ -116,19 +133,6 @@ const Footer = () => {
               >
                 Contact us
               </Link>
-            </div>
-
-            {/* Social Media Icons */}
-            <div className="flex gap-4 justify-center md:justify-start lg:justify-center ">
-              <Link href="#facebook">
-                <FacebookIcon className="size-12" />
-              </Link>
-              <Link href="#Instagram">
-                <InstagramIcon className="size-12" />
-              </Link>
-              <a href="#youtube">
-                <YoutubeIcon className="size-12" />
-              </a>
             </div>
           </div>
         </div>

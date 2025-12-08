@@ -18,7 +18,8 @@ const Navbar = () => {
 
   const navLinks = [
     { href: "/", text: "Home" },
-    { href: "/services", text: "Services" },
+    { href: "/services", text: "Book now" },
+    { href: "/blogs", text: "Blogs" },
     { href: "/works", text: "How it works" },
     { href: "/about-us", text: "About us" },
     { href: "/faq", text: "FAQ" },
@@ -58,11 +59,10 @@ const Navbar = () => {
                 <Link
                   key={link.text}
                   href={link.href}
-                  className={`font-medium transition-colors duration-300 ${
-                    activeLink === link.text
-                      ? "text-primary font-semibold"
-                      : "text-gray-600 hover:text-primary"
-                  }`}
+                  className={`font-medium transition-colors duration-300 ${activeLink === link.text
+                    ? "text-primary font-semibold"
+                    : "text-gray-600 hover:text-primary"
+                    }`}
                 >
                   {link.text}
                 </Link>
@@ -115,9 +115,8 @@ const Navbar = () => {
               aria-label="Toggle menu"
             >
               <Menu
-                className={`h-6 w-6 transition-transform duration-300 ${
-                  isMenuOpen ? "rotate-90 scale-0" : "rotate-0 scale-100"
-                }`}
+                className={`h-6 w-6 transition-transform duration-300 ${isMenuOpen ? "rotate-90 scale-0" : "rotate-0 scale-100"
+                  }`}
               />
             </button>
           </div>
@@ -126,17 +125,15 @@ const Navbar = () => {
 
       {/* Mobile Overlay */}
       <div
-        className={`fixed inset-0 z-40 bg-black bg-opacity-50 transition-opacity lg:hidden ${
-          isMenuOpen ? "opacity-100" : "opacity-0 pointer-events-none"
-        }`}
+        className={`fixed inset-0 z-40 bg-black bg-opacity-50 transition-opacity lg:hidden ${isMenuOpen ? "opacity-100" : "opacity-0 pointer-events-none"
+          }`}
         onClick={toggleMenu}
       ></div>
 
       {/* Mobile Sidebar */}
       <div
-        className={`fixed top-0 left-0 h-full w-4/5 max-w-sm z-50 bg-secondary transform transition-transform duration-300 ease-in-out lg:hidden ${
-          isMenuOpen ? "translate-x-0" : "-translate-x-full"
-        }`}
+        className={`fixed top-0 left-0 h-full w-4/5 max-w-sm z-50 bg-secondary transform transition-transform duration-300 ease-in-out lg:hidden ${isMenuOpen ? "translate-x-0" : "-translate-x-full"
+          }`}
       >
         <div className="flex flex-col h-full">
           {/* Mobile Header */}
@@ -165,11 +162,10 @@ const Navbar = () => {
                   key={link.text}
                   href={link.href}
                   onClick={toggleMenu}
-                  className={`px-3 py-2 text-base font-medium rounded-md transition-colors duration-300 ${
-                    activeLink === link.text
-                      ? "text-primary bg-secondary font-semibold"
-                      : "text-gray-700 hover:bg-gray-100"
-                  }`}
+                  className={`px-3 py-2 text-base font-medium rounded-md transition-colors duration-300 ${activeLink === link.text
+                    ? "text-primary bg-secondary font-semibold"
+                    : "text-gray-700 hover:bg-gray-100"
+                    }`}
                 >
                   {link.text}
                 </Link>

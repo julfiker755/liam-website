@@ -376,6 +376,30 @@ export const YoutubeIcon = ({ props, className }: IconProps) => (
   </svg>
 );
 
+export const TwitterIcon = ({ props, className }: IconProps) => (
+  <svg id="TwitterIcon" width="50" height="50" viewBox="0 0 50 50" fill="none" xmlns="http://www.w3.org/2000/svg"
+    {...props}
+    className={className}
+  >
+    <rect width="50" height="50" rx="25" fill="white" fillOpacity="0.12" />
+    <path d="M31.325 15H34.6989L27.3289 23.471L36 35H29.2114L23.8906 28.0091L17.8091 35H14.4321L22.3144 25.9363L14 15.0016H20.9614L25.7637 21.3903L31.325 15ZM30.1386 32.9697H32.0086L19.94 16.9247H17.9349L30.1386 32.9697Z" fill="white" />
+  </svg>
+
+);
+export const TiktokIcon = ({ props, className }: IconProps) => (
+  <svg
+    id="TiktokIcon"
+    width="50" height="50" viewBox="0 0 50 50" fill="none" xmlns="http://www.w3.org/2000/svg"
+    {...props}
+    className={className}
+  >
+    <rect width="50" height="50" rx="25" fill="white" fillOpacity="0.12" />
+    <path d="M30.2806 18.1333C29.4961 17.2661 29.0637 16.1527 29.0638 15H25.5166V28.7778C25.4898 29.5235 25.1648 30.2301 24.61 30.7483C24.0553 31.2666 23.3143 31.556 22.5434 31.5556C20.9133 31.5556 19.5587 30.2667 19.5587 28.6667C19.5587 26.7556 21.4643 25.3222 23.4273 25.9111V22.4C19.4668 21.8889 16 24.8667 16 28.6667C16 32.3667 19.1684 35 22.5319 35C26.1365 35 29.0638 32.1667 29.0638 28.6667V21.6778C30.5022 22.6776 32.2291 23.2141 34 23.2111V19.7778C34 19.7778 31.8418 19.8778 30.2806 18.1333Z" fill="white" />
+  </svg>
+
+
+);
+
 export const SearchIcon = (props: React.SVGProps<SVGSVGElement>) => (
   <svg
     id="SearchIcon"
