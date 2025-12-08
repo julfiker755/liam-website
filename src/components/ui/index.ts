@@ -13,3 +13,4 @@ export * from "./tabs";
 export * from "./calendar";
 export * from "./popover";
 export * from "./button-group";
+export * from "./switch"
