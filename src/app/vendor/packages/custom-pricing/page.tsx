@@ -1,5 +1,5 @@
 import SubTitle from "@/components/reusable/title";
-import { Switch } from "@/components/ui";
+import { Button, Switch } from "@/components/ui";
 
 export default function CustomPricing() {
   return (
@@ -18,6 +18,7 @@ export default function CustomPricing() {
           <Switch className="cursor-pointer" id="airplane-mode" />
         </div>
       </div>
+      <Button size="lg">Save changes</Button>
     </div>
   );
 }
