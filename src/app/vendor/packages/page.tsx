@@ -1,6 +1,7 @@
 "use client";
 import { ImgBox } from "@/components/reusable/Img-box";
 import { Button } from "@/components/ui";
+import FavIcon from "@/favicon/favicon";
 import { useModalState } from "@/hooks";
 import { RandomImg } from "@/lib";
 import { Plus } from "lucide-react";
@@ -45,7 +46,13 @@ export default function Packages() {
     <div className="container">
       <ul className="flex items-center flex-wrap mt-10 space-y-2 lg:space-y-0 justify-between">
         <li className="text-xl font-bold">4 Packages</li>
-        <li>
+        <li className="space-x-3">
+          <Link href="/vendor/packages/custom-pricing">
+            <Button className="rounded-sm bg-white border">
+              <FavIcon name="custom_pri" />
+              <span className="text-black"> Custom pricing management</span>
+            </Button>
+          </Link>
           <Link href="/vendor/packages/store">
             <Button
               onClick={() => setState("isAdd", true)}
