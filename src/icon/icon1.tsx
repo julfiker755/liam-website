@@ -1114,13 +1114,11 @@ export const PaymentHistoryIcon = (props: React.SVGProps<SVGSVGElement>) => (
       stroke="#535353"
       strokeWidth="1.5"
       strokeLinecap="round"
-      strokeLinecap="round"
     />
     <path
       d="M17.1172 20.078L24.9982 24.81V34.25M29.3782 25.934V22.179L21.0642 17.522"
       stroke="#535353"
       strokeWidth="1.5"
-      strokeLinecap="round"
       strokeLinecap="round"
     />
   </svg>
