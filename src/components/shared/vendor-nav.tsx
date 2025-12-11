@@ -82,14 +82,14 @@ export default function VendorNav() {
                     }`}
                 >
                   <FavIcon name={isActive ? item.icon_i : (item.icon as any)} />
-                  {item.name}
+                  <span className="text-[15px] 2xl:text-base">{item.name}</span>
                 </Link>
               );
             })}
           </div>
 
           {/* Right Side */}
-          <div className="hidden lg:flex items-center gap-4">
+          <div className="hidden lg:flex items-center gap-2">
             <Link href="/vendor/chat">
               <IconBox className="rounded-md">
                 <FavIcon name="chat_cc" />
