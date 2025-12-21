@@ -15,6 +15,8 @@ const Navbar = () => {
   const { user } = useAppSelector((state) => state.auth);
   const [isMenuOpen, setIsMenuOpen] = useState(false);
   const pathname = usePathname();
+  const ShowNavBc = ["/"];
+  const isShowNavBc = ShowNavBc.includes(pathname);
 
   const navLinks = [
     { href: "/", text: "Home" },
@@ -36,11 +38,12 @@ const Navbar = () => {
   }, [isMenuOpen]);
 
   const toggleMenu = () => setIsMenuOpen(!isMenuOpen);
-  console.log(user);
 
   return (
     <>
-      <header className="sticky top-0 z-50 w-full bg-secondary backdrop-blur-md border-gray-200">
+      <header
+        className={`sticky top-0 z-50 w-full  ${isShowNavBc ? "bg-[#a29c96]" : "bg-secondary backdrop-blur-md border-gray-200"}`}
+      >
         <div className="container px-4">
           <div className="flex h-16 items-center justify-between">
             <Link href="/">
@@ -61,8 +64,8 @@ const Navbar = () => {
                   href={link.href}
                   className={`font-medium transition-colors duration-300 ${
                     activeLink === link.text
-                      ? "text-primary font-semibold"
-                      : "text-gray-600 hover:text-primary"
+                      ? "text-[#000000] font-semibold"
+                      : "text-gray-600 hover:text-[#000000]"
                   }`}
                 >
                   {link.text}
@@ -168,7 +171,7 @@ const Navbar = () => {
                   onClick={toggleMenu}
                   className={`px-3 py-2 text-base font-medium rounded-md transition-colors duration-300 ${
                     activeLink === link.text
-                      ? "text-primary bg-secondary font-semibold"
+                      ? "text-[#000000] bg-secondary font-semibold"
                       : "text-gray-700 hover:bg-gray-100"
                   }`}
                 >

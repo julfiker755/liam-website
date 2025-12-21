@@ -1,16 +1,15 @@
-import SubTitle from "@/components/reusable/title";
 import { Button } from "@/components/ui";
 import Image from "next/image";
 import Link from "next/link";
 
 const About = () => {
   return (
-    <div className="pt-[48px] xl:pt-[148px]">
+    <div className="pt-[48px] xl:pt-[100px]">
       <div className="container px-4">
         <div className="flex flex-col lg:flex-row justify-between items-center gap-10">
           <div>
             <Image
-              src="/images/about-web-photo.png"
+              src="/images/about-web-photo3.png"
               alt="Nexus Logo"
               width={500}
               height={500}
@@ -19,12 +18,12 @@ const About = () => {
           </div>
 
           <div className="flex flex-col items-start">
-            <div className="pb-8">
-              <SubTitle text="About us" />
+            <div className="">
+              <h2 className="">About us</h2>
             </div>
 
             <div className="space-y-3">
-              <h1 className="text-[#000000] font-bold text-[16px] xl:text-[20px]">
+              <h1 className="text-[#000000] font-bold text-[16px] xl:text-[36px]">
                 We Know NYC Cleaning,
               </h1>
               <div>
