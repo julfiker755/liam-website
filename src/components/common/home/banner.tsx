@@ -190,7 +190,9 @@ export const BannerCategorie = () => {
         {/* one */}
         <div className="border p-6 space-y-2">
           <Banner_categorie_one_Icon />
-          <h1 className="font-semibold">Residential Cleaning</h1>
+          <h1 className=" xl:text-[20px] font-semibold">
+            Residential Cleaning
+          </h1>
           <p className="text-[#535353]">
             We can clean your house, apartment, condo, penthouse, mansion, and
             more!
@@ -199,28 +201,30 @@ export const BannerCategorie = () => {
         {/* two */}
         <div className="border p-6 space-y-2">
           <Banner_categorie_two_Icon />
-          <h1 className="font-semibold">Residential Cleaning</h1>
+          <h1 className=" xl:text-[20px] font-semibold">Office Cleaning</h1>
           <p className="text-[#535353]">
-            We can clean your house, apartment, condo, penthouse, mansion, and
-            more!
+            We can clean your office, or commercial space one time or on a
+            recurring basis.
           </p>
         </div>
         {/* three */}
         <div className="border p-6 space-y-2">
           <Banner_categorie_three_Icon />
-          <h1 className="font-semibold">Residential Cleaning</h1>
+          <h1 className=" xl:text-[20px] font-semibold">Deep Cleaning</h1>
           <p className="text-[#535353]">
-            We can clean your house, apartment, condo, penthouse, mansion, and
-            more!
+            We can do a deep detailed cleaning including things not included in
+            a standard cleaning like baseboards, walls and more!
           </p>
         </div>
         {/* four */}
         <div className="border p-6 space-y-2">
           <Banner_categorie_four_Icon />
-          <h1 className="font-semibold">Residential Cleaning</h1>
+          <h1 className=" xl:text-[20px] font-semibold">
+            Move In/Out Cleaning
+          </h1>
           <p className="text-[#535353]">
-            We can clean your house, apartment, condo, penthouse, mansion, and
-            more!
+            If you're moving in or moving out of a home, we can make it look
+            brand new for you!
           </p>
         </div>
       </div>

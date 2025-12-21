@@ -2,7 +2,13 @@
 import { useState } from "react";
 import { Button } from "@/components/ui/button";
 import { Input } from "@/components/ui/input";
-import { FacebookIcon, InstagramIcon, TiktokIcon, TwitterIcon, YoutubeIcon } from "@/icon";
+import {
+  FacebookIcon,
+  InstagramIcon,
+  TiktokIcon,
+  TwitterIcon,
+  YoutubeIcon,
+} from "@/icon";
 import { useForm } from "react-hook-form";
 import { ImgBox } from "../reusable/Img-box";
 import assets from "@/assets";
@@ -68,13 +74,12 @@ const Footer = () => {
                   message: "Invalid email address",
                 },
               })}
-              className="text-white placeholder:text-white"
+              className="text-white placeholder:text-white h-11"
             />
-            <Button type="submit" className="bg-white text-black px-8">
+            <Button type="submit" className="bg-white text-black h-11 px-8">
               Subscribe
             </Button>
           </form>
-
 
           {/* Social Media Icons */}
           <div className="flex gap-4 justify-center ">

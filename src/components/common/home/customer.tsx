@@ -13,18 +13,19 @@ function Customer() {
               alt="Nexus Logo"
               width={500}
               height={500}
-              className="rounded-[30px]"
+              className="rounded-[30px] lg:h-[400px]"
             />
           </div>
 
-          <div className="bg-secondary w-full  rounded-[30px] flex items-center p-6 lg:p-8 xl:p-14 2xl:p-20">
-            <div className="space-y-3">
-              <div className="">
+          <div className="bg-secondary w-full lg:h-[400px] p-6 md:p-12 rounded-[30px] flex items-center ">
+            <div className="space-y-4">
+              <div className="leading-tight">
                 <p>For customers</p>
                 <h1 className="text-[#000000] font-bold text-[16px] xl:text-[36px]">
                   Need a Sparkle? Book the Best Cleaners in NYC.
                 </h1>
               </div>
+
               <div>
                 <p className="font-sans font-medium text-[16px] text-[#535353]">
                   Stop sacrificing your weekends. Instantly connect with
@@ -36,25 +37,30 @@ function Customer() {
                 </p>
               </div>
 
-              <ul className="list-disc list-inside">
-                <li className="">
-                  <span className="font-bold">Verified Pros:</span> Vetted and
-                  insured cleaners.
-                </li>
-                <li>
-                  <span className="font-bold">Transparent Pricing:</span> No
-                  surprises, ever.
-                </li>
-                <li>
-                  <span className="font-bold">Flexible Booking:</span> Schedule
-                  around your life.
-                </li>
-              </ul>
-              <Link href={"/auth"}>
-                <Button className="mt-4 xl:mt-0" size="lg" icon={true}>
-                  Continue as user
-                </Button>
-              </Link>
+              <div>
+                <ul className="list-disc list-inside space-y-4">
+                  <li className="">
+                    <span className="font-bold">Verified Pros:</span> Vetted and
+                    insured cleaners.
+                  </li>
+                  <li>
+                    <span className="font-bold">Transparent Pricing:</span> No
+                    surprises, ever.
+                  </li>
+                  <li>
+                    <span className="font-bold">Flexible Booking:</span>{" "}
+                    Schedule around your life.
+                  </li>
+                </ul>
+              </div>
+
+              <div className="pt-2">
+                <Link href={"/auth"}>
+                  <Button className="" size="lg" icon={true}>
+                    Continue as user
+                  </Button>
+                </Link>
+              </div>
             </div>
           </div>
         </div>

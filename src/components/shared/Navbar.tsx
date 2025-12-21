@@ -107,7 +107,7 @@ const Navbar = () => {
             ) : (
               <div className="hidden lg:flex items-center space-x-3">
                 <Link href="/auth">
-                  <Button>Create an account</Button>
+                  <Button className="h-11">Create an account</Button>
                 </Link>
               </div>
             )}
