@@ -13,7 +13,7 @@ export default function LandingPageLayout({ children }: childrenProps) {
 
   return (
     <>
-      <div className="min-h-screen flex flex-col">
+      <div className=" flex flex-col">
         {isShowSubNav && <SubNav />}
         <Navbar />
         <main className="flex-1">{children}</main>

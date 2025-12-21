@@ -42,14 +42,16 @@ const BookingSchedule = () => {
         </h1>
 
         <div className="grid grid-cols-1 lg:grid-cols-12 gap-6">
-          <div className="lg:col-span-7 space-y-6">
+          <div className="lg:col-span-7">
             {/* booking cleander  */}
-            <BookingCalendar />
+            <div className=" h-full">
+              <BookingCalendar />
+            </div>
           </div>
 
           {/* Right Column - Order Details */}
-          <div className="lg:col-span-5">
-            <div className="border border-gray-200 rounded-lg   top-8">
+          <div className="lg:col-span-5 h-full ">
+            <div className="border border-gray-200 rounded-lg top-8 h-full flex flex-col justify-between">
               <h2 className="text-base font-semibold border-b border-gray-200 p-4">
                 Order details
               </h2>
@@ -135,8 +137,8 @@ const BookingSchedule = () => {
               </div>
 
               {/* Subtotal and Button */}
-              <div className="pt-4 px-4 border-t border-gray-200 my-6">
-                <div className="flex items-center justify-between  ">
+              <div className=" pt-4 px-4 border-t border-gray-200 my-6">
+                <div className=" flex items-center justify-between  ">
                   <span className="font-semibold text-gray-900">
                     Subtotal: $245
                   </span>

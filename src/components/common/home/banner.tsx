@@ -16,7 +16,7 @@ const BannerSection = () => {
     <>
       {/*====================== Destop device============ */}
       <div
-        className="relative h-dvh hidden 2xl:block"
+        className="relative min-h-[calc(100vh-104px)] hidden 2xl:block"
         style={{
           backgroundImage: `url('/images/bannerPhoto.png')`,
           backgroundSize: "100% 100%",
@@ -24,7 +24,7 @@ const BannerSection = () => {
           backgroundRepeat: "no-repeat",
         }}
       >
-        <div className="max-w-[1140px] flex flex-col justify-center  h-full 2xl:pl-20 space-y-8">
+        <div className="max-w-[1140px] flex flex-col justify-center min-h-[calc(100vh-104px)] 2xl:pl-20 space-y-8">
           <h1 className="text-[64px] font-bold text-white leading-[1.1]">
             The Easiest Way to Book Premium Cleaning Services.
           </h1>
