@@ -42,7 +42,7 @@ const Navbar = () => {
   return (
     <>
       <header
-        className={`sticky top-0 z-50 w-full  ${isShowNavBc ? "bg-[#a29c96]" : "bg-secondary backdrop-blur-md border-gray-200"}`}
+        className={`sticky top-0 z-50 w-full  ${isShowNavBc ? "bg-linear-to-r from-[#a19991] to-[#c6c4c2]/30" : "bg-secondary backdrop-blur-md border-gray-200"}`}
       >
         <div className="container px-4">
           <div className="flex h-16 items-center justify-between">
